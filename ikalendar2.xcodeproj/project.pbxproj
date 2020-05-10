@@ -13,6 +13,9 @@
 		79F8460F246767EC0086AD95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F8460E246767EC0086AD95 /* Assets.xcassets */; };
 		79F84612246767EC0086AD95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F84611246767EC0086AD95 /* Preview Assets.xcassets */; };
 		79F84615246767EC0086AD95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79F84613246767EC0086AD95 /* LaunchScreen.storyboard */; };
+		79F8461D246769A60086AD95 /* Splatoon2-font-beta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */; };
+		79F84620246781D40086AD95 /* RotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F8461F246781D40086AD95 /* RotationView.swift */; };
+		79F84622246781EB0086AD95 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F84621246781EB0086AD95 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		79F84611246767EC0086AD95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		79F84614246767EC0086AD95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79F84616246767EC0086AD95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Splatoon2-font-beta.otf"; sourceTree = "<group>"; };
+		79F8461F246781D40086AD95 /* RotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationView.swift; sourceTree = "<group>"; };
+		79F84621246781EB0086AD95 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +46,7 @@
 		79F845FC246767E90086AD95 = {
 			isa = PBXGroup;
 			children = (
+				79F8461E246769ED0086AD95 /* fonts */,
 				79F84607246767E90086AD95 /* ikalendar2 */,
 				79F84606246767E90086AD95 /* Products */,
 			);
@@ -63,6 +70,8 @@
 				79F84613246767EC0086AD95 /* LaunchScreen.storyboard */,
 				79F84616246767EC0086AD95 /* Info.plist */,
 				79F84610246767EC0086AD95 /* Preview Content */,
+				79F8461F246781D40086AD95 /* RotationView.swift */,
+				79F84621246781EB0086AD95 /* SettingsView.swift */,
 			);
 			path = ikalendar2;
 			sourceTree = "<group>";
@@ -73,6 +82,14 @@
 				79F84611246767EC0086AD95 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		79F8461E246769ED0086AD95 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F84615246767EC0086AD95 /* LaunchScreen.storyboard in Resources */,
+				79F8461D246769A60086AD95 /* Splatoon2-font-beta.otf in Resources */,
 				79F84612246767EC0086AD95 /* Preview Assets.xcassets in Resources */,
 				79F8460F246767EC0086AD95 /* Assets.xcassets in Resources */,
 			);
@@ -146,6 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79F84622246781EB0086AD95 /* SettingsView.swift in Sources */,
+				79F84620246781D40086AD95 /* RotationView.swift in Sources */,
 				79F84609246767E90086AD95 /* AppDelegate.swift in Sources */,
 				79F8460B246767E90086AD95 /* SceneDelegate.swift in Sources */,
 				79F8460D246767E90086AD95 /* ContentView.swift in Sources */,
@@ -294,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ikalendar2;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,7 +334,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ikalendar2;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
