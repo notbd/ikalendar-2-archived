@@ -16,6 +16,9 @@
 		79F8461D246769A60086AD95 /* Splatoon2-font-beta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */; };
 		79F84620246781D40086AD95 /* RotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F8461F246781D40086AD95 /* RotationView.swift */; };
 		79F84622246781EB0086AD95 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F84621246781EB0086AD95 /* SettingsView.swift */; };
+		79F846242468DAB50086AD95 /* rotationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F846232468DAB50086AD95 /* rotationData.swift */; };
+		79F846262468DAF50086AD95 /* RotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F846252468DAF40086AD95 /* RotationModel.swift */; };
+		79F846282468DCCE0086AD95 /* RotationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F846272468DCCE0086AD95 /* RotationItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Splatoon2-font-beta.otf"; sourceTree = "<group>"; };
 		79F8461F246781D40086AD95 /* RotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationView.swift; sourceTree = "<group>"; };
 		79F84621246781EB0086AD95 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		79F846232468DAB50086AD95 /* rotationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rotationData.swift; sourceTree = "<group>"; };
+		79F846252468DAF40086AD95 /* RotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationModel.swift; sourceTree = "<group>"; };
+		79F846272468DCCE0086AD95 /* RotationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,15 +69,18 @@
 		79F84607246767E90086AD95 /* ikalendar2 */ = {
 			isa = PBXGroup;
 			children = (
+				79F84610246767EC0086AD95 /* Preview Content */,
 				79F84608246767E90086AD95 /* AppDelegate.swift */,
 				79F8460A246767E90086AD95 /* SceneDelegate.swift */,
-				79F8460C246767E90086AD95 /* ContentView.swift */,
 				79F8460E246767EC0086AD95 /* Assets.xcassets */,
 				79F84613246767EC0086AD95 /* LaunchScreen.storyboard */,
 				79F84616246767EC0086AD95 /* Info.plist */,
-				79F84610246767EC0086AD95 /* Preview Content */,
+				79F8460C246767E90086AD95 /* ContentView.swift */,
 				79F8461F246781D40086AD95 /* RotationView.swift */,
 				79F84621246781EB0086AD95 /* SettingsView.swift */,
+				79F846272468DCCE0086AD95 /* RotationItem.swift */,
+				79F846252468DAF40086AD95 /* RotationModel.swift */,
+				79F846232468DAB50086AD95 /* rotationData.swift */,
 			);
 			path = ikalendar2;
 			sourceTree = "<group>";
@@ -165,9 +174,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F84622246781EB0086AD95 /* SettingsView.swift in Sources */,
+				79F846242468DAB50086AD95 /* rotationData.swift in Sources */,
 				79F84620246781D40086AD95 /* RotationView.swift in Sources */,
 				79F84609246767E90086AD95 /* AppDelegate.swift in Sources */,
+				79F846282468DCCE0086AD95 /* RotationItem.swift in Sources */,
 				79F8460B246767E90086AD95 /* SceneDelegate.swift in Sources */,
+				79F846262468DAF50086AD95 /* RotationModel.swift in Sources */,
 				79F8460D246767E90086AD95 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,6 +321,7 @@
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ikalendar2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -329,6 +342,7 @@
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ikalendar2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
