@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @EnvironmentObject var env: Data
+    
     @State private var tabSelection = 0
     
     init() {
@@ -50,7 +52,7 @@ struct ContentView: View {
         
         TabView(selection: $tabSelection) {
             
-            RotationView(rotations: rotationData)
+            RotationView()
                 .tabItem {
                     VStack {
                         Image(systemName: "calendar")
@@ -73,6 +75,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(Data())
     }
 }

@@ -10,30 +10,91 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State var firstToggle = false
-    @State var secondToggle = false
-    @State var thirdToggle = false
+    @EnvironmentObject var env: Data
+    
+    @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
+    
+    var modeName = ["Regular", "Ranked", "League"]
     
     var body: some View {
         NavigationView {
-            List {
-                
-                Toggle(isOn: $firstToggle) {
-                    Text("First toggle")
+            Form {
+
+                Section(header: Text("Mode displayed when app launches:")) {
+                    
+                    Picker("Default Mode: ", selection: $settingsDefaultMode) {
+                        ForEach(0 ..< modeName.count) { index in
+                            Text(self.modeName[index])
+                                .tag(index)
+                        }
+                    }
+                    .onReceive([self.settingsDefaultMode].publisher.first()) { value in
+                        self.saveDefaultMode()
+                    }
+                }
+
+                Section(
+                    header: Text("Acknowledgement"),
+                    footer: Text(Constants.COPYRIGHT_INFO)
+                        .font(.caption)) {
+                    
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: Constants.SPL_INK_URL)!)
+                    }) {
+                        HStack {
+                            Text("Data Source").foregroundColor(.primary)
+                            Spacer()
+                            Text("Splatoon2.ink").foregroundColor(.secondary)
+                            Image(systemName: "map.fill").foregroundColor(.secondary)
+                        }
+                        
+                    }
                 }
                 
-                Toggle(isOn: $secondToggle) {
-                    Text("Second toggle")
+                Section(header: Text("Feedback"),
+                        footer: Text(Constants.VERSION_INFO)
+                            .font(.caption)) {
+                    
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: Constants.AUTHOR_GITHUB_URL)!)
+                    }) {
+                        HStack {
+                            Text("Github").foregroundColor(.primary)
+                            Spacer()
+                            Text("@zhang13music").foregroundColor(.secondary)
+                        }
+                    }
+                    
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: Constants.AUTHOR_TWITTER_URL)!)
+                    }) {
+                        HStack {
+                            Text("Twitter").foregroundColor(.primary)
+                            Spacer()
+                            Text("@gppppa_").foregroundColor(.secondary)
+
+                        }
+                    }
+                    
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: Constants.AUTHOR_EMAIL_URL)!)
+                    }) {
+                        HStack {
+                            Text("Contact me via Email").foregroundColor(.primary)
+                            Spacer()
+                            Image(systemName: "exclamationmark.bubble.fill").foregroundColor(.secondary)
+                        }
+                    }
+                    
                 }
-                
-                Toggle(isOn: $thirdToggle) {
-                    Text("Third toggle")
-                }
-                
-                
                 
             }.navigationBarTitle(Text("Settings"))
-        }.font(.system(.body, design: .rounded))
+        }
+//        .font(.system(.body, design: .rounded))
+    }
+    
+    func saveDefaultMode() {
+        UserDefaults.standard.set(self.settingsDefaultMode, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
     }
 }
 

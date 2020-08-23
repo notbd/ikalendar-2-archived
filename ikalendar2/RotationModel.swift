@@ -8,27 +8,105 @@
 
 import SwiftUI
 
-struct Rotation: Hashable, Codable, Identifiable {
+struct Rotation: Identifiable, Hashable {
+    
     var id: Int
-    var rule: Rule
-    var rule_filn: Rule_filn
+    var rule: String
+    var rule_filn: String
     var time: String
-    var map_1_name: String
-    var map_1_filn: String
-    var map_2_name: String
-    var map_2_filn: String
+    var start_time: Double
+    var end_time: Double
+    var stage_1_name: String
+    var stage_1_filn: String
+    var stage_2_name: String
+    var stage_2_filn: String
     
-    enum Rule: String, CaseIterable, Codable, Hashable {
-        case SZ = "ガチエリア"
-        case TC = "ガチヤグラ"
-        case RM = "ガチホコバトル"
-        case CB = "ガチアサリ"
+    // Placeholder initializer while data not loaded yet
+    init (loadingMsg: String) {
+        self.id = 0
+        self.rule = ""
+        self.rule_filn = ""
+        self.start_time = 0.0
+        self.end_time = 0.0
+        self.time = loadingMsg
+        self.stage_1_name = ""
+        self.stage_1_filn = ""
+        self.stage_2_name = ""
+        self.stage_2_filn = ""
     }
     
-    enum Rule_filn: String, CaseIterable, Codable, Hashable {
-        case SZ = "SZ_small"
-        case TC = "TC_small"
-        case RM = "RM_small"
-        case CB = "CB_small"
+}
+
+extension Rotation: Decodable {
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case gachi
+        case league
+        case regular
+        
+        case id
+        
+        case start_time
+        case end_time
+        
+        case rule
+        
+        case stage_a
+        case stage_b
+        
+        case name
+        case key
     }
+    
+    init (from decoder: Decoder) throws {
+        
+        // Main container
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Parse id
+        self.id = try container.decode(Int.self, forKey: .id)
+        
+        // Parse start time
+        self.start_time = try container.decode(Double.self, forKey: .start_time)
+        
+        // Parse end time
+        self.end_time = try container.decode(Double.self, forKey: .end_time)
+        
+        // Compose time string
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "CDT")
+        dateFormatter.locale = NSLocale.current
+        dateFormatter.dateFormat = "HH:mm"
+        
+        let Date_start_time = Date(timeIntervalSince1970: start_time)
+        let Date_end_time = Date(timeIntervalSince1970: end_time)
+        let str_start_time = dateFormatter.string(from: Date_start_time)
+        let str_end_time = dateFormatter.string(from: Date_end_time)
+        
+        // set time string
+        self.time = "\(str_start_time) - \(str_end_time)"
+        
+        // Rule container
+        let ruleContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .rule)
+        
+        // Parse rule name
+        self.rule = try ruleContainer.decode(String.self, forKey: .name)
+        
+        // Parse rule key
+        self.rule_filn = try ruleContainer.decode(String.self, forKey: .key)
+        
+        // Stage containers
+        let stage1Container = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .stage_a)
+        let stage2Container = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .stage_b)
+        
+        // Parse stage names
+        self.stage_1_name = try stage1Container.decode(String.self, forKey: .name)
+        self.stage_2_name = try stage2Container.decode(String.self, forKey: .name)
+        
+        // Process stage filn
+        self.stage_1_filn = self.stage_1_name
+        self.stage_2_filn = self.stage_2_name
+    }
+    
 }
