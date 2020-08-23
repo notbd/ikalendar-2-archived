@@ -26,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		79459A8624F1847100C90BA4 /* RotationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationItems.swift; sourceTree = "<group>"; };
+		79459A8824F1EFEC00C90BA4 /* ikalendar2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ikalendar2.entitlements; sourceTree = "<group>"; };
 		794D8DD124900F5E0096768B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		794D8DD32491B2610096768B /* RotationCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationCatalog.swift; sourceTree = "<group>"; };
 		79F84605246767E90086AD95 /* ikalendar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ikalendar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +76,7 @@
 		79F84607246767E90086AD95 /* ikalendar2 */ = {
 			isa = PBXGroup;
 			children = (
+				79459A8824F1EFEC00C90BA4 /* ikalendar2.entitlements */,
 				79F84610246767EC0086AD95 /* Preview Content */,
 				79F84608246767E90086AD95 /* AppDelegate.swift */,
 				79F8460A246767E90086AD95 /* SceneDelegate.swift */,
@@ -260,7 +262,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -314,7 +316,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -327,19 +329,21 @@
 		79F8461A246767EC0086AD95 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ikalendar2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -348,19 +352,21 @@
 		79F8461B246767EC0086AD95 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
+				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ikalendar2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
