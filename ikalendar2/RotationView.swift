@@ -12,7 +12,7 @@ struct RotationView: View {
     
     @State private var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
     
-    var modeName = ["Turf", "Ranked", "League"]
+    var modeName = ["Regular", "Ranked", "League"]
     var modeTitle = ["Regular Battle", "Ranked Battle", "League Battle"]
     var modeImgName = ["turf_small", "ranked_small", "league_small"]
     

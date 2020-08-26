@@ -19,7 +19,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-
+                
                 Section(header: Text("Mode displayed when app launches:")) {
                     
                     Picker("Default Mode: ", selection: $settingsDefaultMode) {
@@ -28,59 +28,55 @@ struct SettingsView: View {
                                 .tag(index)
                         }
                     }
+                    .pickerStyle(SegmentedPickerStyle())
                     .onReceive([self.settingsDefaultMode].publisher.first()) { value in
                         self.saveDefaultMode()
                     }
                 }
-
+                
                 Section(
                     header: Text("Acknowledgement"),
                     footer: Text(Constants.COPYRIGHT_INFO)
-                        .font(.caption)) {
+                        .font(.caption))
+                {
                     
                     Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.SPL_INK_URL)!)
+                        UIApplication.shared.open(URL(string: Constants.SPL_INK_REPO_URL)!)
                     }) {
                         HStack {
                             Text("Data Source").foregroundColor(.primary)
                             Spacer()
-                            Text("Splatoon2.ink").foregroundColor(.secondary)
+                            Text("splatoon2.ink").foregroundColor(.secondary)
                             Image(systemName: "map.fill").foregroundColor(.secondary)
                         }
                         
                     }
                 }
                 
-                Section(header: Text("Feedback"),
+                Section(header: Text("About"),
                         footer: Text(Constants.VERSION_INFO)
-                            .font(.caption)) {
-                    
-                    Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.AUTHOR_GITHUB_URL)!)
-                    }) {
+                            .font(.caption))
+                {
+                    Button( action: { UIApplication.shared.open(URL(string: Constants.AUTHOR_GITHUB_URL)!) } ) {
                         HStack {
                             Text("Github").foregroundColor(.primary)
                             Spacer()
-                            Text("@zhang13music").foregroundColor(.secondary)
+                            Text("@\(Constants.AUTHOR_GITHUB_HANDLE)").foregroundColor(.secondary)
                         }
                     }
                     
-                    Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.AUTHOR_TWITTER_URL)!)
-                    }) {
+                    Button( action: { UIApplication.shared.open(URL(string: Constants.AUTHOR_TWITTER_URL)!) } ) {
                         HStack {
                             Text("Twitter").foregroundColor(.primary)
                             Spacer()
-                            Text("@gppppa_").foregroundColor(.secondary)
-
+                            Text("@\(Constants.AUTHOR_TWITTER_HANDLE)").foregroundColor(.secondary)
+                            
                         }
                     }
                     
-                    Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.AUTHOR_EMAIL_URL)!)
-                    }) {
+                    Button( action: { UIApplication.shared.open(URL(string: Constants.AUTHOR_EMAIL_URL)!) } ) {
                         HStack {
-                            Text("Contact me via Email").foregroundColor(.primary)
+                            Text("Feedback via Email").foregroundColor(.primary)
                             Spacer()
                             Image(systemName: "exclamationmark.bubble.fill").foregroundColor(.secondary)
                         }
@@ -90,7 +86,6 @@ struct SettingsView: View {
                 
             }.navigationBarTitle(Text("Settings"))
         }
-//        .font(.system(.body, design: .rounded))
     }
     
     func saveDefaultMode() {

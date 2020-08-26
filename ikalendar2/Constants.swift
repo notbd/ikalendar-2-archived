@@ -10,29 +10,36 @@ import Foundation
 
 struct Constants {
     
-    static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-    
-    static var ROTATIONS_URL = "https://splatoon2.ink/data/schedules.json"
-    static var SR_SCHEDULES_URL = "https://splatoon2.ink/data/coop-schedules.json"
-
+//    MARK: UserDefaults Keys
     static let USERDEFAULTS_KEY_DEFAULTMODE = "defaultMode"
     
-    static let AUTHOR_TWITTER_URL = "https://twitter.com/gppppa_"
-    static let AUTHOR_GITHUB_URL = "https://github.com/zhang13music"
+    
+//    MARK: Data URLs
+    static let ROTATIONS_URL = "https://splatoon2.ink/data/schedules.json"
+    static let SR_SCHEDULES_URL = "https://splatoon2.ink/data/coop-schedules.json"
+
+//    MARK: Settings Page Strings
+    static let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    
+    static let AUTHOR_GITHUB_HANDLE = "zhang13music"
+    static let AUTHOR_TWITTER_HANDLE = "gppppa_"
+    
+    static let AUTHOR_GITHUB_URL = "https://github.com/\(AUTHOR_GITHUB_HANDLE)"
+    static let AUTHOR_TWITTER_URL = "https://twitter.com/\(AUTHOR_TWITTER_HANDLE)"
     static let AUTHOR_EMAIL_URL = "mailto:zhang13music@outlook.com"
     
-    static let SPL_INK_URL = "https://github.com/misenhower/splatoon2.ink"
+    static let SPL_INK_REPO_URL = "https://github.com/misenhower/splatoon2.ink"
      
     static let COPYRIGHT_INFO =
     """
-    ikalendar2 is neither commercial nor affiliated with Nintendo. All product names, logos, and brands are property of their respective owners.
+    ikalendar2 is not affiliated with Nintendo. All item names, images and logos are property of their respective owners.
 
     """
     
     static let VERSION_INFO =
     """
     ikalendar2  v\(appVersion ?? "?")
-    © 2020 Tianwei Peter Zhang
+    Copyright © 2020 Peter Zhang
     """
     
 }
