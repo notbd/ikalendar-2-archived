@@ -19,8 +19,10 @@ struct RotationItems: View {
     }
 }
 
-//struct RotationItems_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RotationItems(rotations: <#[Rotation]#>)
-//    }
-//}
+struct RotationItems_Previews: PreviewProvider {
+    static var previews: some View {
+        RotationView()
+        .environmentObject(Data(isForTest: true))
+        .environment(\.colorScheme, .dark)
+    }
+}

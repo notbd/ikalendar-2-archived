@@ -10,20 +10,41 @@ import Foundation
 
 class Data: ObservableObject {
     
-    @Published var catalog: RotationCatalog
-
+    @Published var catalog: RotationCatalog?
+    @Published var loadingStatus: loadingStatusType
+    
+    enum loadingStatusType {
+        case loading
+        case loaded
+        case failure
+    }
+    
     init() {
+        self.loadingStatus = loadingStatusType.loading
         self.catalog = RotationCatalog()
         self.getRotations()
     }
     
+    // for testing
+    init(isForTest: Bool) {
+        self.loadingStatus = loadingStatusType.loaded
+        self.catalog = RotationCatalog(isForTest: true)
+    }
+    
     func getRotations() {
+        
+        self.loadingStatus = loadingStatusType.loading
         
         // Create a URL object
         let url = URL(string: Constants.ROTATIONS_URL)
         
         guard url != nil else {
             dump("error: url invalid")
+            
+            DispatchQueue.main.async {
+                self.loadingStatus = loadingStatusType.failure
+            }
+            
             return // handle error
         }
         
@@ -36,11 +57,21 @@ class Data: ObservableObject {
             // Check for errors
             if data == nil {
                 dump("error: empty data fetched")
+                
+                DispatchQueue.main.async {
+                    self.loadingStatus = loadingStatusType.failure
+                }
+                
                 return
             }
             
             if error != nil {
-                dump(error)
+                dump("error: \(String(describing: error))")
+                
+                DispatchQueue.main.async {
+                    self.loadingStatus = loadingStatusType.failure
+                }
+                
                 return // handle error
             }
             
@@ -52,6 +83,7 @@ class Data: ObservableObject {
                 let fetched_catalog = try decoder.decode(RotationCatalog.self, from:data!)
                 
                 DispatchQueue.main.async {
+                    self.loadingStatus = loadingStatusType.loaded
                     self.catalog = fetched_catalog
                 }
                 
@@ -59,6 +91,10 @@ class Data: ObservableObject {
             catch {
                 // error
                 dump("data fetch error")
+                
+                DispatchQueue.main.async {
+                    self.loadingStatus = loadingStatusType.failure
+                }
             }
             
         }

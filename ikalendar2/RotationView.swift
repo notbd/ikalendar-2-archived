@@ -21,20 +21,29 @@ struct RotationView: View {
     var body: some View {
         
         NavigationView {
-            
-            List {
+            Group {
                 
-                // Mode Picker
-                Picker("Mode", selection: $selectedMode) {
-                    ForEach(0 ..< modeName.count) { index in
-                        Text(self.modeName[index])
-                            .tag(index)
+                if env.loadingStatus != Data.loadingStatusType.loaded {
+                    InfoScreenView()
+                }
+                    
+                else {
+                    
+                    List {
+                        
+                        // Mode Picker
+                        Picker("Mode", selection: $selectedMode) {
+                            ForEach(0 ..< modeName.count) { index in
+                                Text(self.modeName[index])
+                                    .tag(index)
+                            }
+                        }.pickerStyle(SegmentedPickerStyle())
+                        
+                        // Rotations
+                        contentFor(mode: selectedMode)
+                        
                     }
-                }.pickerStyle(SegmentedPickerStyle())
-                
-                // Rotations
-                contentFor(mode: selectedMode)
-                
+                }
             }
             .navigationBarTitle(Text(modeTitle[selectedMode]))
             .navigationBarItems(
@@ -47,29 +56,30 @@ struct RotationView: View {
                         .shadow(radius: 5)
                         .frame(width: 25)
                 }
-            ).onAppear {
-                self.env.getRotations()
-            }
+            )
         }
-
+        
     }
     
     func contentFor(mode: Int) -> some View {
+        
         switch(mode) {
         case 0:
-            return RotationItems(rotations: self.env.catalog.regular)
+            return RotationItems(rotations: (self.env.catalog?.regular!)!)
         case 1:
-            return RotationItems(rotations: self.env.catalog.ranked)
+            return RotationItems(rotations: (self.env.catalog?.ranked!)!)
         case 2:
-            return RotationItems(rotations: self.env.catalog.league)
+            return RotationItems(rotations: (self.env.catalog?.league!)!)
         default:
-            return RotationItems(rotations: self.env.catalog.regular)
+            return RotationItems(rotations: (self.env.catalog?.regular!)!)
         }
+        
     }
 }
 
 struct RotationView_Previews: PreviewProvider {
     static var previews: some View {
         RotationView()
+        .environmentObject(Data(isForTest: true))
     }
 }

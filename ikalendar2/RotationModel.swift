@@ -22,17 +22,21 @@ struct Rotation: Identifiable, Hashable {
     var stage_2_filn: String
     
     // Placeholder initializer while data not loaded yet
-    init (loadingMsg: String) {
-        self.id = 0
-        self.rule = ""
-        self.rule_filn = ""
+    init (id: Int,
+          rule: String,
+          rule_filn: String,
+          stage_1_name: String,
+          stage_2_name: String) {
+        self.id = id
+        self.rule = rule
+        self.rule_filn = rule_filn
         self.start_time = 0.0
         self.end_time = 0.0
-        self.time = loadingMsg
-        self.stage_1_name = ""
-        self.stage_1_filn = ""
-        self.stage_2_name = ""
-        self.stage_2_filn = ""
+        self.time = "18:00 - 20:00"
+        self.stage_1_name = stage_1_name
+        self.stage_1_filn = stage_1_name
+        self.stage_2_name = stage_2_name
+        self.stage_2_filn = stage_2_name
     }
     
 }

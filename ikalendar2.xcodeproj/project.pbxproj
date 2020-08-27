@@ -10,11 +10,11 @@
 		79459A8724F1847100C90BA4 /* RotationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79459A8624F1847100C90BA4 /* RotationItems.swift */; };
 		794D8DD224900F5E0096768B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794D8DD124900F5E0096768B /* Constants.swift */; };
 		794D8DD42491B2610096768B /* RotationCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794D8DD32491B2610096768B /* RotationCatalog.swift */; };
+		7960440E24F6E949008328E4 /* InfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960440D24F6E949008328E4 /* InfoScreenView.swift */; };
 		79F84609246767E90086AD95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F84608246767E90086AD95 /* AppDelegate.swift */; };
 		79F8460B246767E90086AD95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F8460A246767E90086AD95 /* SceneDelegate.swift */; };
 		79F8460D246767E90086AD95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F8460C246767E90086AD95 /* ContentView.swift */; };
 		79F8460F246767EC0086AD95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F8460E246767EC0086AD95 /* Assets.xcassets */; };
-		79F84612246767EC0086AD95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F84611246767EC0086AD95 /* Preview Assets.xcassets */; };
 		79F84615246767EC0086AD95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79F84613246767EC0086AD95 /* LaunchScreen.storyboard */; };
 		79F8461D246769A60086AD95 /* Splatoon2-font-beta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */; };
 		79F84620246781D40086AD95 /* RotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F8461F246781D40086AD95 /* RotationView.swift */; };
@@ -29,12 +29,12 @@
 		79459A8824F1EFEC00C90BA4 /* ikalendar2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ikalendar2.entitlements; sourceTree = "<group>"; };
 		794D8DD124900F5E0096768B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		794D8DD32491B2610096768B /* RotationCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationCatalog.swift; sourceTree = "<group>"; };
+		7960440D24F6E949008328E4 /* InfoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenView.swift; sourceTree = "<group>"; };
 		79F84605246767E90086AD95 /* ikalendar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ikalendar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F84608246767E90086AD95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79F8460A246767E90086AD95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		79F8460C246767E90086AD95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		79F8460E246767EC0086AD95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		79F84611246767EC0086AD95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		79F84614246767EC0086AD95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79F84616246767EC0086AD95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Splatoon2-font-beta.otf"; sourceTree = "<group>"; };
@@ -77,7 +77,6 @@
 			isa = PBXGroup;
 			children = (
 				79459A8824F1EFEC00C90BA4 /* ikalendar2.entitlements */,
-				79F84610246767EC0086AD95 /* Preview Content */,
 				79F84608246767E90086AD95 /* AppDelegate.swift */,
 				79F8460A246767E90086AD95 /* SceneDelegate.swift */,
 				79F8460E246767EC0086AD95 /* Assets.xcassets */,
@@ -86,6 +85,7 @@
 				79F8460C246767E90086AD95 /* ContentView.swift */,
 				79F8461F246781D40086AD95 /* RotationView.swift */,
 				79459A8624F1847100C90BA4 /* RotationItems.swift */,
+				7960440D24F6E949008328E4 /* InfoScreenView.swift */,
 				79F846272468DCCE0086AD95 /* RotationItem.swift */,
 				79F84621246781EB0086AD95 /* SettingsView.swift */,
 				79F846252468DAF40086AD95 /* RotationModel.swift */,
@@ -94,14 +94,6 @@
 				794D8DD124900F5E0096768B /* Constants.swift */,
 			);
 			path = ikalendar2;
-			sourceTree = "<group>";
-		};
-		79F84610246767EC0086AD95 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				79F84611246767EC0086AD95 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		79F8461E246769ED0086AD95 /* fonts */ = {
@@ -172,7 +164,6 @@
 			files = (
 				79F84615246767EC0086AD95 /* LaunchScreen.storyboard in Resources */,
 				79F8461D246769A60086AD95 /* Splatoon2-font-beta.otf in Resources */,
-				79F84612246767EC0086AD95 /* Preview Assets.xcassets in Resources */,
 				79F8460F246767EC0086AD95 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +186,7 @@
 				79F8460D246767E90086AD95 /* ContentView.swift in Sources */,
 				794D8DD224900F5E0096768B /* Constants.swift in Sources */,
 				79459A8724F1847100C90BA4 /* RotationItems.swift in Sources */,
+				7960440E24F6E949008328E4 /* InfoScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +324,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
@@ -341,6 +334,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
 				SUPPORTS_MACCATALYST = NO;
@@ -355,6 +349,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
@@ -364,6 +359,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
 				SUPPORTS_MACCATALYST = NO;

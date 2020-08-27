@@ -15,6 +15,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // MARK: Set NavBar Font to SF Pro Rounded
+        
+        let largeTitleFontSize: CGFloat = 34
+        let titleTextFontSize: CGFloat = 17
+    
+        // Here we get San Francisco with the desired weight
+        let systemLargeTitleFont    = UIFont.systemFont(ofSize: largeTitleFontSize, weight: .bold)
+        let systemTitleTextFont     = UIFont.systemFont(ofSize: titleTextFontSize,  weight: .bold)
+
+        // Will be SF Pro in case of failure.
+        let largeTitleFont, titleTextFont: UIFont
+
+        if let descriptor = systemLargeTitleFont.fontDescriptor.withDesign(.rounded) {
+            largeTitleFont = UIFont(descriptor: descriptor, size: largeTitleFontSize)
+        } else {
+            largeTitleFont = systemLargeTitleFont
+        }
+
+        if let descriptor = systemTitleTextFont.fontDescriptor.withDesign(.rounded) {
+            titleTextFont = UIFont(descriptor: descriptor, size: titleTextFontSize)
+        } else {
+            titleTextFont = systemTitleTextFont
+        }
+
+        UINavigationBar.appearance().largeTitleTextAttributes   = [.font : largeTitleFont]
+        UINavigationBar.appearance().titleTextAttributes        = [.font : titleTextFont]
+        
         return true
     }
 
