@@ -26,7 +26,7 @@ struct RotationItem: View {
                             .scaledToFit()
                             .shadow(radius: 5)
                             .frame(width: 36, height: 36)
-                        Spacer()
+//                        Spacer()
                         Text(rotation.rule)
                             .font(.custom("Splatoon2", size: 13))
 //                            .font(.system(size: 12, weight: .medium, design: .rounded))
@@ -35,9 +35,9 @@ struct RotationItem: View {
                     }
                     .frame(height: 32)
                     HStack {
-                        Spacer()
+//                        Spacer()
                         Text(rotation.time)
-                            .font(.custom("Splatoon2", size: 15))
+                            .font(.custom("Splatoon2", size: 16))
 //                            .font(.system(size: 16, weight: .medium, design: .rounded))
                         Spacer()
                     }
@@ -46,7 +46,7 @@ struct RotationItem: View {
             Spacer()
             
             VStack(alignment: .trailing, spacing: 2) {
-                Spacer()
+//                Spacer()
                 Image(rotation.stage_1_filn)
                     .resizable()
                     .scaledToFit()
@@ -60,7 +60,7 @@ struct RotationItem: View {
             Spacer()
             
             VStack(alignment: .trailing, spacing: 2) {
-                Spacer()
+//                Spacer()
                 Image(rotation.stage_2_filn)
                     .resizable()
                     .scaledToFit()
