@@ -18,7 +18,7 @@ struct InfoScreenView: View {
             Spacer()
             
             // loading msg
-            if env.loadingStatus == Data.loadingStatusType.loading {
+            if env.loadingStatus == .loading {
                 VStack(alignment: .leading) {
                     Text("Loading...")
                         .font(.system(.largeTitle, design: .rounded))
@@ -31,7 +31,7 @@ struct InfoScreenView: View {
             }
                 
             // error msg
-            else if env.loadingStatus == Data.loadingStatusType.failure {
+            else if env.loadingStatus == .failure {
                 VStack(alignment: .leading) {
                     Text("Connection Error")
                         .font(.system(.largeTitle, design: .rounded))

@@ -13,9 +13,11 @@ struct RotationItems: View {
     var rotations: [Rotation]
     
     var body: some View {
-        ForEach (rotations, id: \.self) { rotation in
-            RotationItem(rotation: rotation)
+        
+        ForEach (0 ..< rotations.count) { idx in
+            RotationItem(rotation: self.rotations[idx], index: idx)
         }
+        
     }
 }
 
@@ -23,6 +25,6 @@ struct RotationItems_Previews: PreviewProvider {
     static var previews: some View {
         RotationView()
         .environmentObject(Data(isForTest: true))
-        .environment(\.colorScheme, .dark)
+            .preferredColorScheme(.dark)
     }
 }

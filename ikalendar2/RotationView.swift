@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct RotationView: View {
     
@@ -18,15 +19,27 @@ struct RotationView: View {
     
     @EnvironmentObject var env: Data
     
+    @Environment(\.colorScheme) var colorScheme
+    
+//    init() {
+//        if colorScheme == .dark {
+//            UITableViewHeaderFooterView.appearance().tintColor = UIColor.black
+//        } else {
+//            UITableViewHeaderFooterView.appearance().tintColor = UIColor.white
+//        }
+//    }
+    
+    
     var body: some View {
+        
         
         NavigationView {
             Group {
                 
-                if env.loadingStatus != Data.loadingStatusType.loaded {
+                if env.loadingStatus != .loaded {
                     InfoScreenView()
                 }
-                    
+
                 else {
                     
                     List {
@@ -40,7 +53,7 @@ struct RotationView: View {
                         }.pickerStyle(SegmentedPickerStyle())
                         
                         // Rotations
-                        contentFor(mode: selectedMode)
+                        renderRotationItems()
                         
                     }
                 }
@@ -58,19 +71,26 @@ struct RotationView: View {
                 }
             )
         }
+        .onAppear {
+            self.changeSectionHeaderBackgroundColor()
+        }
         
     }
     
-    func contentFor(mode: Int) -> some View {
+    func changeSectionHeaderBackgroundColor() {
         
-        switch(mode) {
-        case 0:
-            return RotationItems(rotations: (self.env.catalog?.regular!)!)
+        UITableViewHeaderFooterView.appearance().tintColor = colorScheme == .dark ? UIColor.black : UIColor.white
+        
+    }
+    
+    func renderRotationItems() -> some View {
+        
+        switch(selectedMode) {
         case 1:
             return RotationItems(rotations: (self.env.catalog?.ranked!)!)
         case 2:
             return RotationItems(rotations: (self.env.catalog?.league!)!)
-        default:
+        default: // case 0
             return RotationItems(rotations: (self.env.catalog?.regular!)!)
         }
         
@@ -80,6 +100,7 @@ struct RotationView: View {
 struct RotationView_Previews: PreviewProvider {
     static var previews: some View {
         RotationView()
-        .environmentObject(Data(isForTest: true))
+            .environmentObject(Data(isForTest: true))
+            .preferredColorScheme(.light)
     }
 }

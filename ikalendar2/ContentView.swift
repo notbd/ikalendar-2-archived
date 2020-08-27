@@ -18,7 +18,6 @@ struct ContentView: View {
         
         TabView(selection: $tabSelection) {
             
-//            InfoScreenView()
             RotationView()
                 .tabItem {
                     VStack {

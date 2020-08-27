@@ -79,9 +79,8 @@ extension Rotation: Decodable {
         
         // Compose time string
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "CDT")
         dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "HH:mm"
+        dateFormatter.dateFormat = "h:mm a"
         
         let Date_start_time = Date(timeIntervalSince1970: start_time)
         let Date_end_time = Date(timeIntervalSince1970: end_time)

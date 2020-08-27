@@ -11,61 +11,74 @@ import SwiftUI
 struct RotationItem: View {
     
     var rotation: Rotation
+    var index: Int
     
     var body: some View {
         
-        HStack {
-            
-            VStack(
-                alignment: .trailing,
-                spacing: 12) {
-                    HStack {
-                        Image(rotation.rule_filn)
-                            .resizable()
-                            .antialiased(true)
-                            .scaledToFit()
-                            .shadow(radius: 5)
-                            .frame(width: 36, height: 36)
-                        Text(rotation.rule)
-                            .font(.custom("Splatoon2", size: 13))
-                        Spacer()
-                        
-                    }
-                    .frame(height: 32)
-                    HStack {
-                        Text(rotation.time)
-                            .font(.custom("Splatoon2", size: 16))
-                        Spacer()
-                    }
-            }.frame(width: 128)
-            
-            Spacer()
-            
-            VStack(alignment: .trailing, spacing: 2) {
-                Image(rotation.stage_1_filn)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(5)
-                    .shadow(radius: 5)
+        Section(header:
+            HStack {
                 
-                Text(rotation.stage_1_name)
-                    .font(.custom("Splatoon2", size: 10))
-            }.frame(width: 100)
-            
-            Spacer()
-            
-            VStack(alignment: .trailing, spacing: 2) {
-                Image(rotation.stage_2_filn)
-                    .resizable()
-                    .scaledToFit()
-                    .cornerRadius(5)
-                    .shadow(radius: 5)
+                if index == 0 {
+                    Text("Now:")
+                        .font(.custom("Splatoon2", size: 14))
+                } else if index == 1 {
+                    Text("Next:")
+                        .font(.custom("Splatoon2", size: 14))
+                }
                 
-                Text(rotation.stage_2_name)
-                    .font(.custom("Splatoon2", size: 10))
-            }.frame(width: 100)
-            
-        }.frame(height: 90)
+                Text(rotation.time)
+                    .font(.custom("Splatoon2", size: 12))
+                    .foregroundColor(.secondary)
+        }) {
+            HStack {
+                
+                HStack {
+                    Image(rotation.rule_filn)
+                        .resizable()
+                        .antialiased(true)
+                        .scaledToFit()
+                        .shadow(radius: 5)
+                        .frame(width: 35, height: 35)
+                    Spacer()
+                    Text(rotation.rule)
+                        .font(.custom("Splatoon2", size: 14))
+                    Spacer()
+                    
+                }
+                .frame(width: 130)
+                
+                Spacer()
+                
+                VStack(alignment: .trailing, spacing: 0) {
+                    Image(rotation.stage_1_filn)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(5)
+                        .shadow(radius: 5)
+                        .frame(width: 100)
+                    
+                    
+                    Text(rotation.stage_1_name)
+                        .font(.custom("Splatoon2", size: 10))
+                }
+                .offset(x: 0, y: 6)
+                
+                Spacer()
+                
+                VStack(alignment: .trailing, spacing: 0) {
+                    Image(rotation.stage_2_filn)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(5)
+                        .shadow(radius: 5)
+                        .frame(width: 100)
+                    Text(rotation.stage_2_name)
+                        .font(.custom("Splatoon2", size: 10))
+                }
+                .offset(x: 0, y: 6)
+                
+            }.frame(height: 80)
+        }
     }
 }
 
@@ -73,6 +86,6 @@ struct RotationItem_Previews: PreviewProvider {
     static var previews: some View {
         RotationView()
             .environmentObject(Data(isForTest: true))
-            .environment(\.colorScheme, .dark)
+            .preferredColorScheme(.light)
     }
 }
