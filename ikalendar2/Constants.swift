@@ -32,11 +32,13 @@ struct Constants {
     static let AUTHOR_TWITTER_URL   = "https://twitter.com/\(AUTHOR_TWITTER_HANDLE)"
     static let AUTHOR_EMAIL_URL     = "mailto:zhang13music@outlook.com"
     
+    static let SPLATOON_WEBSITE_URL = "https://splatoon.nintendo.com/"
     static let SPL_INK_REPO_URL = "https://github.com/misenhower/splatoon2.ink"
      
     static let COPYRIGHT_INFO =
     """
-    ikalendar2 is not affiliated with Nintendo. All item names, images and logos are property of their respective owners.
+    • Splatoon™ 2 is a trademark of Nintendo®.
+    • ikalendar2 is an unofficial companion app for Splatoon 2, and is not affiliated or associated with Nintendo. All item names, logos and trademarks are property of their respective owners.
 
     """
     

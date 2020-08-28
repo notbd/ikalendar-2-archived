@@ -39,6 +39,17 @@ struct SettingsView: View {
                     footer: Text(Constants.COPYRIGHT_INFO)
                         .font(.caption))
                 {
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: Constants.SPLATOON_WEBSITE_URL)!)
+                    }) {
+                        HStack {
+                            Text("Splatoon™ 2").foregroundColor(.primary)
+                            Spacer()
+                            Text("Official Website").foregroundColor(.secondary)
+                            Image(systemName: "globe").foregroundColor(.secondary)
+                        }
+                        
+                    }
                     
                     Button(action: {
                         UIApplication.shared.open(URL(string: Constants.SPL_INK_REPO_URL)!)
