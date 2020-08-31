@@ -19,6 +19,10 @@ struct Constants {
     
     static let ROTATIONS_URL    = "https://splatoon2.ink/data/schedules.json"
     static let SR_SCHEDULES_URL = "https://splatoon2.ink/data/coop-schedules.json"
+    
+//    MARK: Extra Headers
+    
+    static let EXTRA_HEADERS = ["NOW:", "NEXT:", "FUTURE:"]
 
 //    MARK: Settings Page Strings
     

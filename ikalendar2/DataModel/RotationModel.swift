@@ -39,6 +39,19 @@ struct Rotation: Identifiable, Hashable {
         self.stage_2_filn = stage_2_name
     }
     
+    // init for empty placeholder rotation
+    init (isEmpty: Bool) {
+        self.id = -3
+        self.rule = ""
+        self.rule_filn = ""
+        self.start_time = 0.0
+        self.end_time = 0.0
+        self.time = ""
+        self.stage_1_name = ""
+        self.stage_1_filn = ""
+        self.stage_2_name = ""
+        self.stage_2_filn = ""
+    }
 }
 
 extension Rotation: Decodable {

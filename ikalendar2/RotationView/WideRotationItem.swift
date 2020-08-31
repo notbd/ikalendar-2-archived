@@ -1,14 +1,14 @@
 //
-//  RotationItem.swift
+//  WideRotationItem.swift
 //  ikalendar2
 //
-//  Created by Tianwei Zhang on 5/10/20.
+//  Created by Tianwei Zhang on 8/31/20.
 //  Copyright © 2020 Tianwei Zhang. All rights reserved.
 //
 
 import SwiftUI
 
-struct RotationItem: View {
+struct WideRotationItem: View {
     
     var rotation: Rotation
     var index: Int
@@ -16,19 +16,20 @@ struct RotationItem: View {
     var body: some View {
         
         Section(header:
-            VStack(alignment: .leading) {
+            HStack {
                 
-                if index < Constants.EXTRA_HEADERS.count {
-                    Text(Constants.EXTRA_HEADERS[index])
-                        .font(.custom("Splatoon2", size: 15))
+                if index == 0 {
+                    Text("Now:")
+                        .font(.custom("Splatoon2", size: 14))
+                } else if index == 1 {
+                    Text("Next:")
+                        .font(.custom("Splatoon2", size: 14))
                 }
                 
                 Text(rotation.time)
                     .font(.custom("Splatoon2", size: 12))
                     .foregroundColor(.secondary)
-                
-            }
-        ) {
+        }) {
             HStack {
                 
                 HStack {
@@ -81,9 +82,9 @@ struct RotationItem: View {
     }
 }
 
-struct RotationItem_Previews: PreviewProvider {
+struct WideRotationItem_Previews: PreviewProvider {
     static var previews: some View {
-        RotationView()
+        WideRotationView()
             .environmentObject(Data(isForTest: true))
             .preferredColorScheme(.light)
     }

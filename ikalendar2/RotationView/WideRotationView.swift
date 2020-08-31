@@ -19,6 +19,7 @@ struct WideRotationView: View {
     var modeImgName = ["turf_small", "ranked_small", "league_small"]
     
     var body: some View {
+        
         NavigationView {
             
             // MARK: First Navigation View
@@ -27,7 +28,7 @@ struct WideRotationView: View {
                 
                 ForEach(0 ..< modeName.count) { idx in
                     NavigationLink(
-                        destination: WideRotationContentView(rotations: self.getRotationArray(for: idx))
+                        destination: WideRotationItemsView(rotations: self.getRotationArray(for: idx))
                             .navigationBarTitle(Text(self.modeTitle[idx]))
                     ) {
                         HStack {
@@ -45,15 +46,20 @@ struct WideRotationView: View {
                 }
                 
             }
-                .navigationBarTitle("Mode")
+            .navigationBarTitle("Mode")
             
             // MARK: Second Content View
             
-            if env.loadingStatus != .loaded {
+            if env.loadingStatus == .loading {
                 InfoScreenView()
-                .navigationBarTitle(Text("Loading..."))
+                    .navigationBarTitle(Text("Loading..."))
+                
+            } else if env.loadingStatus == .failure {
+                InfoScreenView()
+                    .navigationBarTitle(Text("Error"))
+                
             } else {
-                WideRotationContentView(rotations: getRotationArray(for: selectedMode))
+                WideRotationItemsView(rotations: getRotationArray(for: selectedMode))
                     .navigationBarTitle(Text(modeTitle[selectedMode]))
             }
             
@@ -62,6 +68,8 @@ struct WideRotationView: View {
     }
     
     func getRotationArray(for modeIndex: Int) -> [Rotation] {
+        
+        // All nil cases are trivial since already handled in earlier Views
         
         guard let catalog = self.env.catalog else {
             return []
@@ -94,5 +102,7 @@ struct WideRotationView: View {
 struct WideRotationView_Previews: PreviewProvider {
     static var previews: some View {
         WideRotationView()
+            .environmentObject(Data(isForTest: true))
+            .preferredColorScheme(.light)
     }
 }

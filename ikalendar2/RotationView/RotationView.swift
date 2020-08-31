@@ -74,6 +74,8 @@ struct RotationView: View {
     
     func renderRotationItemsView() -> some View {
         
+        // All nil cases are trivial since already handled in earlier Views
+        
         guard let catalog = self.env.catalog else {
             return RotationItemsView(rotations: [])         // nil
         }
