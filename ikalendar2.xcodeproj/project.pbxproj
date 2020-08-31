@@ -56,6 +56,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79B06B1624FD7C5100957C30 /* RotationView */ = {
+			isa = PBXGroup;
+			children = (
+				79F8461F246781D40086AD95 /* RotationView.swift */,
+				79459A8624F1847100C90BA4 /* RotationItems.swift */,
+				79F846272468DCCE0086AD95 /* RotationItem.swift */,
+			);
+			path = RotationView;
+			sourceTree = "<group>";
+		};
+		79B06B1724FD7C5B00957C30 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				79F846252468DAF40086AD95 /* RotationModel.swift */,
+				794D8DD32491B2610096768B /* RotationCatalog.swift */,
+				79F846232468DAB50086AD95 /* RotationData.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		79B06B1824FD7C7100957C30 /* OtherViews */ = {
+			isa = PBXGroup;
+			children = (
+				7960440D24F6E949008328E4 /* InfoScreenView.swift */,
+				79F84621246781EB0086AD95 /* SettingsView.swift */,
+			);
+			path = OtherViews;
+			sourceTree = "<group>";
+		};
+		79B06B1A24FD7CD500957C30 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				794D8DD124900F5E0096768B /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		79B06B1C24FD7D7600957C30 /* ContentView */ = {
+			isa = PBXGroup;
+			children = (
+				79F8460C246767E90086AD95 /* ContentView.swift */,
+			);
+			name = ContentView;
+			sourceTree = "<group>";
+		};
 		79F845FC246767E90086AD95 = {
 			isa = PBXGroup;
 			children = (
@@ -82,16 +127,11 @@
 				79F8460E246767EC0086AD95 /* Assets.xcassets */,
 				79F84613246767EC0086AD95 /* LaunchScreen.storyboard */,
 				79F84616246767EC0086AD95 /* Info.plist */,
-				79F8460C246767E90086AD95 /* ContentView.swift */,
-				79F8461F246781D40086AD95 /* RotationView.swift */,
-				79459A8624F1847100C90BA4 /* RotationItems.swift */,
-				79F846272468DCCE0086AD95 /* RotationItem.swift */,
-				7960440D24F6E949008328E4 /* InfoScreenView.swift */,
-				79F84621246781EB0086AD95 /* SettingsView.swift */,
-				79F846252468DAF40086AD95 /* RotationModel.swift */,
-				794D8DD32491B2610096768B /* RotationCatalog.swift */,
-				79F846232468DAB50086AD95 /* RotationData.swift */,
-				794D8DD124900F5E0096768B /* Constants.swift */,
+				79B06B1C24FD7D7600957C30 /* ContentView */,
+				79B06B1624FD7C5100957C30 /* RotationView */,
+				79B06B1824FD7C7100957C30 /* OtherViews */,
+				79B06B1724FD7C5B00957C30 /* DataModel */,
+				79B06B1A24FD7CD500957C30 /* Constants */,
 			);
 			path = ikalendar2;
 			sourceTree = "<group>";
@@ -324,12 +364,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ikalendar2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,9 +377,9 @@
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -349,12 +389,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ikalendar2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,9 +402,9 @@
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

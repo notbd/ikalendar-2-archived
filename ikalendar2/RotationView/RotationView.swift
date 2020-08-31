@@ -21,25 +21,16 @@ struct RotationView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-//    init() {
-//        if colorScheme == .dark {
-//            UITableViewHeaderFooterView.appearance().tintColor = UIColor.black
-//        } else {
-//            UITableViewHeaderFooterView.appearance().tintColor = UIColor.white
-//        }
-//    }
-    
-    
     var body: some View {
         
-        
         NavigationView {
+            
             Group {
                 
                 if env.loadingStatus != .loaded {
                     InfoScreenView()
                 }
-
+                    
                 else {
                     
                     List {
@@ -78,13 +69,10 @@ struct RotationView: View {
     }
     
     func changeSectionHeaderBackgroundColor() {
-        
         UITableViewHeaderFooterView.appearance().tintColor = colorScheme == .dark ? UIColor.black : UIColor.white
-        
     }
     
     func renderRotationItems() -> some View {
-        
         switch(selectedMode) {
         case 1:
             return RotationItems(rotations: (self.env.catalog?.ranked!)!)
@@ -93,7 +81,6 @@ struct RotationView: View {
         default: // case 0
             return RotationItems(rotations: (self.env.catalog?.regular!)!)
         }
-        
     }
 }
 
