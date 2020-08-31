@@ -1,5 +1,5 @@
 //
-//  RotationItems.swift
+//  RotationItemsView.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 8/22/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RotationItems: View {
+struct RotationItemsView: View {
     
     var rotations: [Rotation]
     
@@ -21,7 +21,7 @@ struct RotationItems: View {
     }
 }
 
-struct RotationItems_Previews: PreviewProvider {
+struct RotationItemsView_Previews: PreviewProvider {
     static var previews: some View {
         RotationView()
         .environmentObject(Data(isForTest: true))

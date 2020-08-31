@@ -44,7 +44,7 @@ struct RotationView: View {
                         }.pickerStyle(SegmentedPickerStyle())
                         
                         // Rotations
-                        renderRotationItems()
+                        renderRotationItemsView()
                         
                     }
                 }
@@ -72,14 +72,34 @@ struct RotationView: View {
         UITableViewHeaderFooterView.appearance().tintColor = colorScheme == .dark ? UIColor.black : UIColor.white
     }
     
-    func renderRotationItems() -> some View {
+    func renderRotationItemsView() -> some View {
+        
+        guard let catalog = self.env.catalog else {
+            return RotationItemsView(rotations: [])         // nil
+        }
+        
         switch(selectedMode) {
-        case 1:
-            return RotationItems(rotations: (self.env.catalog?.ranked!)!)
-        case 2:
-            return RotationItems(rotations: (self.env.catalog?.league!)!)
-        default: // case 0
-            return RotationItems(rotations: (self.env.catalog?.regular!)!)
+            
+        case 1:     // ranked
+            if let rotationArray = catalog.ranked {
+                return RotationItemsView(rotations: rotationArray)
+            } else {
+                return RotationItemsView(rotations: [])     // nil
+            }
+            
+        case 2:     // league
+            if let rotationArray = catalog.league {
+                return RotationItemsView(rotations: rotationArray)
+            } else {
+                return RotationItemsView(rotations: [])     // nil
+            }
+            
+        default:    // regular
+            if let rotationArray = catalog.regular {
+                return RotationItemsView(rotations: rotationArray)
+            } else {
+                return RotationItemsView(rotations: [])     // nil
+            }
         }
     }
 }

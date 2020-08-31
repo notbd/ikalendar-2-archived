@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		79459A8724F1847100C90BA4 /* RotationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79459A8624F1847100C90BA4 /* RotationItems.swift */; };
+		79459A8724F1847100C90BA4 /* RotationItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79459A8624F1847100C90BA4 /* RotationItemsView.swift */; };
 		794D8DD224900F5E0096768B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794D8DD124900F5E0096768B /* Constants.swift */; };
 		794D8DD42491B2610096768B /* RotationCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794D8DD32491B2610096768B /* RotationCatalog.swift */; };
 		7960440E24F6E949008328E4 /* InfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960440D24F6E949008328E4 /* InfoScreenView.swift */; };
@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		79459A8624F1847100C90BA4 /* RotationItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationItems.swift; sourceTree = "<group>"; };
+		79459A8624F1847100C90BA4 /* RotationItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationItemsView.swift; sourceTree = "<group>"; };
 		79459A8824F1EFEC00C90BA4 /* ikalendar2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ikalendar2.entitlements; sourceTree = "<group>"; };
 		794D8DD124900F5E0096768B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		794D8DD32491B2610096768B /* RotationCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationCatalog.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				79F8461F246781D40086AD95 /* RotationView.swift */,
-				79459A8624F1847100C90BA4 /* RotationItems.swift */,
+				79459A8624F1847100C90BA4 /* RotationItemsView.swift */,
 				79F846272468DCCE0086AD95 /* RotationItem.swift */,
 				79B06B1D24FD7F7200957C30 /* WideRotationView.swift */,
 				79B06B1F24FD7F8800957C30 /* WideRotationContentView.swift */,
@@ -233,7 +233,7 @@
 				79F8460D246767E90086AD95 /* ContentView.swift in Sources */,
 				79B06B1E24FD7F7200957C30 /* WideRotationView.swift in Sources */,
 				794D8DD224900F5E0096768B /* Constants.swift in Sources */,
-				79459A8724F1847100C90BA4 /* RotationItems.swift in Sources */,
+				79459A8724F1847100C90BA4 /* RotationItemsView.swift in Sources */,
 				7960440E24F6E949008328E4 /* InfoScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

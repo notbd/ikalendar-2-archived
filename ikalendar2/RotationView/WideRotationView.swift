@@ -12,7 +12,7 @@ struct WideRotationView: View {
     
     @EnvironmentObject var env: Data
     
-    @State private var selectedMode = 0
+    @State private var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
     
     var modeName = ["Regular", "Ranked", "League"]
     var modeTitle = ["Regular Battle", "Ranked Battle", "League Battle"]
@@ -20,66 +20,75 @@ struct WideRotationView: View {
     
     var body: some View {
         NavigationView {
+            
+            // MARK: First Navigation View
+            
             List {
-                NavigationLink(
-                    destination: WideRotationContentView()
-                ) {
-                    HStack {
-                        Image("turf_small")
-                            .renderingMode(.original)
-                            .resizable()
-                            .antialiased(true)
-                            .scaledToFit()
-                            .shadow(radius: 5)
-                            .frame(width: 35, height: 35)
-                        
-                        Text("Regular")
-                    }
-                }
                 
-                NavigationLink(
-                    destination: WideRotationContentView()
-                ) {
-                    HStack {
-                        Image("ranked_small")
-                            .renderingMode(.original)
-                            .resizable()
-                            .antialiased(true)
-                            .scaledToFit()
-                            .shadow(radius: 5)
-                            .frame(width: 35, height: 35)
-                        Text("Ranked")
-                    }
-                }
-                
-                NavigationLink(
-                    destination: WideRotationContentView()
-                ){
-                    HStack {
-                        Image("league_small")
-                            .renderingMode(.original)
-                            .resizable()
-                            .antialiased(true)
-                            .scaledToFit()
-                            .shadow(radius: 5)
-                            .frame(width: 35, height: 35)
-                        Text("League")
+                ForEach(0 ..< modeName.count) { idx in
+                    NavigationLink(
+                        destination: WideRotationContentView(rotations: self.getRotationArray(for: idx))
+                            .navigationBarTitle(Text(self.modeTitle[idx]))
+                    ) {
+                        HStack {
+                            Image(self.modeImgName[idx])
+                                .renderingMode(.original)
+                                .resizable()
+                                .antialiased(true)
+                                .scaledToFit()
+                                .shadow(radius: 5)
+                                .frame(width: 35, height: 35)
+                            
+                            Text(self.modeName[idx])
+                        }
                     }
                 }
                 
             }
                 .navigationBarTitle("Mode")
+            
+            // MARK: Second Content View
+            
             if env.loadingStatus != .loaded {
-//                RotationItems(rotations: (self.env.catalog?.ranked!)!)
-//                .navigationBarTitle("Ranked Battle")
                 InfoScreenView()
+                .navigationBarTitle(Text("Loading..."))
+            } else {
+                WideRotationContentView(rotations: getRotationArray(for: selectedMode))
+                    .navigationBarTitle(Text(modeTitle[selectedMode]))
             }
-            
-            
             
         }
         
     }
+    
+    func getRotationArray(for modeIndex: Int) -> [Rotation] {
+        
+        guard let catalog = self.env.catalog else {
+            return []
+        }
+        
+        switch(modeIndex) {
+        case 1:     // ranked
+            if let rotationArray = catalog.ranked {
+                return rotationArray
+            } else {
+                return []
+            }
+        case 2:     // league
+            if let rotationArray = catalog.league {
+                return rotationArray
+            } else {
+                return []
+            }
+        default:    // regular
+            if let rotationArray = catalog.regular {
+                return rotationArray
+            } else {
+                return []
+            }
+        }
+    }
+    
 }
 
 struct WideRotationView_Previews: PreviewProvider {

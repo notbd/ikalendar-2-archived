@@ -9,28 +9,21 @@
 import SwiftUI
 
 struct WideRotationContentView: View {
-    
-//    @State var title: String
-//    @State var content: String
-//    var rotations: [Rotation]
+
+    var rotations: [Rotation]
     
     var body: some View {
         Form {
-            
-            Section(header: Text("title")) {
-                Text("content")
-            }
-            
-            Section(header: Text("title")) {
-                Text("content")
+            ForEach (0 ..< rotations.count) { idx in
+                RotationItem(rotation: self.rotations[idx], index: idx)
             }
         }
     }
 }
 
-struct WideRotationContentView_Previews: PreviewProvider {
-    static var previews: some View {
+//struct WideRotationContentView_Previews: PreviewProvider {
+//    static var previews: some View {
 //        WideRotationContentView(title: "Test1", content: "Test2")
-        WideRotationContentView()
-    }
-}
+//        WideRotationContentView()
+//    }
+//}
