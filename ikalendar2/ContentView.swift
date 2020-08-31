@@ -11,31 +11,43 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var env: Data
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     @State private var tabSelection = 0
     
     var body: some View {
         
-        TabView(selection: $tabSelection) {
+        Group {
             
-            RotationView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "calendar")
-                            .font(.system(size: 22))
-                        Text("Rotations")
-                    }
-            }.tag(0)
+            if horizontalSizeClass == .compact {
+                TabView(selection: $tabSelection) {
+                    
+                    RotationView()
+                        .tabItem {
+                            VStack {
+                                Image(systemName: "calendar")
+                                    .font(.system(size: 22))
+                                Text("Rotations")
+                            }
+                    }.tag(0)
+                    
+                    SettingsView()
+                        .tabItem {
+                            VStack {
+                                Image(systemName: "gear")
+                                    .font(.system(size: 22))
+                                Text("Settings")
+                            }
+                    }.tag(1)
+                }
+            }
+            else {
+                WideRotationView()
+            }
             
-            SettingsView()
-                .tabItem {
-                    VStack {
-                        Image(systemName: "gear")
-                            .font(.system(size: 22))
-                        Text("Settings")
-                    }
-            }.tag(1)
         }
+        
+        
     }
 }
 
