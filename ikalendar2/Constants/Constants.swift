@@ -10,21 +10,47 @@ import Foundation
 
 struct Constants {
     
-//    MARK: UserDefaults Keys
+    //    MARK: UserDefaults Keys
     
     static let USERDEFAULTS_KEY_DEFAULTMODE = "defaultMode"
     
     
-//    MARK: Data URLs
+    //    MARK: Data URLs
     
     static let ROTATIONS_URL    = "https://splatoon2.ink/data/schedules.json"
     static let SR_SCHEDULES_URL = "https://splatoon2.ink/data/coop-schedules.json"
     
-//    MARK: Extra Headers
+    
+    //    MARK: Mode Strings
+    
+    static let MODE_SHORT_NAME  = ["Regular",           "Ranked",           "League"]
+    static let MODE_TITLE       = ["Regular Battle",    "Ranked Battle",    "League Battle"]
+    static let MODE_IMG_FILN    = ["turf_small",        "ranked_small",     "league_small"]
+    
+    
+    //    MARK: Extra Headers
     
     static let EXTRA_HEADERS = ["NOW:", "NEXT:", "FUTURE:"]
+    
+    
+    //    MARK: Info Screen Strings
 
-//    MARK: Settings Page Strings
+    static let LOADING_TITLE = "Loading..."
+    static let LOADING_MSG =
+    """
+    Make sure you are connected to the internet.
+    Tap the mode icon on the top to manually refresh.
+    """
+    
+    static let FAILURE_TITLE = "Connection Error"
+    static let FAILURE_MSG =
+    """
+    Make sure you are connected to the internet.
+    Tap the mode icon on the top to manually refresh.
+    """
+    
+    
+    //    MARK: Settings Page Strings
     
     static let appVersion   = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     static let appBuildNumber  = Bundle.main.infoDictionary?["CFBundleVersion"] as? String

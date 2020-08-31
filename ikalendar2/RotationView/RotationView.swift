@@ -13,10 +13,6 @@ struct RotationView: View {
     
     @State private var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
     
-    var modeName = ["Regular", "Ranked", "League"]
-    var modeTitle = ["Regular Battle", "Ranked Battle", "League Battle"]
-    var modeImgName = ["turf_small", "ranked_small", "league_small"]
-    
     @EnvironmentObject var env: Data
     
     @Environment(\.colorScheme) var colorScheme
@@ -37,8 +33,8 @@ struct RotationView: View {
                         
                         // Mode Picker
                         Picker("Mode", selection: $selectedMode) {
-                            ForEach(0 ..< modeName.count) { index in
-                                Text(self.modeName[index])
+                            ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
+                                Text(Constants.MODE_SHORT_NAME[index])
                                     .tag(index)
                             }
                         }.pickerStyle(SegmentedPickerStyle())
@@ -49,11 +45,11 @@ struct RotationView: View {
                     }
                 }
             }
-            .navigationBarTitle(Text(modeTitle[selectedMode]))
+            .navigationBarTitle(Text(Constants.MODE_TITLE[selectedMode]))
             .navigationBarItems(
                 leading:
                 Button(action: {self.env.getRotations()}) {
-                    Image(modeImgName[selectedMode])
+                    Image(Constants.MODE_IMG_FILN[selectedMode])
                         .renderingMode(.original)
                         .resizable()
                         .scaledToFit()

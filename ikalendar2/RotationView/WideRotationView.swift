@@ -14,10 +14,6 @@ struct WideRotationView: View {
     
     @State private var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
     
-    var modeName = ["Regular", "Ranked", "League"]
-    var modeTitle = ["Regular Battle", "Ranked Battle", "League Battle"]
-    var modeImgName = ["turf_small", "ranked_small", "league_small"]
-    
     var body: some View {
         
         NavigationView {
@@ -26,13 +22,13 @@ struct WideRotationView: View {
             
             List {
                 
-                ForEach(0 ..< modeName.count) { idx in
+                ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { idx in
                     NavigationLink(
                         destination: WideRotationItemsView(rotations: self.getRotationArray(for: idx))
-                            .navigationBarTitle(Text(self.modeTitle[idx]))
+                            .navigationBarTitle(Text(Constants.MODE_TITLE[idx]))
                     ) {
                         HStack {
-                            Image(self.modeImgName[idx])
+                            Image(Constants.MODE_IMG_FILN[idx])
                                 .renderingMode(.original)
                                 .resizable()
                                 .antialiased(true)
@@ -40,7 +36,7 @@ struct WideRotationView: View {
                                 .shadow(radius: 5)
                                 .frame(width: 35, height: 35)
                             
-                            Text(self.modeName[idx])
+                            Text(Constants.MODE_SHORT_NAME[idx])
                         }
                     }
                 }
@@ -60,7 +56,7 @@ struct WideRotationView: View {
                 
             } else {
                 WideRotationItemsView(rotations: getRotationArray(for: selectedMode))
-                    .navigationBarTitle(Text(modeTitle[selectedMode]))
+                    .navigationBarTitle(Text(Constants.MODE_TITLE[selectedMode]))
             }
             
         }

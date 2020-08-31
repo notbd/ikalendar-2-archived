@@ -20,12 +20,9 @@ struct InfoScreenView: View {
             // loading msg
             if env.loadingStatus == .loading {
                 VStack(alignment: .leading) {
-                    Text("Loading...")
+                    Text(Constants.LOADING_TITLE)
                         .font(.system(.largeTitle, design: .rounded))
-                    Text(   """
-                            Make sure you are connected to the internet.
-                            Tap the mode icon on the top to manually refresh.
-                            """)
+                    Text(Constants.LOADING_MSG)
                         .font(.system(.caption, design: .rounded))
                 }
             }
@@ -33,12 +30,9 @@ struct InfoScreenView: View {
             // error msg
             else if env.loadingStatus == .failure {
                 VStack(alignment: .leading) {
-                    Text("Connection Error")
+                    Text(Constants.FAILURE_TITLE)
                         .font(.system(.largeTitle, design: .rounded))
-                    Text(   """
-                            Make sure you are connected to the internet.
-                            Tap the mode icon on the top to manually refresh.
-                            """)
+                    Text(Constants.FAILURE_MSG)
                         .font(.system(.caption, design: .rounded))
                     
                 }
