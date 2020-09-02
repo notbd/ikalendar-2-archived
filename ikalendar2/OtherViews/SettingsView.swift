@@ -97,6 +97,14 @@ struct SettingsView: View {
                 
             }.navigationBarTitle(Text("Settings"))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .onAppear {
+//            UITableViewCell.appearance().backgroundColor = .systemGray
+        }
+        .onDisappear {
+//            UITableViewCell.appearance().backgroundColor = .clear
+            
+        }
     }
     
     func saveDefaultMode() {

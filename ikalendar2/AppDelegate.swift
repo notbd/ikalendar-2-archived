@@ -47,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: Config List Line Separator to none
         
         UITableView.appearance().separatorStyle = .none
+//        UITableView.appearance().backgroundColor = .clear
+//        UITableViewCell.appearance().backgroundColor = .clear
         
         return true
     }

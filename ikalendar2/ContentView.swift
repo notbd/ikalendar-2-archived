@@ -19,35 +19,16 @@ struct ContentView: View {
         
         Group {
             
+            // Compact Size Class
             if horizontalSizeClass == .compact {
-                TabView(selection: $tabSelection) {
-                    
-                    RotationView()
-                        .tabItem {
-                            VStack {
-                                Image(systemName: "calendar")
-                                    .font(.system(size: 22))
-                                Text("Rotations")
-                            }
-                    }.tag(0)
-                    
-                    SettingsView()
-                        .tabItem {
-                            VStack {
-                                Image(systemName: "gear")
-                                    .font(.system(size: 22))
-                                Text("Settings")
-                            }
-                    }.tag(1)
-                }
+                RotationView()
             }
+                
+            // Regular Size Class
             else {
                 WideRotationView()
             }
-            
         }
-        
-        
     }
 }
 

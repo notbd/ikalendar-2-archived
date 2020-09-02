@@ -12,72 +12,138 @@ struct WideRotationItem: View {
     
     var rotation: Rotation
     var index: Int
+    var width: CGFloat
+    
+    var ExtraHeaderFontSize: CGFloat            { 20 }
+    var TimeStringFontSize: CGFloat             { 18 }
+    var RuleTitleFontSize: CGFloat              { 18 }
+    var StageNameFontSize: CGFloat              { 12 }
+    
+    var RuleImgWidth: CGFloat                { 40 }
+    
+    // Spacings
+    var RuleSectionSpacing: CGFloat             { 15 }
+    var TimeSectionSpacing: CGFloat             { 15 }
+    var StageSectionSpacing: CGFloat            { width * 0.05 }
+    
+    // StageCell Parameters
+//    var minStageCellWidth: CGFloat              { width / 2 - 100 }
+//    var maxStageCellWidth: CGFloat              { width / 2 - 100 }
     
     var body: some View {
         
-        Section(header:
-            HStack {
+        Group {
+            
+            // Content
+            VStack {
                 
-                if index == 0 {
-                    Text("Now:")
-                        .font(.custom("Splatoon2", size: 14))
-                } else if index == 1 {
-                    Text("Next:")
-                        .font(.custom("Splatoon2", size: 14))
-                }
-                
-                Text(rotation.time)
-                    .font(.custom("Splatoon2", size: 12))
-                    .foregroundColor(.secondary)
-        }) {
-            HStack {
-                
-                HStack {
+                // Header Section
+                HStack (alignment: .bottom, spacing: RuleSectionSpacing) {
+                    
+                    // Time String
+                    HStack(alignment: .bottom, spacing: TimeSectionSpacing) {
+                        
+                        if index < Constants.EXTRA_HEADERS.count {
+                            Text(Constants.EXTRA_HEADERS[index])
+                                .font(.custom("Splatoon2", size: ExtraHeaderFontSize))
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        Text(rotation.time)
+                            .font(.custom("Splatoon2", size: TimeStringFontSize))
+                            .foregroundColor(.primary)
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    // Rule Img & Title
                     Image(rotation.rule_filn)
                         .resizable()
                         .antialiased(true)
                         .scaledToFit()
                         .shadow(radius: 5)
-                        .frame(width: 35, height: 35)
-                    Spacer()
+                        .frame(width: RuleImgWidth)
+
                     Text(rotation.rule)
-                        .font(.custom("Splatoon2", size: 14))
+                        .font(.custom("Splatoon2", size: RuleTitleFontSize))
+                }
+                
+                Spacer()
+                
+                // Stage Section
+                HStack(alignment: .center, spacing: StageSectionSpacing) {
+                    WideStageCell(imgFiln: rotation.stage_1_filn, stageName: rotation.stage_1_name, StageNameFontSize: StageNameFontSize
+//                        , minCellWidth: minStageCellWidth, maxCellWidth: maxStageCellWidth
+                    )
+                    
+                    
+//                    Rectangle()
+//                    .foregroundColor(.clear)
+//                    .frame(width: 50)
+                    
                     Spacer()
                     
+                    WideStageCell(imgFiln: rotation.stage_2_filn, stageName: rotation.stage_2_name, StageNameFontSize: StageNameFontSize
+//                        , minCellWidth: minStageCellWidth, maxCellWidth: maxStageCellWidth
+                    )
                 }
-                .frame(width: 130)
-                
-                Spacer()
-                
-                VStack(alignment: .trailing, spacing: 0) {
-                    Image(rotation.stage_1_filn)
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(5)
-                        .shadow(radius: 5)
-                        .frame(width: 100)
-                    
-                    
-                    Text(rotation.stage_1_name)
-                        .font(.custom("Splatoon2", size: 10))
-                }
-                .offset(x: 0, y: 6)
-                
-                Spacer()
-                
-                VStack(alignment: .trailing, spacing: 0) {
-                    Image(rotation.stage_2_filn)
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(5)
-                        .shadow(radius: 5)
-                        .frame(width: 100)
-                    Text(rotation.stage_2_name)
-                        .font(.custom("Splatoon2", size: 10))
-                }
-                .offset(x: 0, y: 6)
-                
-            }.frame(height: 80)
+            }
+            
+            Divider()
+        }
+    }
+}
+
+struct WideStageCell: View {
+    
+    var imgFiln: String
+    var stageName: String
+    
+    var StageNameFontSize: CGFloat
+    
+//    var minCellWidth: CGFloat
+//    var maxCellWidth: CGFloat
+    
+    var body: some View {
+        
+        ZStack(alignment: .bottomTrailing) {
+            Image(getLargeStageImageFiln(for: self.imgFiln))
+                .resizable()
+                .scaledToFit()
+                .cornerRadius(4)
+                .shadow(radius: 5)
+            
+            StageNameLabel(stageName: stageName, StageNameFontSize: StageNameFontSize)
+                .offset(x: -4, y: -4)
+            
+        }
+//        .frame(minWidth: minCellWidth, maxWidth: maxCellWidth)
+        
+    }
+}
+
+func getLargeStageImageFiln(for imgFiln: String) -> String {
+    return imgFiln.replacingOccurrences(of: " ", with: "_") + "_big"
+}
+
+struct StageNameLabel: View {
+    
+    var stageName: String
+    var StageNameFontSize: CGFloat
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .frame(width: 125, height: 25)
+                .cornerRadius(6)
+                .foregroundColor(.black)
+                .opacity(0.75)
+            
+            Text(self.stageName)
+                .shadow(radius: 10)
+                .font(.custom("Splatoon2", size: self.StageNameFontSize))
+                .foregroundColor(.white)
         }
     }
 }
@@ -86,6 +152,13 @@ struct WideRotationItem_Previews: PreviewProvider {
     static var previews: some View {
         WideRotationView()
             .environmentObject(Data(isForTest: true))
-            .preferredColorScheme(.light)
+            //                    .previewLayout(PreviewLayout.fixed(width:1194, height:834))
+            .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (3rd generation)"))
+        //                    .preferredColorScheme(.light)
+        //        WideStageCell(imgFiln: "Humpback Pump Track", stageName: "Humpback Pump Track", StageNameFontSize: 20, minCellWidth: 800, maxCellWidth: 800)
+        //            .border(Color.black)
+        //            .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (3rd generation)"))
     }
 }
+
+
