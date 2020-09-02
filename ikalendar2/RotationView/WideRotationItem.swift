@@ -15,15 +15,17 @@ struct WideRotationItem: View {
     var width: CGFloat
     
     var ExtraHeaderFontSize: CGFloat            { 20 }
-    var TimeStringFontSize: CGFloat             { 18 }
-    var RuleTitleFontSize: CGFloat              { 18 }
+    var TimeStringFontSize: CGFloat             { 16 }
+    var RuleTitleFontSize: CGFloat              { 16 }
     var StageNameFontSize: CGFloat              { 12 }
     
-    var RuleImgWidth: CGFloat                { 40 }
+    var RuleImgWidth: CGFloat                   { 32 }
+    
+    var ExtraHeaderYOffset: CGFloat             { 3 }
     
     // Spacings
-    var RuleSectionSpacing: CGFloat             { 15 }
-    var TimeSectionSpacing: CGFloat             { 15 }
+    var RuleSectionSpacing: CGFloat             { 14 }
+    var TimeSectionSpacing: CGFloat             { 14 }
     var StageSectionSpacing: CGFloat            { width * 0.05 }
     
     // StageCell Parameters
@@ -40,23 +42,6 @@ struct WideRotationItem: View {
                 // Header Section
                 HStack (alignment: .bottom, spacing: RuleSectionSpacing) {
                     
-                    // Time String
-                    HStack(alignment: .bottom, spacing: TimeSectionSpacing) {
-                        
-                        if index < Constants.EXTRA_HEADERS.count {
-                            Text(Constants.EXTRA_HEADERS[index])
-                                .font(.custom("Splatoon2", size: ExtraHeaderFontSize))
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        Text(rotation.time)
-                            .font(.custom("Splatoon2", size: TimeStringFontSize))
-                            .foregroundColor(.primary)
-                        
-                    }
-                    
-                    Spacer()
-                    
                     // Rule Img & Title
                     Image(rotation.rule_filn)
                         .resizable()
@@ -67,6 +52,24 @@ struct WideRotationItem: View {
 
                     Text(rotation.rule)
                         .font(.custom("Splatoon2", size: RuleTitleFontSize))
+                    
+                    Spacer()
+                    
+                    // Time String
+                    HStack(alignment: .bottom, spacing: TimeSectionSpacing) {
+                        
+                        if index < Constants.EXTRA_HEADERS.count {
+                            Text(Constants.EXTRA_HEADERS[index])
+                                .font(.custom("Splatoon2", size: ExtraHeaderFontSize))
+                                .foregroundColor(.secondary)
+                                .offset(y: ExtraHeaderYOffset)
+                        }
+                        
+                        Text(rotation.time)
+                            .font(.custom("Splatoon2", size: TimeStringFontSize))
+                            .foregroundColor(.primary)
+                        
+                    }
                 }
                 
                 Spacer()
@@ -151,7 +154,7 @@ struct StageNameLabel: View {
 struct WideRotationItem_Previews: PreviewProvider {
     static var previews: some View {
         WideRotationView()
-            .environmentObject(Data(isForTest: true))
+            .environmentObject(Env(isForTest: true))
             //                    .previewLayout(PreviewLayout.fixed(width:1194, height:834))
             .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (3rd generation)"))
         //                    .preferredColorScheme(.light)

@@ -43,7 +43,7 @@ struct WideRotationItemsView: View {
 struct WideRotationItemsView_Previews: PreviewProvider {
     static var previews: some View {
         WideRotationView()
-            .environmentObject(Data(isForTest: true))
+            .environmentObject(Env(isForTest: true))
             .preferredColorScheme(.light)
     }
 }

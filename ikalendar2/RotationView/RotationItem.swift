@@ -200,16 +200,16 @@ struct RotationItem_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             RotationView()
-                .environmentObject(Data(isForTest: true))
+                .environmentObject(Env(isForTest: true))
                 .preferredColorScheme(.light)
                 .previewDevice(PreviewDevice(rawValue: "iPhone SE"))
             
             RotationView()
-                .environmentObject(Data(isForTest: true))
+                .environmentObject(Env(isForTest: true))
                 .preferredColorScheme(.light)
                 .previewDevice(PreviewDevice(rawValue: "iPhone 8"))
             RotationView()
-                .environmentObject(Data(isForTest: true))
+                .environmentObject(Env(isForTest: true))
                 .preferredColorScheme(.light)
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11 Pro Max"))
         }

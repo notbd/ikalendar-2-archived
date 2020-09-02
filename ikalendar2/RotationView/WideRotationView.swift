@@ -10,10 +10,7 @@ import SwiftUI
 
 struct WideRotationView: View {
     
-    @EnvironmentObject var env: Data
-    
-    @State private var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
-    @State var showingSettings = false
+    @EnvironmentObject var env: Env
     
     var body: some View {
         
@@ -27,7 +24,7 @@ struct WideRotationView: View {
                     
                     HStack {
                         Button(action: {
-                            self.selectedMode = idx
+                            self.env.selectedMode = idx
                         }) {
                             HStack(spacing: 16) {
                                 Image(Constants.MODE_IMG_FILN[idx])
@@ -35,17 +32,18 @@ struct WideRotationView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5)
-                                    .frame(width: 30)
+                                    .frame(width: Constants.MODE_ICON_SIZE)
                                 
                                 Text(Constants.MODE_TITLE[idx])
-                                    .font(.system(.title, design: .rounded))
+//                                    .font(.system(.title, design: .rounded))
+                                    .font(.system(size: 24, weight: .semibold, design: .rounded))
                                     .fontWeight(.semibold)
                                 Spacer()
                             }
                             .padding()
                             .offset(x: -10)
                             .foregroundColor(.primary)
-                            .background(self.selectedMode == idx ? Color(UIColor.systemGray4) : .clear)
+                            .background(self.env.selectedMode == idx ? Color(UIColor.systemGray4) : .clear)
                             .cornerRadius(10)
                         }
                         .animation(.spring())
@@ -62,7 +60,7 @@ struct WideRotationView: View {
             .navigationBarItems(
                 leading:
                 Button(action: {
-                    self.showingSettings.toggle()
+                    self.env.isSettingsPresented.toggle()
                 }) {
                     Image(systemName: "gear")
                         .foregroundColor(.primary)
@@ -70,8 +68,8 @@ struct WideRotationView: View {
                         .shadow(radius: 5)
                         .frame(width: 25)
                 }
-                .sheet(isPresented: $showingSettings) {
-                    SettingsView()
+                .sheet(isPresented: self.$env.isSettingsPresented) {
+                    SettingsView().environmentObject(self.env)
                 },
                 
                 trailing:
@@ -98,16 +96,16 @@ struct WideRotationView: View {
                     .navigationBarTitle(Text("Error"))
                 
             } else {
-                WideRotationItemsView(rotations: getRotationArray(for: selectedMode))
-                    .navigationBarTitle(Text(Constants.MODE_TITLE[selectedMode]))
+                WideRotationItemsView(rotations: getRotationArray(for: self.env.selectedMode))
+                    .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
                     .navigationBarItems(
                         trailing:
-                        Image(Constants.MODE_IMG_FILN[self.selectedMode])
+                        Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
                             .renderingMode(.original)
                             .resizable()
                             .scaledToFit()
                             .shadow(radius: 5)
-                            .frame(width: 25)
+                            .frame(width: Constants.MODE_ICON_SIZE)
                 )
             }
             
@@ -141,7 +139,7 @@ struct WideRotationView: View {
 struct WideRotationView_Previews: PreviewProvider {
     static var previews: some View {
         WideRotationView()
-            .environmentObject(Data(isForTest: true))
+            .environmentObject(Env(isForTest: true))
             .preferredColorScheme(.light)
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InfoScreenView: View {
     
-    @EnvironmentObject var env: Data
+    @EnvironmentObject var env: Env
     
     var body: some View {
         
@@ -48,7 +48,7 @@ struct InfoScreenView: View {
 struct InfoScreenView_Previews: PreviewProvider {
     static var previews: some View {
         InfoScreenView()
-            .environmentObject(Data(isForTest: true))
+            .environmentObject(Env(isForTest: true))
             .environment(\.colorScheme, .dark)
     }
 }

@@ -22,7 +22,7 @@
 		79F8461D246769A60086AD95 /* Splatoon2-font-beta.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */; };
 		79F84620246781D40086AD95 /* RotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F8461F246781D40086AD95 /* RotationView.swift */; };
 		79F84622246781EB0086AD95 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F84621246781EB0086AD95 /* SettingsView.swift */; };
-		79F846242468DAB50086AD95 /* RotationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F846232468DAB50086AD95 /* RotationData.swift */; };
+		79F846242468DAB50086AD95 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F846232468DAB50086AD95 /* Env.swift */; };
 		79F846262468DAF50086AD95 /* RotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F846252468DAF40086AD95 /* RotationModel.swift */; };
 		79F846282468DCCE0086AD95 /* RotationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F846272468DCCE0086AD95 /* RotationItem.swift */; };
 /* End PBXBuildFile section */
@@ -46,7 +46,7 @@
 		79F8461C246769A60086AD95 /* Splatoon2-font-beta.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Splatoon2-font-beta.otf"; sourceTree = "<group>"; };
 		79F8461F246781D40086AD95 /* RotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationView.swift; sourceTree = "<group>"; };
 		79F84621246781EB0086AD95 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		79F846232468DAB50086AD95 /* RotationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationData.swift; sourceTree = "<group>"; };
+		79F846232468DAB50086AD95 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		79F846252468DAF40086AD95 /* RotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationModel.swift; sourceTree = "<group>"; };
 		79F846272468DCCE0086AD95 /* RotationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,7 +80,7 @@
 			children = (
 				79F846252468DAF40086AD95 /* RotationModel.swift */,
 				794D8DD32491B2610096768B /* RotationCatalog.swift */,
-				79F846232468DAB50086AD95 /* RotationData.swift */,
+				79F846232468DAB50086AD95 /* Env.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F84622246781EB0086AD95 /* SettingsView.swift in Sources */,
-				79F846242468DAB50086AD95 /* RotationData.swift in Sources */,
+				79F846242468DAB50086AD95 /* Env.swift in Sources */,
 				79F84620246781D40086AD95 /* RotationView.swift in Sources */,
 				79F84609246767E90086AD95 /* AppDelegate.swift in Sources */,
 				79F846282468DCCE0086AD95 /* RotationItem.swift in Sources */,

@@ -11,14 +11,10 @@ import UIKit
 
 struct RotationView: View {
     
-    @EnvironmentObject var env: Data
-    
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
-    @State var showingSettings = false
+    @EnvironmentObject var env: Env
 
-    
     var body: some View {
         
         GeometryReader { geometry in
@@ -36,7 +32,7 @@ struct RotationView: View {
                         List {
                             
                             // Mode Picker
-                            Picker("Mode", selection: self.$selectedMode) {
+                            Picker("Mode", selection: self.$env.selectedMode) {
                                 ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
                                     Text(Constants.MODE_SHORT_NAME[index])
                                         .tag(index)
@@ -50,24 +46,24 @@ struct RotationView: View {
                         }
                     }
                 }
-                .navigationBarTitle(Text(Constants.MODE_TITLE[self.selectedMode]))
+                .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
                 .navigationBarItems(
                     leading:
                     Button(action: {
                         self.env.getRotations()
                         self.changeSectionHeaderBackgroundColor()
                     }) {
-                        Image(Constants.MODE_IMG_FILN[self.selectedMode])
+                        Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
                             .renderingMode(.original)
                             .resizable()
                             .scaledToFit()
                             .shadow(radius: 5)
-                            .frame(width: 25)
+                            .frame(width: Constants.MODE_ICON_SIZE)
                     },
                     
                     trailing:
                     Button(action: {
-                        self.showingSettings.toggle()
+                        self.env.isSettingsPresented.toggle()
                     }) {
                         Image(systemName: "gear")
                             .foregroundColor(.primary)
@@ -75,8 +71,8 @@ struct RotationView: View {
                             .shadow(radius: 5)
                             .frame(width: 25)
                     }
-                    .sheet(isPresented: self.$showingSettings) {
-                        SettingsView()
+                    .sheet(isPresented: self.$env.isSettingsPresented) {
+                        SettingsView().environmentObject(self.env)
                     }
                 )
             }
@@ -103,7 +99,7 @@ struct RotationView: View {
             return RotationItemsView(rotations: [], width: width)         // nil
         }
         
-        switch(selectedMode) {
+        switch(self.env.selectedMode) {
             
         case 1:     // ranked
             if let rotationArray = catalog.ranked {
@@ -132,7 +128,7 @@ struct RotationView: View {
 struct RotationView_Previews: PreviewProvider {
     static var previews: some View {
         RotationView()
-            .environmentObject(Data(isForTest: true))
+            .environmentObject(Env(isForTest: true))
             .preferredColorScheme(.light)
     }
 }

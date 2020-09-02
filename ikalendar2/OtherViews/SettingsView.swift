@@ -10,11 +10,9 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @EnvironmentObject var env: Data
+    @EnvironmentObject var env: Env
     
     @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
-    
-    var modeName = ["Regular", "Ranked", "League"]
     
     var body: some View {
         NavigationView {
@@ -23,8 +21,8 @@ struct SettingsView: View {
                 Section(header: Text("Mode displayed when app launches:")) {
                     
                     Picker("Default Mode: ", selection: $settingsDefaultMode) {
-                        ForEach(0 ..< modeName.count) { index in
-                            Text(self.modeName[index])
+                        ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
+                            Text(Constants.MODE_SHORT_NAME[index])
                                 .tag(index)
                         }
                     }
@@ -95,16 +93,29 @@ struct SettingsView: View {
                     
                 }
                 
-            }.navigationBarTitle(Text("Settings"))
+            }
+            .navigationBarTitle(Text("Settings"))
+            .navigationBarItems(
+                trailing:
+                Button(action:{
+                    self.env.isSettingsPresented.toggle()
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.primary)
+                        .font(.system(size: 18, weight: .medium))
+                        .shadow(radius: 5)
+                        .frame(width: 25)
+                }
+                
+            )
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear {
-//            UITableViewCell.appearance().backgroundColor = .systemGray
-        }
-        .onDisappear {
-//            UITableViewCell.appearance().backgroundColor = .clear
-            
-        }
+        //        .onAppear {
+        //            UITableViewCell.appearance().backgroundColor = .systemGray
+        //        }
+        //        .onDisappear {
+        //            UITableViewCell.appearance().backgroundColor = .clear
+        //        }
     }
     
     func saveDefaultMode() {
@@ -115,7 +126,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
-            .environmentObject(Data(isForTest: true))
+            .environmentObject(Env(isForTest: true))
             .environment(\.colorScheme, .dark)
     }
 }

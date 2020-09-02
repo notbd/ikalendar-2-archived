@@ -1,5 +1,5 @@
 //
-//  RotationData.swift
+//  Env.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 5/10/20.
@@ -8,10 +8,13 @@
 
 import Foundation
 
-class Data: ObservableObject {
+class Env: ObservableObject {
     
     @Published var catalog: RotationCatalog?
     @Published var loadingStatus: loadingStatusType
+    
+    @Published var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
+    @Published var isSettingsPresented = false
     
     enum loadingStatusType {
         case loading
@@ -19,13 +22,14 @@ class Data: ObservableObject {
         case failure
     }
     
+    // Starting Application Env
     init() {
         self.loadingStatus = loadingStatusType.loading
         self.catalog = RotationCatalog()
         self.getRotations()
     }
     
-    // for testing
+    // dummy Env for testing
     init(isForTest: Bool) {
         self.loadingStatus = loadingStatusType.loaded
         self.catalog = RotationCatalog(isForTest: true)

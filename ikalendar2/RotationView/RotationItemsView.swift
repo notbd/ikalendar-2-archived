@@ -25,7 +25,7 @@ struct RotationItemsView: View {
 struct RotationItemsView_Previews: PreviewProvider {
     static var previews: some View {
         RotationView()
-            .environmentObject(Data(isForTest: true))
+            .environmentObject(Env(isForTest: true))
             .preferredColorScheme(.dark)
     }
 }

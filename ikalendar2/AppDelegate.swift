@@ -8,20 +8,37 @@
 
 import UIKit
 
+@propertyWrapper
+struct MyUserDefaults<T> {
+    let key: String
+    let defaultValue: T
+    
+    var wrappedValue: T {
+        get {
+            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
+        }
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // MARK: Register UserDefaults
+        
+        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_DEFAULTMODE: 1])
+        
         
         // MARK: Set NavBar Font to SF Pro Rounded
-        
+
         let largeTitleFontSize: CGFloat = 34
         let titleTextFontSize: CGFloat = 17
-    
+
         // Here we get San Francisco with the desired weight
         let systemLargeTitleFont    = UIFont.systemFont(ofSize: largeTitleFontSize, weight: .bold)
         let systemTitleTextFont     = UIFont.systemFont(ofSize: titleTextFontSize,  weight: .bold)
@@ -43,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UINavigationBar.appearance().largeTitleTextAttributes   = [.font : largeTitleFont]
         UINavigationBar.appearance().titleTextAttributes        = [.font : titleTextFont]
+        
         
         // MARK: Config List Line Separator to none
         
