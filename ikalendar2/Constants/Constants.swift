@@ -13,7 +13,8 @@ struct Constants {
     
     // MARK: UserDefaults Keys
     
-    static let USERDEFAULTS_KEY_DEFAULTMODE = "defaultMode"
+    static let USERDEFAULTS_KEY_DEFAULTMODE     = "defaultMode"
+    static let USERDEFAULTS_KEY_ISFIRSTLAUNCH   = "isFirstLaunch"
     
     
     // MARK: Data URLs
@@ -24,9 +25,10 @@ struct Constants {
     
     // MARK: Mode Strings
     
-    static let MODE_SHORT_NAME  = ["Regular",           "Ranked",           "League"]
-    static let MODE_TITLE       = ["Regular Battle",    "Ranked Battle",    "League Battle"]
-    static let MODE_IMG_FILN    = ["turf_small",        "ranked_small",     "league_small"]
+    static let MODE_SHORT_NAME      = ["Regular",           "Ranked",           "League"]
+    static let MODE_TITLE           = ["Regular Battle",    "Ranked Battle",    "League Battle"]
+    static let MODE_IMG_FILN        = ["turf_small",        "ranked_small",     "league_small"]
+    static let MODE_IMG_FILN_MID    = ["turf_mid",          "ranked_mid",       "league_mid"]
     
     
     // MARK: Extra Headers
@@ -36,7 +38,12 @@ struct Constants {
     
     // MARK: Other UI Parameters
     
-    static let MODE_ICON_SIZE: CGFloat = 28
+    static let TAPPABLE_AREA_MIN_SIDE: CGFloat  = 36
+    
+    static let MODE_ICON_SIDE: CGFloat          = 22
+    
+    static let SETTINGS_XMARK_SIZE: CGFloat             = 17
+    static let SETTINGS_GEAR_SIZE: CGFloat              = 17
     
     
     // MARK: Info Screen Strings

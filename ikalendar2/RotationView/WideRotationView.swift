@@ -32,10 +32,10 @@ struct WideRotationView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5)
-                                    .frame(width: Constants.MODE_ICON_SIZE)
+                                    .frame(width: Constants.MODE_ICON_SIDE)
                                 
                                 Text(Constants.MODE_TITLE[idx])
-//                                    .font(.system(.title, design: .rounded))
+                                    //                                    .font(.system(.title, design: .rounded))
                                     .font(.system(size: 24, weight: .semibold, design: .rounded))
                                     .fontWeight(.semibold)
                                 Spacer()
@@ -62,27 +62,34 @@ struct WideRotationView: View {
                 Button(action: {
                     self.env.isSettingsPresented.toggle()
                 }) {
-                    Image(systemName: "gear")
-                        .foregroundColor(.primary)
-                        .font(.system(size: 18, weight: .medium))
-                        .shadow(radius: 5)
-                        .frame(width: 25)
+                    HStack {
+                        Image(systemName: "gear")
+                            .foregroundColor(.primary)
+                            .font(.system(size: Constants.SETTINGS_GEAR_SIZE, weight: .medium))
+                            .shadow(radius: 5)
+                        Spacer()
+                    }
                 }
+                .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                 .sheet(isPresented: self.$env.isSettingsPresented) {
-                    SettingsView().environmentObject(self.env)
+                    SettingsView()
+                        .environmentObject(self.env)
                 },
                 
                 trailing:
                 Button(action: {
                     self.env.getRotations()
                 }) {
-                    Image(systemName: "arrow.2.circlepath.circle")
-                        .foregroundColor(.primary)
-                        .font(.system(size: 18, weight: .medium))
-                        .shadow(radius: 5)
-                        .frame(width: 25)
+                    HStack {
+                        Spacer()
+                        
+                        Image(systemName: "arrow.2.circlepath.circle")
+                            .foregroundColor(.primary)
+                            .font(.system(size: Constants.SETTINGS_GEAR_SIZE, weight: .medium))
+                            .shadow(radius: 5)
+                    }
                 }
-                
+                .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
             )
             
             // MARK: Second Content View
@@ -105,12 +112,10 @@ struct WideRotationView: View {
                             .resizable()
                             .scaledToFit()
                             .shadow(radius: 5)
-                            .frame(width: Constants.MODE_ICON_SIZE)
+                            .frame(width: Constants.MODE_ICON_SIDE)
                 )
             }
-            
         }
-        
     }
     
     func getRotationArray(for modeIndex: Int) -> [Rotation] {

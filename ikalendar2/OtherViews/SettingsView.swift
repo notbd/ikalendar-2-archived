@@ -13,6 +13,7 @@ struct SettingsView: View {
     @EnvironmentObject var env: Env
     
     @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
+    @State var isTempOnboardingPresented = false
     
     var body: some View {
         NavigationView {
@@ -30,6 +31,22 @@ struct SettingsView: View {
                     .onReceive([self.settingsDefaultMode].publisher.first()) { value in
                         self.saveDefaultMode()
                     }
+                }
+                
+                Section(header: Text("Other options:")) {
+                    Button(action: {
+                        self.isTempOnboardingPresented.toggle()
+                    }) {
+                        Text("Show Onboarding Screen")
+                            .foregroundColor(.primary)
+                    }
+                    .sheet(isPresented: self.$isTempOnboardingPresented) {
+                        OnboardingView()
+                            .environmentObject(self.env)
+                    }
+                    
+                    
+                    
                 }
                 
                 Section(
@@ -100,22 +117,18 @@ struct SettingsView: View {
                 Button(action:{
                     self.env.isSettingsPresented.toggle()
                 }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.primary)
-                        .font(.system(size: 18, weight: .medium))
-                        .shadow(radius: 5)
-                        .frame(width: 25)
+                    HStack {
+                        Spacer()
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.primary)
+                            .font(.system(size: Constants.SETTINGS_XMARK_SIZE, weight: .medium))
+                            .shadow(radius: 5)
+                    }
                 }
-                
+                .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        //        .onAppear {
-        //            UITableViewCell.appearance().backgroundColor = .systemGray
-        //        }
-        //        .onDisappear {
-        //            UITableViewCell.appearance().backgroundColor = .clear
-        //        }
     }
     
     func saveDefaultMode() {

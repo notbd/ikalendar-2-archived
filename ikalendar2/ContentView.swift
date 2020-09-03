@@ -10,12 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var env: Env
-    
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
-//    @State private var selectedMode         = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
-//    @State private var isSettingsPresented  = false
+    @EnvironmentObject var env: Env
     
     var body: some View {
         
@@ -23,22 +20,27 @@ struct ContentView: View {
             
             // Compact Size Class
             if horizontalSizeClass == .compact {
-//                RotationView(selectedMode: $selectedMode, isSettingsPresented: $isSettingsPresented)
                 RotationView()
+//                    .environmentObject(self.env)
+                
             }
                 
-            // Regular Size Class
+                // Regular Size Class
             else {
-//                WideRotationView(selectedMode: $selectedMode, isSettingsPresented: $isSettingsPresented)
                 WideRotationView()
+//                    .environmentObject(self.env)
             }
+        }
+        .sheet(isPresented: $env.isOnboardingPresented) {
+            OnboardingView()
+                .environmentObject(self.env)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        RotationView()
             .environmentObject(Env(isForTest: true))
     }
 }

@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // MARK: Register UserDefaults
         
-        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_DEFAULTMODE: 1])
+        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_DEFAULTMODE:   1])
+        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH: true])
         
         
         // MARK: Set NavBar Font to SF Pro Rounded

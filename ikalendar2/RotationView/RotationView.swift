@@ -14,7 +14,7 @@ struct RotationView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var env: Env
-
+    
     var body: some View {
         
         GeometryReader { geometry in
@@ -53,26 +53,34 @@ struct RotationView: View {
                         self.env.getRotations()
                         self.changeSectionHeaderBackgroundColor()
                     }) {
-                        Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
-                            .renderingMode(.original)
-                            .resizable()
-                            .scaledToFit()
-                            .shadow(radius: 5)
-                            .frame(width: Constants.MODE_ICON_SIZE)
-                    },
+                        HStack {
+                            Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
+                                .renderingMode(.original)
+                                .resizable()
+                                .scaledToFit()
+                                .shadow(radius: 5)
+                                .frame(width: Constants.MODE_ICON_SIDE)
+                            Spacer()
+                        }
+                    }
+                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE),
                     
                     trailing:
                     Button(action: {
                         self.env.isSettingsPresented.toggle()
                     }) {
-                        Image(systemName: "gear")
-                            .foregroundColor(.primary)
-                            .font(.system(size: 18, weight: .medium))
-                            .shadow(radius: 5)
-                            .frame(width: 25)
+                        HStack {
+                            Spacer()
+                            Image(systemName: "gear")
+                                .foregroundColor(.primary)
+                                .font(.system(size: Constants.SETTINGS_GEAR_SIZE, weight: .medium))
+                                .shadow(radius: 5)
+                        }
                     }
+                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                     .sheet(isPresented: self.$env.isSettingsPresented) {
                         SettingsView().environmentObject(self.env)
+//                        OnboardingView()
                     }
                 )
             }
@@ -86,9 +94,9 @@ struct RotationView: View {
     func changeSectionHeaderBackgroundColor() {
         UITableViewHeaderFooterView.appearance().tintColor =
             colorScheme == .dark ? UIColor.black : UIColor.white
-//            colorScheme == .dark ? UIColor.clear.withAlphaComponent(0.9) : UIColor.clear.withAlphaComponent(0.1)
-//            UIColor.clear.withAlphaComponent(0.1)
-//            .clear
+        //            colorScheme == .dark ? UIColor.clear.withAlphaComponent(0.9) : UIColor.clear.withAlphaComponent(0.1)
+        //            UIColor.clear.withAlphaComponent(0.1)
+        //            .clear
     }
     
     func renderRotationItemsView(width: CGFloat) -> some View {

@@ -16,6 +16,8 @@ class Env: ObservableObject {
     @Published var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
     @Published var isSettingsPresented = false
     
+    @Published var isOnboardingPresented = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
+    
     enum loadingStatusType {
         case loading
         case loaded

@@ -11,6 +11,7 @@
 		794D8DD224900F5E0096768B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794D8DD124900F5E0096768B /* Constants.swift */; };
 		794D8DD42491B2610096768B /* RotationCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794D8DD32491B2610096768B /* RotationCatalog.swift */; };
 		7960440E24F6E949008328E4 /* InfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960440D24F6E949008328E4 /* InfoScreenView.swift */; };
+		7970E3EC25006FA7008312C5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7970E3EB25006FA7008312C5 /* OnboardingView.swift */; };
 		79B06B1E24FD7F7200957C30 /* WideRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B1D24FD7F7200957C30 /* WideRotationView.swift */; };
 		79B06B2024FD7F8800957C30 /* WideRotationItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B1F24FD7F8800957C30 /* WideRotationItemsView.swift */; };
 		79B06B2224FD91F700957C30 /* WideRotationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B2124FD91F700957C30 /* WideRotationItem.swift */; };
@@ -33,6 +34,7 @@
 		794D8DD124900F5E0096768B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		794D8DD32491B2610096768B /* RotationCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationCatalog.swift; sourceTree = "<group>"; };
 		7960440D24F6E949008328E4 /* InfoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenView.swift; sourceTree = "<group>"; };
+		7970E3EB25006FA7008312C5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		79B06B1D24FD7F7200957C30 /* WideRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationView.swift; sourceTree = "<group>"; };
 		79B06B1F24FD7F8800957C30 /* WideRotationItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationItemsView.swift; sourceTree = "<group>"; };
 		79B06B2124FD91F700957C30 /* WideRotationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationItem.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			children = (
 				7960440D24F6E949008328E4 /* InfoScreenView.swift */,
 				79F84621246781EB0086AD95 /* SettingsView.swift */,
+				7970E3EB25006FA7008312C5 /* OnboardingView.swift */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				79F84622246781EB0086AD95 /* SettingsView.swift in Sources */,
 				79F846242468DAB50086AD95 /* Env.swift in Sources */,
 				79F84620246781D40086AD95 /* RotationView.swift in Sources */,
+				7970E3EC25006FA7008312C5 /* OnboardingView.swift in Sources */,
 				79F84609246767E90086AD95 /* AppDelegate.swift in Sources */,
 				79F846282468DCCE0086AD95 /* RotationItem.swift in Sources */,
 				79F8460B246767E90086AD95 /* SceneDelegate.swift in Sources */,
