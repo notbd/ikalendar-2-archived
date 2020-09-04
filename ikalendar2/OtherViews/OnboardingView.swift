@@ -65,8 +65,8 @@ struct OnboardingView: View {
                                            yAxisConstant: 1)
                     })
                     
-                    BulletBlockView(title: "Cross-Apple-Platform",
-                                    description: "iPhone, iPad or Mac, pick your favorite device and start the jam wherever you like.",
+                    BulletBlockView(title: "Cross-iOS-Platform",
+                                    description: "iPhone & iPad or Mac, pick your favorite device and start the jam wherever you like.",
                                     header: {
                                         Image(systemName: "guitars")
                                             .font(.largeTitle)
@@ -111,11 +111,13 @@ struct OnboardingView: View {
                             .foregroundColor(.white)
                             .font(.system(.body, design: .rounded))
                             .fontWeight(.semibold)
+                            
+                            .frame(maxWidth:    geometry.size.width > 320 ? 360 : 240)
+                            .frame(height:      geometry.size.width > 320 ? 48  : 42)
+                        
                             .background(Color(UIColor.systemOrange))
                             .cornerRadius(12)
                             .shadow(radius: 6)
-                            .frame(maxWidth:    geometry.size.width > 320 ? 360 : 240)
-                            .frame(height:      geometry.size.width > 320 ? 48  : 42)
                         
                     }
                     

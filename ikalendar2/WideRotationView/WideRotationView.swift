@@ -51,10 +51,9 @@ struct WideRotationView: View {
                             .cornerRadius(10)
                         }
                         .animation(.spring())
-                        
                     }
-                    
                 }
+                
                 Spacer()
             }
             .padding(.top,      40)
@@ -63,13 +62,13 @@ struct WideRotationView: View {
             .navigationBarTitle("Mode")
             .navigationBarItems(
                 
-                // MARK: Refresh Button
+                // MARK: SFSymbol Refresh Button
                 leading:
                 Button(action: {
                     self.env.getRotations()
                 }) {
                     HStack {
-                        Image(systemName: "arrow.2.circlepath.circle")
+                        Image(systemName: "arrow.2.circlepath.circle.fill")
                             .foregroundColor(.primary)
                             .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
                             .shadow(radius: 5)
@@ -129,7 +128,7 @@ struct WideRotationView: View {
                     .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
                     .navigationBarItems(
                         
-                        // MARK: Refresh Button
+                        // MARK: Mode Icon Refresh Button
                         trailing:
                         Button(action: {
                             self.env.getRotations()
@@ -155,6 +154,8 @@ struct WideRotationView: View {
                 )
             }
         }
+//        .navigationViewStyle(StackNavigationViewStyle())
+        
     }
     
     func getRotationArray(for modeIndex: Int) -> [Rotation] {

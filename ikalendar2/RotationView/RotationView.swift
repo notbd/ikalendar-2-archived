@@ -105,22 +105,17 @@ struct RotationView: View {
                     }
                     .sheet(isPresented: self.$isSettingsPresented) {
                         SettingsView().environmentObject(self.env)
-                        //                        OnboardingView()
                     }
                 )
             }.id(self.navigationViewID)
-//            .onAppear {
-//                self.changeSectionHeaderBackgroundColor()
-//            }
         }
         
     }
     
     func changeSectionHeaderBackgroundColor() {
-//        UITableViewHeaderFooterView.appearance().tintColor =
             UITableViewHeaderFooterView.appearance().tintColor =
-            colorScheme == .dark ? UIColor.black : UIColor.white
-        //            colorScheme == .dark ? UIColor.clear.withAlphaComponent(0.9) : UIColor.clear.withAlphaComponent(0.1)
+//            colorScheme == .dark ? UIColor.black : UIColor.white
+                colorScheme == .dark ? UIColor.systemGray4.withAlphaComponent(0.5) : UIColor.systemGray4.withAlphaComponent(0.5)
 //                    UIColor.systemGray4.withAlphaComponent(0.6)
         //            .clear
     }
