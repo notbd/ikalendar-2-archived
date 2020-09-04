@@ -15,6 +15,8 @@ struct RotationView: View {
     
     @EnvironmentObject var env: Env
     
+    @State var isSettingsPresented = false
+    
     var body: some View {
         
         GeometryReader { geometry in
@@ -48,6 +50,8 @@ struct RotationView: View {
                 }
                 .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
                 .navigationBarItems(
+                    
+                    // MARK: Refresh Button
                     leading:
                     Button(action: {
                         self.env.getRotations()
@@ -60,27 +64,41 @@ struct RotationView: View {
                                 .scaledToFit()
                                 .shadow(radius: 5)
                                 .frame(width: Constants.MODE_ICON_SIDE)
-                            Spacer()
+//                                .border(Color.red)
                         }
+                        .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                        .background(
+                            Color(UIColor.systemGray4)
+                                .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                                .cornerRadius(5)
+                        )
+//                            .border(Color.blue)
                     }
-                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE),
+                    ,
                     
+                    // MARK: Settings Button
                     trailing:
                     Button(action: {
-                        self.env.isSettingsPresented.toggle()
+                        self.isSettingsPresented.toggle()
                     }) {
                         HStack {
-                            Spacer()
                             Image(systemName: "gear")
                                 .foregroundColor(.primary)
-                                .font(.system(size: Constants.SETTINGS_GEAR_SIZE, weight: .medium))
+                                .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
                                 .shadow(radius: 5)
+//                                .border(Color.red)
                         }
+                        .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                        .background(
+                            Color(UIColor.systemGray4)
+                                .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                                .cornerRadius(5)
+                        )
+//                            .border(Color.blue)
                     }
-                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
-                    .sheet(isPresented: self.$env.isSettingsPresented) {
+                    .sheet(isPresented: self.$isSettingsPresented) {
                         SettingsView().environmentObject(self.env)
-//                        OnboardingView()
+                        //                        OnboardingView()
                     }
                 )
             }
