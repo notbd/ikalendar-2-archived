@@ -64,15 +64,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7925B171250205500018399C /* WideRotationView */ = {
+			isa = PBXGroup;
+			children = (
+				79B06B1D24FD7F7200957C30 /* WideRotationView.swift */,
+				79B06B1F24FD7F8800957C30 /* WideRotationItemsView.swift */,
+				79B06B2124FD91F700957C30 /* WideRotationItem.swift */,
+			);
+			path = WideRotationView;
+			sourceTree = "<group>";
+		};
 		79B06B1624FD7C5100957C30 /* RotationView */ = {
 			isa = PBXGroup;
 			children = (
 				79F8461F246781D40086AD95 /* RotationView.swift */,
 				79459A8624F1847100C90BA4 /* RotationItemsView.swift */,
 				79F846272468DCCE0086AD95 /* RotationItem.swift */,
-				79B06B1D24FD7F7200957C30 /* WideRotationView.swift */,
-				79B06B1F24FD7F8800957C30 /* WideRotationItemsView.swift */,
-				79B06B2124FD91F700957C30 /* WideRotationItem.swift */,
 			);
 			path = RotationView;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 				79F84616246767EC0086AD95 /* Info.plist */,
 				79B06B1C24FD7D7600957C30 /* ContentView */,
 				79B06B1624FD7C5100957C30 /* RotationView */,
+				7925B171250205500018399C /* WideRotationView */,
 				79B06B1824FD7C7100957C30 /* OtherViews */,
 				79B06B1724FD7C5B00957C30 /* DataModel */,
 				79B06B1A24FD7CD500957C30 /* Constants */,
@@ -380,7 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
@@ -405,7 +413,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;

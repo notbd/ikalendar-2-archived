@@ -15,7 +15,7 @@ struct RotationItemsView: View {
     
     var body: some View {
         
-        ForEach (0 ..< self.rotations.count) { idx in
+        ForEach (0 ..< self.rotations.count, id: \.self) { idx in
             RotationItem(rotation: self.rotations[idx], index: idx, width: self.width)
         }
         

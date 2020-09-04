@@ -18,7 +18,7 @@ struct WideRotationItemsView: View {
             
             ScrollView {
                 VStack(spacing: 30) {
-                    ForEach (0 ..< self.rotations.count) { idx in
+                    ForEach (0 ..< self.rotations.count, id: \.self) { idx in
                         WideRotationItem(rotation: self.rotations[idx], index: idx, width: self.getWidthForRotationItem(width: geometry.size.width))
                     }
                     

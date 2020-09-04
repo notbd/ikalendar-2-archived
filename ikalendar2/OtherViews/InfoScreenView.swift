@@ -14,33 +14,40 @@ struct InfoScreenView: View {
     
     var body: some View {
         
-        HStack {
+        VStack {
+            
             Spacer()
             
-            // loading msg
-            if env.loadingStatus == .loading {
-                VStack(alignment: .leading) {
-                    Text(Constants.LOADING_TITLE)
-                        .font(.system(.largeTitle, design: .rounded))
-                    Text(Constants.LOADING_MSG)
-                        .font(.system(.caption, design: .rounded))
-                }
-            }
+            HStack {
+                Spacer()
                 
-            // error msg
-            else if env.loadingStatus == .failure {
-                VStack(alignment: .leading) {
-                    Text(Constants.FAILURE_TITLE)
-                        .font(.system(.largeTitle, design: .rounded))
-                    Text(Constants.FAILURE_MSG)
-                        .font(.system(.caption, design: .rounded))
-                    
+                // loading msg
+                if env.loadingStatus == .loading {
+                    VStack(alignment: .leading) {
+                        Text(Constants.LOADING_TITLE)
+                            .font(.system(.largeTitle, design: .rounded))
+                        Text(Constants.LOADING_MSG)
+                            .font(.system(.caption, design: .rounded))
+                    }
                 }
+                    
+                // error msg
+                else if env.loadingStatus == .failure {
+                    VStack(alignment: .leading) {
+                        Text(Constants.FAILURE_TITLE)
+                            .font(.system(.largeTitle, design: .rounded))
+                        Text(Constants.FAILURE_MSG)
+                            .font(.system(.caption, design: .rounded))
+                        
+                    }
+                }
+                
+                Spacer()
             }
+            .foregroundColor(.secondary)
             
             Spacer()
         }
-        .foregroundColor(.secondary)
         
     }
 }

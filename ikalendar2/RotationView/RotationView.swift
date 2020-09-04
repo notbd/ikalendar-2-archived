@@ -17,6 +17,9 @@ struct RotationView: View {
     
     @State var isSettingsPresented = false
     
+    // Use to re-render NavigationView in order to force go to top
+    @State private var navigationViewID = UUID()
+    
     var body: some View {
         
         GeometryReader { geometry in
@@ -46,6 +49,9 @@ struct RotationView: View {
                             self.renderRotationItemsView(width: geometry.size.width)
                             
                         }
+                        .onAppear {
+                            self.changeSectionHeaderBackgroundColor()
+                        }
                     }
                 }
                 .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
@@ -55,7 +61,8 @@ struct RotationView: View {
                     leading:
                     Button(action: {
                         self.env.getRotations()
-                        self.changeSectionHeaderBackgroundColor()
+                        self.navigationViewID = UUID()
+//                        self.changeSectionHeaderBackgroundColor()
                     }) {
                         HStack {
                             Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
@@ -101,19 +108,20 @@ struct RotationView: View {
                         //                        OnboardingView()
                     }
                 )
-            }
-            .onAppear {
-                self.changeSectionHeaderBackgroundColor()
-            }
+            }.id(self.navigationViewID)
+//            .onAppear {
+//                self.changeSectionHeaderBackgroundColor()
+//            }
         }
         
     }
     
     func changeSectionHeaderBackgroundColor() {
-        UITableViewHeaderFooterView.appearance().tintColor =
+//        UITableViewHeaderFooterView.appearance().tintColor =
+            UITableViewHeaderFooterView.appearance().tintColor =
             colorScheme == .dark ? UIColor.black : UIColor.white
         //            colorScheme == .dark ? UIColor.clear.withAlphaComponent(0.9) : UIColor.clear.withAlphaComponent(0.1)
-        //            UIColor.clear.withAlphaComponent(0.1)
+//                    UIColor.systemGray4.withAlphaComponent(0.6)
         //            .clear
     }
     
