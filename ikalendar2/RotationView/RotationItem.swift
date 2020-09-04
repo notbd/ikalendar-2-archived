@@ -12,11 +12,12 @@ struct RotationItem: View {
     
     var rotation: Rotation
     var index: Int
-    var width: CGFloat
+    var parentWidth: CGFloat
+    var parentHeight: CGFloat
     
     // Determine if View Width tighter than iPhone 8 Width
     var shortModeNameThreshold: CGFloat         { 375 }
-    var isViewOverCompact: Bool                 { width < shortModeNameThreshold }
+    var isViewOverCompact: Bool                 { parentWidth < shortModeNameThreshold }
     
     // Font Sizes
     var ExtraHeaderFontSize: CGFloat            { 15 }
@@ -29,7 +30,7 @@ struct RotationItem: View {
     var maxRuleImgWidth: CGFloat                { 38 }
     var maxRuleImgWidth_compact: CGFloat        { 34 }
     
-    var maxStageSectionWidth: CGFloat           { width * 0.6 }
+    var maxStageSectionWidth: CGFloat           { parentWidth * 0.6 }
     
     // Offsets
     var RuleSectionOffset: CGFloat              { -8 }
@@ -103,14 +104,21 @@ struct RotationItem: View {
                 Spacer()
                 
                 // Stage Section
-                HStack {
-                    StageCell(imgFiln: rotation.stage_1_filn, stageName: rotation.stage_1_name, StageImgOffset: StageImgOffset, StageNameFontSize: StageNameFontSize, minCellWidth: minStageCellWidth, maxCellWidth: maxStageCellWidth, isViewOverCompact: isViewOverCompact)
-                    
-                    Spacer()
-                    
-                    StageCell(imgFiln: rotation.stage_2_filn, stageName: rotation.stage_2_name, StageImgOffset: StageImgOffset, StageNameFontSize: StageNameFontSize, minCellWidth: minStageCellWidth, maxCellWidth: maxStageCellWidth, isViewOverCompact: isViewOverCompact)
-                }
-                .frame(maxWidth: maxStageSectionWidth)
+                    HStack {
+//                        GeometryReader { geo in
+                        StageCell(imgFiln: self.rotation.stage_1_filn, stageName: self.rotation.stage_1_name, StageImgOffset: self.StageImgOffset, StageNameFontSize: self.StageNameFontSize, minCellWidth: self.minStageCellWidth, maxCellWidth: self.maxStageCellWidth, isViewOverCompact: self.isViewOverCompact)
+                            .rotation3DEffect(.degrees(4), axis: (x: -0.5, y: -1, z: 0))
+//                            .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).midY - self.parentHeight / 2) / 20), axis: (x: -1, y: 0, z: 0))
+//                        }
+                        Spacer()
+                        
+//                        GeometryReader { geo in
+                        StageCell(imgFiln: self.rotation.stage_2_filn, stageName: self.rotation.stage_2_name, StageImgOffset: self.StageImgOffset, StageNameFontSize: self.StageNameFontSize, minCellWidth: self.minStageCellWidth, maxCellWidth: self.maxStageCellWidth, isViewOverCompact: self.isViewOverCompact)
+                            .rotation3DEffect(.degrees(4), axis: (x: -0.5, y: -1, z: 0))
+//                        .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).midY - self.parentHeight / 2) / 20), axis: (x: -1, y: 0, z: 0))
+//                        }
+                    }
+                    .frame(maxWidth: self.maxStageSectionWidth)
             }
         }
     }

@@ -46,7 +46,7 @@ struct RotationView: View {
                             .pickerStyle(SegmentedPickerStyle())
                             
                             // Rotations
-                            self.renderRotationItemsView(width: geometry.size.width)
+                            self.renderRotationItemsView(width: geometry.size.width, height: geometry.size.height)
                             
                         }
                         .onAppear {
@@ -120,35 +120,35 @@ struct RotationView: View {
         //            .clear
     }
     
-    func renderRotationItemsView(width: CGFloat) -> some View {
+    func renderRotationItemsView(width: CGFloat, height: CGFloat) -> some View {
         
         // All nil cases are trivial since already handled in earlier Views
         
         guard let catalog = self.env.catalog else {
-            return RotationItemsView(rotations: [], width: width)         // nil
+            return RotationItemsView(rotations: [], width: width, height: height)         // nil
         }
         
         switch(self.env.selectedMode) {
             
         case 1:     // ranked
             if let rotationArray = catalog.ranked {
-                return RotationItemsView(rotations: rotationArray, width: width)
+                return RotationItemsView(rotations: rotationArray, width: width, height: height)
             } else {
-                return RotationItemsView(rotations: [], width: width)     // nil
+                return RotationItemsView(rotations: [], width: width, height: height)     // nil
             }
             
         case 2:     // league
             if let rotationArray = catalog.league {
-                return RotationItemsView(rotations: rotationArray, width: width)
+                return RotationItemsView(rotations: rotationArray, width: width, height: height)
             } else {
-                return RotationItemsView(rotations: [], width: width)     // nil
+                return RotationItemsView(rotations: [], width: width, height: height)     // nil
             }
             
         default:    // regular
             if let rotationArray = catalog.regular {
-                return RotationItemsView(rotations: rotationArray, width: width)
+                return RotationItemsView(rotations: rotationArray, width: width, height: height)
             } else {
-                return RotationItemsView(rotations: [], width: width)     // nil
+                return RotationItemsView(rotations: [], width: width, height: height)     // nil
             }
         }
     }

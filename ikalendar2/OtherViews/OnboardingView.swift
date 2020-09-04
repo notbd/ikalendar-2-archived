@@ -22,6 +22,7 @@ struct OnboardingView: View {
                 
                 Spacer()
                 
+                // MARK: Title
                 Text("Welcome Aboard")
                     .font(.system( geometry.size.width > 320 ? .largeTitle : .title, design: .rounded))
                     .fontWeight(.bold)
@@ -29,6 +30,7 @@ struct OnboardingView: View {
                 
                 VStack(spacing: 24) {
                     
+                    // MARK: Content
                     BulletBlockView(title: "Map Schedules",
                                     description: "Check out the stage rotations for your favorite 🦑 game!",
                                     header: {
@@ -103,8 +105,6 @@ struct OnboardingView: View {
                     
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
-//                        self.env.isOnboardingPresented = false
-//                        self.isTempOnboardingPresented = false
                         UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
                     }) {
                         Text("Continue")
@@ -120,13 +120,6 @@ struct OnboardingView: View {
                             .shadow(radius: 6)
                         
                     }
-                    
-//                    .contentShape(Rectangle())
-//                    .onTapGesture {
-//                        self.presentationMode.wrappedValue.dismiss()
-//                        self.env.isOnboardingPresented = false
-//                        UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
-//                    }
                 }
             }
                 

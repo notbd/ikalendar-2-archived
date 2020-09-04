@@ -12,11 +12,12 @@ struct RotationItemsView: View {
     
     var rotations: [Rotation]
     var width: CGFloat
+    var height: CGFloat
     
     var body: some View {
         
         ForEach (0 ..< self.rotations.count, id: \.self) { idx in
-            RotationItem(rotation: self.rotations[idx], index: idx, width: self.width)
+            RotationItem(rotation: self.rotations[idx], index: idx, parentWidth: self.width, parentHeight: self.height)
         }
         
     }
