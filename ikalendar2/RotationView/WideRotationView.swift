@@ -10,7 +10,11 @@ import SwiftUI
 
 struct WideRotationView: View {
     
+    @Environment(\.colorScheme) var colorScheme
+    
     @EnvironmentObject var env: Env
+    
+    @State var isSettingsPresented = false
     
     var body: some View {
         
@@ -58,38 +62,56 @@ struct WideRotationView: View {
             .padding(.trailing, 10)
             .navigationBarTitle("Mode")
             .navigationBarItems(
-                leading:
-                Button(action: {
-                    self.env.isSettingsPresented.toggle()
-                }) {
-                    HStack {
-                        Image(systemName: "gear")
-                            .foregroundColor(.primary)
-                            .font(.system(size: Constants.SETTINGS_GEAR_SIZE, weight: .medium))
-                            .shadow(radius: 5)
-                        Spacer()
-                    }
-                }
-                .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
-                .sheet(isPresented: self.$env.isSettingsPresented) {
-                    SettingsView()
-                        .environmentObject(self.env)
-                },
                 
-                trailing:
+                // MARK: Refresh Button
+                leading:
                 Button(action: {
                     self.env.getRotations()
                 }) {
                     HStack {
-                        Spacer()
-                        
                         Image(systemName: "arrow.2.circlepath.circle")
                             .foregroundColor(.primary)
-                            .font(.system(size: Constants.SETTINGS_GEAR_SIZE, weight: .medium))
+                            .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
                             .shadow(radius: 5)
+                        //                        .border(Color.red)
+                        
                     }
+                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                    .background(
+                        Color(UIColor.systemGray4)
+                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                            .cornerRadius(5)
+                    )
+                    //                    .border(Color.blue)
+                },
+                
+                // MARK: Settings Button
+                trailing:
+                Button(action: {
+                    self.isSettingsPresented.toggle()
+                }) {
+                    HStack {
+                        Image(systemName: "gear")
+                            .foregroundColor(.primary)
+                            .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
+                            .shadow(radius: 5)
+                        //                        .border(Color.red)
+                    }
+                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                    .background(
+                        Color(UIColor.systemGray4)
+                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                            .cornerRadius(5)
+                    )
+                    //                    .border(Color.blue)
                 }
-                .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                .sheet(isPresented: self.$isSettingsPresented) {
+                    SettingsView()
+                        .environmentObject(self.env)
+                }
+                
+                
+                
             )
             
             // MARK: Second Content View
@@ -106,13 +128,30 @@ struct WideRotationView: View {
                 WideRotationItemsView(rotations: getRotationArray(for: self.env.selectedMode))
                     .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
                     .navigationBarItems(
+                        
+                        // MARK: Refresh Button
                         trailing:
-                        Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
-                            .renderingMode(.original)
-                            .resizable()
-                            .scaledToFit()
-                            .shadow(radius: 5)
-                            .frame(width: Constants.MODE_ICON_SIDE)
+                        Button(action: {
+                            self.env.getRotations()
+                        }) {
+                            HStack {
+                                Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .shadow(radius: 5)
+                                    .frame(width: Constants.MODE_ICON_SIDE)
+                                //                        .border(Color.red)
+                            }
+                            .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                            .background(
+                                Color(UIColor.systemGray4)
+                                    .opacity(self.colorScheme == .dark ? 0.3 : 0.15)
+                                    .cornerRadius(5)
+                            )
+                            //                    .border(Color.blue)
+                        }
+                        
                 )
             }
         }

@@ -11,6 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.colorScheme) var colorScheme
     
     @EnvironmentObject var env: Env
     
@@ -44,7 +45,7 @@ struct SettingsView: View {
                     }
                     .sheet(isPresented: self.$isTempOnboardingPresented) {
                         OnboardingView()
-//                            .environmentObject(self.env)
+                        //                            .environmentObject(self.env)
                     }
                     
                     
@@ -116,23 +117,30 @@ struct SettingsView: View {
             .listStyle(GroupedListStyle())
             .navigationBarTitle(Text("Settings"))
             .navigationBarItems(
+                
+                // MARK: NavBar XMark Button
                 trailing:
                 Button(action:{
-                    DispatchQueue.main.async {
-                       self.presentationMode.wrappedValue.dismiss()
-                       self.env.isSettingsPresented = false
-                    }
-                    
+                    self.presentationMode.wrappedValue.dismiss()
                 }) {
                     HStack {
-                        Spacer()
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.primary)
-                            .font(.system(size: Constants.SETTINGS_XMARK_SIZE, weight: .medium))
+                            .font(.system(size: Constants.NAVBAR_XMARK_SIZE, weight: .medium))
                             .shadow(radius: 5)
+                        //                        .border(Color.red)
                     }
+                    
+                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                    .background(
+                        Color(UIColor.systemGray4)
+                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                            .cornerRadius(5)
+                    )
+                    //                    .border(Color.red)
                 }
-                .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                
+                
             )
         }
         .navigationViewStyle(StackNavigationViewStyle())

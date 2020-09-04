@@ -99,7 +99,8 @@ struct OnboardingView: View {
                     }
                     .font(.system(size: 10, design: .serif))
                     
-                    // Dismiss Button
+                    // MARK: Dismiss Button
+                    
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
 //                        self.env.isOnboardingPresented = false
@@ -110,12 +111,14 @@ struct OnboardingView: View {
                             .foregroundColor(.white)
                             .font(.system(.body, design: .rounded))
                             .fontWeight(.semibold)
+                            .background(Color(UIColor.systemOrange))
+                            .cornerRadius(12)
+                            .shadow(radius: 6)
                             .frame(maxWidth:    geometry.size.width > 320 ? 360 : 240)
                             .frame(height:      geometry.size.width > 320 ? 48  : 42)
+                        
                     }
-                    .background(Color(UIColor.systemOrange))
-                    .cornerRadius(12)
-                    .shadow(radius: 6)
+                    
 //                    .contentShape(Rectangle())
 //                    .onTapGesture {
 //                        self.presentationMode.wrappedValue.dismiss()
