@@ -43,6 +43,8 @@ struct WideRotationItemsView: View {
 struct WideRotationItemsView_Previews: PreviewProvider {
     static var previews: some View {
         WideRotationView()
+//            .listStyle(GroupedListStyle())
+            .environment(\.horizontalSizeClass, .regular)
             .environmentObject(Env(isForTest: true))
             .preferredColorScheme(.light)
     }

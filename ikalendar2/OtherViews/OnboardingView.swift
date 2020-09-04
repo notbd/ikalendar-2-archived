@@ -12,7 +12,7 @@ struct OnboardingView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-    @EnvironmentObject var env: Env
+//    @EnvironmentObject var env: Env
     
     var body: some View {
         
@@ -23,7 +23,7 @@ struct OnboardingView: View {
                 Spacer()
                 
                 Text("Welcome Aboard")
-                    .font(.system( geometry.size.width > 350 ? .largeTitle : .title, design: .rounded))
+                    .font(.system( geometry.size.width > 320 ? .largeTitle : .title, design: .rounded))
                     .fontWeight(.bold)
                 
                 
@@ -95,12 +95,17 @@ struct OnboardingView: View {
                         Text("·")
                         Text("Coded by 彼得張 / Peter Zhang")
                             .foregroundColor(.primary)
-                            
+                        
                     }
                     .font(.system(size: 10, design: .serif))
                     
                     // Dismiss Button
-                    Button(action: {}) {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+//                        self.env.isOnboardingPresented = false
+//                        self.isTempOnboardingPresented = false
+//                        UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
+                    }) {
                         Text("Continue")
                             .foregroundColor(.white)
                             .font(.system(.body, design: .rounded))
@@ -108,15 +113,15 @@ struct OnboardingView: View {
                             .frame(maxWidth:    geometry.size.width > 320 ? 360 : 240)
                             .frame(height:      geometry.size.width > 320 ? 48  : 42)
                     }
-                    .buttonStyle(PlainButtonStyle())
                     .background(Color(UIColor.systemOrange))
                     .cornerRadius(12)
                     .shadow(radius: 6)
-                    .onTapGesture {
-                        self.presentationMode.wrappedValue.dismiss()
-                        self.env.isOnboardingPresented = false
-                        UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
-                    }
+//                    .contentShape(Rectangle())
+//                    .onTapGesture {
+//                        self.presentationMode.wrappedValue.dismiss()
+//                        self.env.isOnboardingPresented = false
+//                        UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
+//                    }
                 }
             }
                 

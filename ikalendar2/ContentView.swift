@@ -21,20 +21,22 @@ struct ContentView: View {
             // Compact Size Class
             if horizontalSizeClass == .compact {
                 RotationView()
-//                    .environmentObject(self.env)
+                    .environmentObject(self.env)
                 
             }
                 
                 // Regular Size Class
             else {
                 WideRotationView()
-//                    .environmentObject(self.env)
+                    .environmentObject(self.env)
             }
         }
         .sheet(isPresented: $env.isOnboardingPresented) {
             OnboardingView()
-                .environmentObject(self.env)
+//                .environmentObject(self.env)
         }
+//        .listStyle(GroupedListStyle())
+//        .environment(\.horizontalSizeClass, .regular)
     }
 }
 

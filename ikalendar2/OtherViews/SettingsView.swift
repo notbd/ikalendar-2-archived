@@ -10,6 +10,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     @EnvironmentObject var env: Env
     
     @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
@@ -17,7 +19,7 @@ struct SettingsView: View {
     
     var body: some View {
         NavigationView {
-            Form {
+            List {
                 
                 Section(header: Text("Mode displayed when app launches:")) {
                     
@@ -42,7 +44,7 @@ struct SettingsView: View {
                     }
                     .sheet(isPresented: self.$isTempOnboardingPresented) {
                         OnboardingView()
-                            .environmentObject(self.env)
+//                            .environmentObject(self.env)
                     }
                     
                     
@@ -111,11 +113,13 @@ struct SettingsView: View {
                 }
                 
             }
+            .listStyle(GroupedListStyle())
             .navigationBarTitle(Text("Settings"))
             .navigationBarItems(
                 trailing:
                 Button(action:{
-                    self.env.isSettingsPresented.toggle()
+                    self.presentationMode.wrappedValue.dismiss()
+                    self.env.isSettingsPresented = false
                 }) {
                     HStack {
                         Spacer()
