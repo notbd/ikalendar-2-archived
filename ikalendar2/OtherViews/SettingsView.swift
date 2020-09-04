@@ -118,8 +118,11 @@ struct SettingsView: View {
             .navigationBarItems(
                 trailing:
                 Button(action:{
-                    self.presentationMode.wrappedValue.dismiss()
-                    self.env.isSettingsPresented = false
+                    DispatchQueue.main.async {
+                       self.presentationMode.wrappedValue.dismiss()
+                       self.env.isSettingsPresented = false
+                    }
+                    
                 }) {
                     HStack {
                         Spacer()

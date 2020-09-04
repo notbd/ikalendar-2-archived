@@ -104,7 +104,7 @@ struct OnboardingView: View {
                         self.presentationMode.wrappedValue.dismiss()
 //                        self.env.isOnboardingPresented = false
 //                        self.isTempOnboardingPresented = false
-//                        UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
+                        UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
                     }) {
                         Text("Continue")
                             .foregroundColor(.white)
