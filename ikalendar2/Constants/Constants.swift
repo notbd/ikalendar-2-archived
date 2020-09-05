@@ -42,8 +42,8 @@ struct Constants {
     
     static let MODE_ICON_SIDE: CGFloat          = 24
     
-    static let NAVBAR_XMARK_SIZE: CGFloat       = 21
-    static let NAVBAR_SFSYMBOLS_SIZE: CGFloat   = 21
+    static let NAVBAR_XMARK_SIZE: CGFloat       = 18
+    static let NAVBAR_SFSYMBOLS_SIZE: CGFloat   = 18
     
     
     // MARK: Info Screen Strings
