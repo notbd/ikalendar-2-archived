@@ -19,7 +19,7 @@ struct ContentView: View {
     
     @State private var isGreetingsModalsSetup   = false
     
-    private let refreshOnTheHourTimer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
+    private let refreshTimer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
     
     var body: some View {
         
@@ -37,15 +37,17 @@ struct ContentView: View {
                     .environmentObject(self.env)
             }
         }
-        .onReceive(refreshOnTheHourTimer) { _ in
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = NSLocale.current
-            dateFormatter.dateFormat = "mmss"
-            let curr_time_str = dateFormatter.string(from: Date())
-            let curr_time_int = Int(curr_time_str) ?? -1
+        .onReceive(refreshTimer) { _ in
             
-            if (curr_time_int == 0) {
-                self.env.getRotations()
+            // refresh if env.nextRefreshTime not nil and currTime past nextRefreshTime
+            guard let nextRefreshTime = self.env.nextRefreshTime else {
+                return
+            }
+            let currTime = Date()
+            if currTime >= nextRefreshTime {
+                DispatchQueue.main.async {
+                    self.env.getRotations()
+                }
             }
         }
         .onAppear {

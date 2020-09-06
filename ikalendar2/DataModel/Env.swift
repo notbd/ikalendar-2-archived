@@ -16,6 +16,8 @@ class Env: ObservableObject {
     @Published var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
     @Published var isSettingsPresented = false
     
+    var nextRefreshTime: Date?
+    
     enum loadingStatusType {
         case loading
         case loaded
@@ -87,8 +89,9 @@ class Env: ObservableObject {
                 let fetched_catalog = try decoder.decode(RotationCatalog.self, from:data!)
                 
                 DispatchQueue.main.async {
-                    self.loadingStatus = .loaded
                     self.catalog = fetched_catalog
+                    self.nextRefreshTime = Date(timeIntervalSince1970: (self.catalog?.ranked![0].end_time)!)
+                    self.loadingStatus = .loaded
                 }
                 
             }

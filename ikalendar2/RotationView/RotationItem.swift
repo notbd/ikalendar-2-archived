@@ -27,7 +27,7 @@ struct RotationItem: View {
     var StageNameFontSize: CGFloat              { 10 }
     
     // min/max Widths
-    var maxRuleImgWidth: CGFloat                { 38 }
+    var maxRuleImgWidth: CGFloat                { 40 }
     var maxRuleImgWidth_compact: CGFloat        { 34 }
     
     var maxStageSectionWidth: CGFloat           { parentWidth * 0.6 }
@@ -36,7 +36,7 @@ struct RotationItem: View {
     var RuleSectionOffset: CGFloat              { -8 }
     var RuleSectionOffset_compact: CGFloat      { -8 }
     
-    var RuleImgOffset: CGFloat                  { 6 }
+    var RuleImgOffset: CGFloat                  { 8 }
     var RuleImgOffset_compact: CGFloat          { 10 }
     
     var StageImgOffset: CGFloat                 { 6 }
@@ -104,21 +104,21 @@ struct RotationItem: View {
                 Spacer()
                 
                 // Stage Section
-                    HStack {
-                        Spacer()
-//                        GeometryReader { geo in
-                        StageCell(imgFiln: self.rotation.stage_1_filn, stageName: self.rotation.stage_1_name, StageImgOffset: self.StageImgOffset, StageNameFontSize: self.StageNameFontSize, minCellWidth: self.minStageCellWidth, maxCellWidth: self.maxStageCellWidth, isViewOverCompact: self.isViewOverCompact)
-//                            .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).midY - self.parentHeight / 2) / 20), axis: (x: -1, y: 0, z: 0))
-//                        }
-                        Spacer()
-                        
-//                        GeometryReader { geo in
-                        StageCell(imgFiln: self.rotation.stage_2_filn, stageName: self.rotation.stage_2_name, StageImgOffset: self.StageImgOffset, StageNameFontSize: self.StageNameFontSize, minCellWidth: self.minStageCellWidth, maxCellWidth: self.maxStageCellWidth, isViewOverCompact: self.isViewOverCompact)
-//                        .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).midY - self.parentHeight / 2) / 20), axis: (x: -1, y: 0, z: 0))
-//                        }
-                        Spacer()
-                    }
-                    .frame(maxWidth: self.maxStageSectionWidth)
+                HStack {
+                    Spacer()
+                    //                        GeometryReader { geo in
+                    StageCell(imgFiln: self.rotation.stage_1_filn, stageName: self.rotation.stage_1_name, StageImgOffset: self.StageImgOffset, StageNameFontSize: self.StageNameFontSize, minCellWidth: self.minStageCellWidth, maxCellWidth: self.maxStageCellWidth, isViewOverCompact: self.isViewOverCompact)
+                    //                            .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).midY - self.parentHeight / 2) / 20), axis: (x: -1, y: 0, z: 0))
+                    //                        }
+                    Spacer()
+                    
+                    //                        GeometryReader { geo in
+                    StageCell(imgFiln: self.rotation.stage_2_filn, stageName: self.rotation.stage_2_name, StageImgOffset: self.StageImgOffset, StageNameFontSize: self.StageNameFontSize, minCellWidth: self.minStageCellWidth, maxCellWidth: self.maxStageCellWidth, isViewOverCompact: self.isViewOverCompact)
+                    //                        .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).midY - self.parentHeight / 2) / 20), axis: (x: -1, y: 0, z: 0))
+                    //                        }
+                    Spacer()
+                }
+                .frame(maxWidth: self.maxStageSectionWidth)
                 .rotation3DEffect(.degrees(7), axis: (x: 0, y: -1, z: 0))
             }
         }
@@ -182,7 +182,7 @@ struct StageCell: View {
                 }
                 .frame(maxWidth: maxCellWidth)
             }
-            
+                
             // Normal StageCell
             else {
                 VStack(alignment: .trailing) {

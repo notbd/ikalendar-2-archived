@@ -34,7 +34,7 @@ struct Constants {
     
     // MARK: Extra Headers
     
-    static let EXTRA_HEADERS = ["NOW:", "NEXT:", "FUTURE:"]
+    static let EXTRA_HEADERS = ["NOW:", "NEXT:"]
     
     
     // MARK: Other UI Parameters
