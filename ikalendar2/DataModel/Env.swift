@@ -13,10 +13,8 @@ class Env: ObservableObject {
     @Published var catalog: RotationCatalog?
     @Published var loadingStatus: loadingStatusType
     
-    @Published var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
+    @Published var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
     @Published var isSettingsPresented = false
-    
-    @Published var isOnboardingPresented = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
     
     enum loadingStatusType {
         case loading

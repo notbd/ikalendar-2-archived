@@ -15,7 +15,7 @@ struct SettingsView: View {
     
     @EnvironmentObject var env: Env
     
-    @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
+    @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
     @State var isTempOnboardingPresented = false
     
     var body: some View {
@@ -147,7 +147,7 @@ struct SettingsView: View {
     }
     
     func saveDefaultMode() {
-        UserDefaults.standard.set(self.settingsDefaultMode, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE)
+        UserDefaults.standard.set(self.settingsDefaultMode, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
     }
 }
 

@@ -12,8 +12,6 @@ struct OnboardingView: View {
     
     @Environment(\.presentationMode) var presentationMode
     
-//    @EnvironmentObject var env: Env
-    
     var body: some View {
         
         GeometryReader { geometry in
@@ -105,7 +103,6 @@ struct OnboardingView: View {
                     
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
-                        UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH)
                     }) {
                         Text("Continue")
                             .foregroundColor(.white)

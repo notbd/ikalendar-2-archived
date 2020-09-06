@@ -14,6 +14,11 @@ struct ContentView: View {
     
     @EnvironmentObject var env: Env
     
+    @State private var isOnboardingPresented    = false
+    @State private var isWhatsNewPresented      = false
+    
+    @State private var isGreetingsModalsSetup   = false
+    
     var body: some View {
         
         Group {
@@ -22,21 +27,52 @@ struct ContentView: View {
             if horizontalSizeClass == .compact {
                 RotationView()
                     .environmentObject(self.env)
-                
             }
                 
-                // Regular Size Class
+            // Regular Size Class
             else {
                 WideRotationView()
                     .environmentObject(self.env)
             }
         }
-        .sheet(isPresented: $env.isOnboardingPresented) {
-            OnboardingView()
-//                .environmentObject(self.env)
+        .onAppear {
+            self.greetingsModalsSetup()
         }
-//        .listStyle(GroupedListStyle())
-//        .environment(\.horizontalSizeClass, .regular)
+        .sheet(isPresented: $isOnboardingPresented) {
+            OnboardingView()
+            //                .environmentObject(self.env)
+        }
+        
+        //        .listStyle(GroupedListStyle())
+        //        .environment(\.horizontalSizeClass, .regular)
+    }
+    
+    func greetingsModalsSetup() {
+        if !isGreetingsModalsSetup {
+            isGreetingsModalsSetup = true
+            
+            // Setup onboarding presenting and userdefaults->isFirstLaunch
+            let isFirstLaunch    = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL)
+            isOnboardingPresented = isFirstLaunch
+            if isFirstLaunch {
+                UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL)
+            }
+            
+            // Setup whatsnew presenting and userdefaults->lastVersion
+            let lastVersion     = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KEY_LASTVERSION_STRING)
+            let currentVersion  = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+            var isNewVersion: Bool {
+                if lastVersion != nil && currentVersion != nil {
+                    return currentVersion! > lastVersion!
+                } else {
+                    return false
+                }
+            }
+            isWhatsNewPresented = isNewVersion
+            if isNewVersion {
+                UserDefaults.standard.set(currentVersion, forKey: Constants.USERDEFAULTS_KEY_LASTVERSION_STRING)
+            }
+        }
     }
 }
 

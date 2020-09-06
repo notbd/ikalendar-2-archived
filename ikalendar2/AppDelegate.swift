@@ -8,21 +8,6 @@
 
 import UIKit
 
-@propertyWrapper
-struct MyUserDefaults<T> {
-    let key: String
-    let defaultValue: T
-    
-    var wrappedValue: T {
-        get {
-            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: key)
-        }
-    }
-}
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -31,9 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // MARK: Register UserDefaults
         
-        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_DEFAULTMODE:   1])
-        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH: true])
-        
+        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT:   1])
+        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL: true])
+        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_LASTVERSION_STRING: "2.1.0"])
         
         // MARK: Set NavBar Font to SF Pro Rounded
 

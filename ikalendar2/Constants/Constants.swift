@@ -13,8 +13,9 @@ struct Constants {
     
     // MARK: UserDefaults Keys
     
-    static let USERDEFAULTS_KEY_DEFAULTMODE     = "defaultMode"
-    static let USERDEFAULTS_KEY_ISFIRSTLAUNCH   = "isFirstLaunch"
+    static let USERDEFAULTS_KEY_DEFAULTMODE_INT     = "defaultMode"
+    static let USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL  = "isFirstLaunch"
+    static let USERDEFAULTS_KEY_LASTVERSION_STRING  = "lastVersion"
     
     
     // MARK: Data URLs
