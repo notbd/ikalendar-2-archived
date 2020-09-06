@@ -24,20 +24,20 @@ class Env: ObservableObject {
     
     // Starting Application Env
     init() {
-        self.loadingStatus = loadingStatusType.loading
+        self.loadingStatus = .loading
         self.catalog = RotationCatalog()
         self.getRotations()
     }
     
     // dummy Env for testing
     init(isForTest: Bool) {
-        self.loadingStatus = loadingStatusType.loaded
+        self.loadingStatus = .loaded
         self.catalog = RotationCatalog(isForTest: true)
     }
     
     func getRotations() {
         
-        self.loadingStatus = loadingStatusType.loading
+        self.loadingStatus = .loading
         
         // Create a URL object
         let url = URL(string: Constants.ROTATIONS_URL)
@@ -46,7 +46,7 @@ class Env: ObservableObject {
             dump("error: url invalid")
             
             DispatchQueue.main.async {
-                self.loadingStatus = loadingStatusType.failure
+                self.loadingStatus = .failure
             }
             
             return // handle error
@@ -63,7 +63,7 @@ class Env: ObservableObject {
                 dump("error: empty data fetched")
                 
                 DispatchQueue.main.async {
-                    self.loadingStatus = loadingStatusType.failure
+                    self.loadingStatus = .failure
                 }
                 
                 return
@@ -73,7 +73,7 @@ class Env: ObservableObject {
                 dump("error: \(String(describing: error))")
                 
                 DispatchQueue.main.async {
-                    self.loadingStatus = loadingStatusType.failure
+                    self.loadingStatus = .failure
                 }
                 
                 return // handle error
@@ -87,7 +87,7 @@ class Env: ObservableObject {
                 let fetched_catalog = try decoder.decode(RotationCatalog.self, from:data!)
                 
                 DispatchQueue.main.async {
-                    self.loadingStatus = loadingStatusType.loaded
+                    self.loadingStatus = .loaded
                     self.catalog = fetched_catalog
                 }
                 
@@ -97,7 +97,7 @@ class Env: ObservableObject {
                 dump("data fetch error")
                 
                 DispatchQueue.main.async {
-                    self.loadingStatus = loadingStatusType.failure
+                    self.loadingStatus = .failure
                 }
             }
             

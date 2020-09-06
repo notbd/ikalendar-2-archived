@@ -49,9 +49,6 @@ struct RotationView: View {
                             self.renderRotationItemsView(width: geometry.size.width, height: geometry.size.height)
                             
                         }
-                        .onAppear {
-                            self.changeSectionHeaderBackgroundColor()
-                        }
                     }
                 }
                 .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
@@ -61,8 +58,6 @@ struct RotationView: View {
                     leading:
                     Button(action: {
                         self.env.getRotations()
-                        self.navigationViewID = UUID()
-//                        self.changeSectionHeaderBackgroundColor()
                     }) {
                         HStack {
                             Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
@@ -80,6 +75,13 @@ struct RotationView: View {
                                 .cornerRadius(5)
                         )
 //                            .border(Color.blue)
+                    }
+                        // force go to top when env data change, to deal with the SwiftUI NavView bug
+                    .onReceive(self.env.objectWillChange) { _ in
+                        self.navigationViewID = UUID()
+                    }
+                    .onAppear {
+                        self.changeSectionHeaderBackgroundColor()
                     }
                     ,
                     
@@ -107,7 +109,8 @@ struct RotationView: View {
                         SettingsView().environmentObject(self.env)
                     }
                 )
-            }.id(self.navigationViewID)
+            }
+                .id(self.navigationViewID)
         }
         
     }
