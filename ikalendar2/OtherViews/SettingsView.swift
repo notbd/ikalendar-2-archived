@@ -16,14 +16,18 @@ struct SettingsView: View {
     @EnvironmentObject var env: Env
     
     @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
-    @State var isTempOnboardingPresented = false
     
     var body: some View {
         NavigationView {
             List {
                 
-                Section(header: Text("Mode displayed when app launches:")) {
-                    
+                Section(
+                    header:
+                    SettingsHeaderSizedText {
+                        Text("Mode displayed when app launches:")
+                    }
+                        .padding(.top))
+                {
                     Picker("Default Mode: ", selection: $settingsDefaultMode) {
                         ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
                             Text(Constants.MODE_SHORT_NAME[index])
@@ -36,83 +40,99 @@ struct SettingsView: View {
                     }
                 }
                 
-                Section(header: Text("Other options:")) {
-                    Button(action: {
-                        self.isTempOnboardingPresented.toggle()
-                    }) {
-                        Text("Show Onboarding Screen")
-                            .foregroundColor(.primary)
+                Section() {
+                    NavigationLink(destination: OtherOptionsView()) {
+                        SettingsBodySizedText {
+                            Text("Other Options")
+                        }
                     }
-                    .sheet(isPresented: self.$isTempOnboardingPresented) {
-                        OnboardingView()
-                        //                            .environmentObject(self.env)
-                    }
-                    
-                    
-                    
                 }
                 
                 Section(
-                    header: Text("Acknowledgement"),
-                    footer: Text(Constants.COPYRIGHT_INFO)
-                        .font(.caption))
+                    header:
+                    SettingsHeaderSizedText {
+                        Text("Acknowledgement")
+                    }
+                    ,footer:
+                    SettingsFooterSizedText {
+                        Text(Constants.COPYRIGHT_INFO)
+                    }
+                    )
                 {
                     Button(action: {
                         UIApplication.shared.open(URL(string: Constants.SPLATOON_WEBSITE_URL)!)
                     }) {
-                        HStack {
-                            Text("Splatoon™ 2").foregroundColor(.primary)
-                            Spacer()
-                            Text("Official Website").foregroundColor(.secondary)
-                            Image(systemName: "globe").foregroundColor(.secondary)
+                        SettingsBodySizedText {
+                            HStack {
+                                Text("Splatoon™ 2").foregroundColor(.primary)
+                                Spacer()
+                                Text("Official Website").foregroundColor(.secondary)
+                                Image(systemName: "globe").foregroundColor(.secondary)
+                            }
                         }
-                        
                     }
                     
                     Button(action: {
                         UIApplication.shared.open(URL(string: Constants.SPL_INK_REPO_URL)!)
                     }) {
-                        HStack {
-                            Text("Data Source").foregroundColor(.primary)
-                            Spacer()
-                            Text("splatoon2.ink").foregroundColor(.secondary)
-                            Image(systemName: "map.fill").foregroundColor(.secondary)
+                        SettingsBodySizedText {
+                            HStack {
+                                Text("Data Source").foregroundColor(.primary)
+                                Spacer()
+                                Text("splatoon2.ink").foregroundColor(.secondary)
+                                Image(systemName: "map.fill").foregroundColor(.secondary)
+                            }
                         }
-                        
                     }
                 }
                 
-                Section(header: Text("About"),
-                        footer: Text(Constants.VERSION_INFO)
-                            .font(.caption))
+                Section(
+                    header:
+                    SettingsHeaderSizedText {
+                        Text("About")
+                    }
+                    ,footer:
+                    SettingsFooterSizedText {
+                        Text(Constants.VERSION_INFO)
+                    }
+                    )
                 {
-                    Button( action: { UIApplication.shared.open(URL(string: Constants.AUTHOR_GITHUB_URL)!) } ) {
-                        HStack {
-                            Text("Github").foregroundColor(.primary)
-                            Spacer()
-                            Text("@\(Constants.AUTHOR_GITHUB_HANDLE)").foregroundColor(.secondary)
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: Constants.AUTHOR_GITHUB_URL)!)
+                    }) {
+                        SettingsBodySizedText {
+                            HStack {
+                                Text("Github").foregroundColor(.primary)
+                                Spacer()
+                                Text("@\(Constants.AUTHOR_GITHUB_HANDLE)").foregroundColor(.secondary)
+                            }
                         }
                     }
                     
-                    Button( action: { UIApplication.shared.open(URL(string: Constants.AUTHOR_TWITTER_URL)!) } ) {
-                        HStack {
-                            Text("Twitter").foregroundColor(.primary)
-                            Spacer()
-                            Text("@\(Constants.AUTHOR_TWITTER_HANDLE)").foregroundColor(.secondary)
-                            
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: Constants.AUTHOR_TWITTER_URL)!)
+                    }) {
+                        SettingsBodySizedText {
+                            HStack {
+                                Text("Twitter").foregroundColor(.primary)
+                                Spacer()
+                                Text("@\(Constants.AUTHOR_TWITTER_HANDLE)").foregroundColor(.secondary)
+                            }
                         }
                     }
                     
-                    Button( action: { UIApplication.shared.open(URL(string: Constants.AUTHOR_EMAIL_URL)!) } ) {
-                        HStack {
-                            Text("Feedback via Email").foregroundColor(.primary)
-                            Spacer()
-                            Image(systemName: "exclamationmark.bubble.fill").foregroundColor(.secondary)
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: Constants.AUTHOR_EMAIL_URL)!)
+                    }) {
+                        SettingsBodySizedText {
+                            HStack {
+                                Text("Feedback via Email").foregroundColor(.primary)
+                                Spacer()
+                                Image(systemName: "exclamationmark.bubble.fill").foregroundColor(.secondary)
+                            }
                         }
                     }
-                    
                 }
-                
             }
             .listStyle(GroupedListStyle())
             .navigationBarTitle(Text("Settings"))
@@ -128,7 +148,6 @@ struct SettingsView: View {
                             .foregroundColor(.primary)
                             .font(.system(size: Constants.NAVBAR_XMARK_SIZE, weight: .medium))
                             .shadow(radius: 5)
-                        //                        .border(Color.red)
                     }
                     
                     .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
@@ -137,12 +156,12 @@ struct SettingsView: View {
                             .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
                             .cornerRadius(5)
                     )
-                    //                    .border(Color.red)
                 }
                 
                 
             )
         }
+        .accentColor(.secondary)
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
@@ -156,5 +175,6 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView()
             .environmentObject(Env(isForTest: true))
             .environment(\.colorScheme, .dark)
+//            .environment(\.sizeCategory, .extraSmall)
     }
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Tianwei Zhang. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 @UIApplicationMain
@@ -53,6 +54,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITableView.appearance().separatorStyle = .none
 //        UITableView.appearance().backgroundColor = .clear
 //        UITableViewCell.appearance().backgroundColor = .clear
+        
+        // MARK: Config Segment Picker Text Style
+        
+        let pickerFontSize: CGFloat = 13
+        
+        let systemPickerSelectedFont    = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        let systemPickerNormalFont      = UIFont.systemFont(ofSize: 14, weight: .regular)
+        
+        let pickerSelectedFont, pickerNormalFont: UIFont
+
+        if let descriptor = systemPickerSelectedFont.fontDescriptor.withDesign(.rounded) {
+            pickerSelectedFont = UIFont(descriptor: descriptor, size: pickerFontSize)
+        } else {
+            pickerSelectedFont = systemPickerSelectedFont
+        }
+
+        if let descriptor = systemPickerNormalFont.fontDescriptor.withDesign(.rounded) {
+            pickerNormalFont = UIFont(descriptor: descriptor, size: pickerFontSize)
+        } else {
+            pickerNormalFont = systemPickerNormalFont
+        }
+        
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: pickerSelectedFont],   for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: pickerNormalFont],     for: .normal)
         
         return true
     }

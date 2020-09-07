@@ -19,7 +19,7 @@ struct ContentView: View {
     
     @State private var isGreetingsModalsSetup   = false
     
-    private let refreshTimer = Timer.publish(every: 1, tolerance: 0.5, on: .main, in: .common).autoconnect()
+    private let refreshTimer = Timer.publish(every: 6, tolerance: 0.5, on: .main, in: .common).autoconnect()
     
     var body: some View {
         

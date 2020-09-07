@@ -12,6 +12,8 @@
 		794D8DD42491B2610096768B /* RotationCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794D8DD32491B2610096768B /* RotationCatalog.swift */; };
 		7960440E24F6E949008328E4 /* InfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960440D24F6E949008328E4 /* InfoScreenView.swift */; };
 		7970E3EC25006FA7008312C5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7970E3EB25006FA7008312C5 /* OnboardingView.swift */; };
+		79A2620C25059ABC00396B6A /* OtherOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A2620B25059ABC00396B6A /* OtherOptionsView.swift */; };
+		79A2620E2505BA1500396B6A /* MyCustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A2620D2505BA1500396B6A /* MyCustomText.swift */; };
 		79B06B1E24FD7F7200957C30 /* WideRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B1D24FD7F7200957C30 /* WideRotationView.swift */; };
 		79B06B2024FD7F8800957C30 /* WideRotationItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B1F24FD7F8800957C30 /* WideRotationItemsView.swift */; };
 		79B06B2224FD91F700957C30 /* WideRotationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B2124FD91F700957C30 /* WideRotationItem.swift */; };
@@ -35,6 +37,8 @@
 		794D8DD32491B2610096768B /* RotationCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationCatalog.swift; sourceTree = "<group>"; };
 		7960440D24F6E949008328E4 /* InfoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenView.swift; sourceTree = "<group>"; };
 		7970E3EB25006FA7008312C5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		79A2620B25059ABC00396B6A /* OtherOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherOptionsView.swift; sourceTree = "<group>"; };
+		79A2620D2505BA1500396B6A /* MyCustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomText.swift; sourceTree = "<group>"; };
 		79B06B1D24FD7F7200957C30 /* WideRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationView.swift; sourceTree = "<group>"; };
 		79B06B1F24FD7F8800957C30 /* WideRotationItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationItemsView.swift; sourceTree = "<group>"; };
 		79B06B2124FD91F700957C30 /* WideRotationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationItem.swift; sourceTree = "<group>"; };
@@ -99,7 +103,9 @@
 			children = (
 				7960440D24F6E949008328E4 /* InfoScreenView.swift */,
 				79F84621246781EB0086AD95 /* SettingsView.swift */,
+				79A2620B25059ABC00396B6A /* OtherOptionsView.swift */,
 				7970E3EB25006FA7008312C5 /* OnboardingView.swift */,
+				79A2620D2505BA1500396B6A /* MyCustomText.swift */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";
@@ -236,7 +242,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				79F84622246781EB0086AD95 /* SettingsView.swift in Sources */,
+				79A2620E2505BA1500396B6A /* MyCustomText.swift in Sources */,
 				79F846242468DAB50086AD95 /* Env.swift in Sources */,
+				79A2620C25059ABC00396B6A /* OtherOptionsView.swift in Sources */,
 				79F84620246781D40086AD95 /* RotationView.swift in Sources */,
 				7970E3EC25006FA7008312C5 /* OnboardingView.swift in Sources */,
 				79F84609246767E90086AD95 /* AppDelegate.swift in Sources */,

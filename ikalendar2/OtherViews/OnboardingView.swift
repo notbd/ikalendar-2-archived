@@ -65,8 +65,8 @@ struct OnboardingView: View {
                                            yAxisConstant: 1)
                     })
                     
-                    BulletBlockView(title: "Cross-iOS-Platform",
-                                    description: "iPhone & iPad or Mac, pick your favorite device and start the jam wherever you like.",
+                    BulletBlockView(title: "iOS Universal",
+                                    description: "Works on your all your favorite devices with a tailored design for iPadOS.",
                                     header: {
                                         Image(systemName: "guitars")
                                             .font(.largeTitle)
