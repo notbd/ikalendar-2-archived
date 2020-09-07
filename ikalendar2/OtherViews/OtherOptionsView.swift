@@ -11,7 +11,9 @@ import SwiftUI
 struct OtherOptionsView: View {
     
     @State var isTempOnboardingPresented = false
+    
     @State private var isColorSchemeAutomatic = true
+    @State private var darkModeToggleModel = DarkModeToggleModel()
     
     var body: some View {
         Form {
@@ -24,9 +26,14 @@ struct OtherOptionsView: View {
 //                .padding(.top, 32)
 //                )
 //            {
-//                Toggle(isOn: $isColorSchemeAutomatic) {
+////                Toggle(isOn: $isColorSchemeAutomatic) {
+////                    SettingsBodySizedText {
+////                        Text("跟随系统")
+////                    }
+////                }
+//                Toggle(isOn: $darkModeToggleModel.isDark) {
 //                    SettingsBodySizedText {
-//                        Text("跟随系统")
+//                        Text("Turn on dark mode")
 //                    }
 //                }
 //            }
@@ -71,6 +78,14 @@ struct OtherOptionsView: View {
             }
         }
         .navigationBarTitle("Other Options", displayMode: .inline)
+    }
+}
+
+struct DarkModeToggleModel {
+    var isDark: Bool = true {
+        didSet {
+            SceneDelegate.shared?.window!.overrideUserInterfaceStyle = isDark ? .dark : .light
+        }
     }
 }
 

@@ -106,7 +106,8 @@ struct RotationView: View {
 //                            .border(Color.blue)
                     }
                     .sheet(isPresented: self.$isSettingsPresented) {
-                        SettingsView().environmentObject(self.env)
+                        SettingsView()
+                            .environmentObject(self.env)
                     }
                 )
             }
