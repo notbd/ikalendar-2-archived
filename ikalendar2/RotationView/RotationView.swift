@@ -66,7 +66,6 @@ struct RotationView: View {
                                 .scaledToFit()
                                 .shadow(radius: 5)
                                 .frame(width: Constants.MODE_ICON_SIDE)
-//                                .border(Color.red)
                         }
                         .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                         .background(
@@ -74,7 +73,6 @@ struct RotationView: View {
                                 .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
                                 .cornerRadius(5)
                         )
-//                            .border(Color.blue)
                     }
                         // force go to top when env data change, to deal with the SwiftUI NavView bug
                     .onReceive(self.env.objectWillChange) { _ in
@@ -88,14 +86,13 @@ struct RotationView: View {
                     // MARK: Settings Button
                     trailing:
                     Button(action: {
-                        self.isSettingsPresented.toggle()
+                        self.env.isSettingsPresented = true
                     }) {
                         HStack {
                             Image(systemName: "gear")
                                 .foregroundColor(.primary)
                                 .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
                                 .shadow(radius: 5)
-//                                .border(Color.red)
                         }
                         .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                         .background(
@@ -103,9 +100,8 @@ struct RotationView: View {
                                 .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
                                 .cornerRadius(5)
                         )
-//                            .border(Color.blue)
                     }
-                    .sheet(isPresented: self.$isSettingsPresented) {
+                    .sheet(isPresented: self.$env.isSettingsPresented) {
                         SettingsView()
                             .environmentObject(self.env)
                     }

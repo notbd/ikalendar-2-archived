@@ -72,7 +72,6 @@ struct WideRotationView: View {
                             .foregroundColor(.primary)
                             .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
                             .shadow(radius: 5)
-                        //                        .border(Color.red)
                         
                     }
                     .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
@@ -81,20 +80,18 @@ struct WideRotationView: View {
                             .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
                             .cornerRadius(5)
                     )
-                    //                    .border(Color.blue)
                 },
                 
                 // MARK: Settings Button
                 trailing:
                 Button(action: {
-                    self.isSettingsPresented.toggle()
+                    self.env.isSettingsPresented = true
                 }) {
                     HStack {
                         Image(systemName: "gear")
                             .foregroundColor(.primary)
                             .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
                             .shadow(radius: 5)
-                        //                        .border(Color.red)
                     }
                     .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                     .background(
@@ -102,9 +99,8 @@ struct WideRotationView: View {
                             .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
                             .cornerRadius(5)
                     )
-                    //                    .border(Color.blue)
                 }
-                .sheet(isPresented: self.$isSettingsPresented) {
+                .sheet(isPresented: self.$env.isSettingsPresented) {
                     SettingsView()
                         .environmentObject(self.env)
                 }

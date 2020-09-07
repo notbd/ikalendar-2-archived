@@ -10,10 +10,13 @@ import SwiftUI
 
 struct OtherOptionsView: View {
     
-    @State var isTempOnboardingPresented = false
+    @EnvironmentObject var env: Env
     
-    @State private var isColorSchemeAutomatic = true
-    @State private var darkModeToggleModel = DarkModeToggleModel()
+    @State var isTempOnboardingPresented = false
+    @State var isAutoRefreshEnabled = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
+    
+//    @State private var isColorSchemeAutomatic = true
+//    @State private var darkModeToggleModel = DarkModeToggleModel()
     
     var body: some View {
         Form {
@@ -37,6 +40,33 @@ struct OtherOptionsView: View {
 //                    }
 //                }
 //            }
+            
+            Section(
+                header:
+                SettingsHeaderSizedText {
+                    Text("Data Refreshing")
+                }
+                .padding(.top, 32)
+                ,
+                footer:
+                SettingsFooterSizedText {
+                    Text(   """
+                            • When auto-refresh is on, data will keep being updated to the latest rotation schedule
+                            • There might be a slight delay due to the data api restriction
+                            • You can always manually refresh by tapping the mode icon
+                            """)
+                }
+                )
+            {
+                Toggle(isOn: self.$env.isAutoRefreshEnabled) {
+                    SettingsBodySizedText {
+                        Text("Auto Refresh")
+                    }
+                }
+//                .onReceive([isAutoRefreshEnabled].publisher.first()) { value in
+//                    self.saveIsAutoRefreshEnabled()
+//                }
+            }
             
             Section(
                 header:
@@ -79,6 +109,12 @@ struct OtherOptionsView: View {
         }
         .navigationBarTitle("Other Options", displayMode: .inline)
     }
+    
+//    func saveIsAutoRefreshEnabled() {
+//        DispatchQueue.main.async {
+//            UserDefaults.standard.set(self.isAutoRefreshEnabled, forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
+//        }
+//    }
 }
 
 struct DarkModeToggleModel {

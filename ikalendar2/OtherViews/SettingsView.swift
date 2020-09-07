@@ -15,33 +15,37 @@ struct SettingsView: View {
     
     @EnvironmentObject var env: Env
     
-    @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
+//    @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
     
     var body: some View {
         NavigationView {
-            List {
+            Form {
                 
                 Section(
                     header:
                     SettingsHeaderSizedText {
                         Text("Mode displayed when app launches:")
                     }
-                        .padding(.top))
+                        .padding(.top)
+                    )
                 {
-                    Picker("Default Mode: ", selection: $settingsDefaultMode) {
+                    Picker("Default Mode: ", selection: self.$env.defaultLaunchMode) {
                         ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
                             Text(Constants.MODE_SHORT_NAME[index])
                                 .tag(index)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-                    .onReceive([self.settingsDefaultMode].publisher.first()) { value in
-                        self.saveDefaultMode()
-                    }
+//                    .onReceive([self.settingsDefaultMode].publisher.first()) { value in
+//                        self.saveDefaultMode()
+//                    }
                 }
                 
                 Section() {
-                    NavigationLink(destination: OtherOptionsView()) {
+                    NavigationLink(destination:
+                    OtherOptionsView()
+//                        .environmentObject(self.env)
+                    ) {
                         SettingsBodySizedText {
                             Text("Other Options")
                         }
@@ -134,40 +138,39 @@ struct SettingsView: View {
                     }
                 }
             }
-            .listStyle(GroupedListStyle())
+//            .listStyle(GroupedListStyle())
             .navigationBarTitle(Text("Settings"))
-            .navigationBarItems(
-                
-                // MARK: NavBar XMark Button
-                trailing:
-                Button(action:{
-                    self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    HStack {
-                        Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.primary)
-                            .font(.system(size: Constants.NAVBAR_XMARK_SIZE, weight: .medium))
-                            .shadow(radius: 5)
-                    }
-                    
-                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
-                    .background(
-                        Color(UIColor.systemGray4)
-                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
-                            .cornerRadius(5)
-                    )
-                }
-                
-                
-            )
+//            .navigationBarItems(
+//                
+//                // MARK: NavBar XMark Button
+//                trailing:
+//                Button(action:{
+//                    self.presentationMode.wrappedValue.dismiss()
+////                    self.env.isSettingsPresented.toggle()
+//                }) {
+//                    HStack {
+//                        Image(systemName: "xmark.circle.fill")
+//                            .foregroundColor(.primary)
+//                            .font(.system(size: Constants.NAVBAR_XMARK_SIZE, weight: .medium))
+//                            .shadow(radius: 5)
+//                    }
+//                    
+//                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+//                    .background(
+//                        Color(UIColor.systemGray4)
+//                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+//                            .cornerRadius(5)
+//                    )
+//                }
+//            )
         }
         .accentColor(.secondary)
         .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    func saveDefaultMode() {
-        UserDefaults.standard.set(self.settingsDefaultMode, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
-    }
+//    func saveDefaultMode() {
+//        UserDefaults.standard.set(self.settingsDefaultMode, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
+//    }
 }
 
 struct SettingsView_Previews: PreviewProvider {

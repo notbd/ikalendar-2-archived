@@ -39,6 +39,10 @@ struct ContentView: View {
         }
         .onReceive(refreshTimer) { _ in
             
+            if !self.env.isAutoRefreshEnabled {
+                return
+            }
+            
             // refresh if env.nextRefreshTime not nil and currTime past nextRefreshTime
             guard let nextRefreshTime = self.env.nextRefreshTime else {
                 return

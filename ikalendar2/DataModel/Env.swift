@@ -16,6 +16,20 @@ class Env: ObservableObject {
     @Published var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
     @Published var isSettingsPresented = false
     
+    @Published var defaultLaunchMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
+    {
+        willSet {
+            UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
+        }
+    }
+    
+    @Published var isAutoRefreshEnabled: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
+    {
+        willSet {
+            UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
+        }
+    }
+    
     var nextRefreshTime: Date?
     
     enum loadingStatusType {
