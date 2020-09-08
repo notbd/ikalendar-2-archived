@@ -23,10 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // for dark mode switch
         Self.shared = self
         
-        let myEnv = Env()
         // Create the SwiftUI view that provides the window contents.
         let contentView = ContentView()
-            .environmentObject(myEnv)
+            .environmentObject(Env())
+            .environmentObject(SelectedModeEnv())
         
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

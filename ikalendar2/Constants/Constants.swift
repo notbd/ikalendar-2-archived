@@ -30,7 +30,7 @@ struct Constants {
     static let MODE_SHORT_NAME      = ["Regular",           "Ranked",           "League"]
     static let MODE_TITLE           = ["Regular Battle",    "Ranked Battle",    "League Battle"]
     static let MODE_IMG_FILN        = ["turf_small",        "ranked_small",     "league_small"]
-    static let MODE_IMG_FILN_MID    = ["turf_mid",          "ranked_mid",       "league_mid"]
+    static let MODE_IMG_FILN_ONBOARD    = ["turf_small",          "ranked_small",       "league_small"]
     
     
     // MARK: Extra Headers

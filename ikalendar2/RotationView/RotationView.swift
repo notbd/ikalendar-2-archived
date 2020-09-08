@@ -11,11 +11,12 @@ import UIKit
 
 struct RotationView: View {
     
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     
-    @EnvironmentObject var env: Env
+    @EnvironmentObject private var env: Env
+    @EnvironmentObject private var selectedModeEnv: SelectedModeEnv
     
-    @State var isSettingsPresented = false
+    @State private var isSettingsPresented = false
     
     // Use to re-render NavigationView in order to force go to top
     @State private var navigationViewID = UUID()
@@ -37,7 +38,7 @@ struct RotationView: View {
                         List {
                             
                             // Mode Picker
-                            Picker("Mode", selection: self.$env.selectedMode) {
+                            Picker("Mode", selection: self.$selectedModeEnv.selectedMode) {
                                 ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
                                     Text(Constants.MODE_SHORT_NAME[index])
                                         .tag(index)
@@ -51,7 +52,7 @@ struct RotationView: View {
                         }
                     }
                 }
-                .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
+                .navigationBarTitle(Text(Constants.MODE_TITLE[self.selectedModeEnv.selectedMode]))
                 .navigationBarItems(
                     
                     // MARK: Refresh Button
@@ -60,7 +61,7 @@ struct RotationView: View {
                         self.env.getRotations()
                     }) {
                         HStack {
-                            Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
+                            Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
                                 .renderingMode(.original)
                                 .resizable()
                                 .scaledToFit()
@@ -74,9 +75,10 @@ struct RotationView: View {
                                 .cornerRadius(5)
                         )
                     }
-                        // force go to top when env data change, to deal with the SwiftUI NavView bug
+                    // force go to top when env data change, to deal with the SwiftUI NavView bug
                     .onReceive(self.env.objectWillChange) { _ in
                         self.navigationViewID = UUID()
+                        self.changeSectionHeaderBackgroundColor()
                     }
                     .onAppear {
                         self.changeSectionHeaderBackgroundColor()
@@ -86,7 +88,7 @@ struct RotationView: View {
                     // MARK: Settings Button
                     trailing:
                     Button(action: {
-                        self.env.isSettingsPresented = true
+                        self.isSettingsPresented = true
                     }) {
                         HStack {
                             Image(systemName: "gear")
@@ -101,23 +103,25 @@ struct RotationView: View {
                                 .cornerRadius(5)
                         )
                     }
-                    .sheet(isPresented: self.$env.isSettingsPresented) {
+                    .sheet(isPresented:
+                        self.$isSettingsPresented
+                    ) {
                         SettingsView()
                             .environmentObject(self.env)
                     }
                 )
             }
-                .id(self.navigationViewID)
+            .id(self.navigationViewID)
         }
         
     }
     
     func changeSectionHeaderBackgroundColor() {
-            UITableViewHeaderFooterView.appearance().tintColor =
+        UITableViewHeaderFooterView.appearance().tintColor =
 //            colorScheme == .dark ? UIColor.black : UIColor.white
-                colorScheme == .dark ? UIColor.systemGray4.withAlphaComponent(0.5) : UIColor.systemGray4.withAlphaComponent(0.5)
-//                    UIColor.systemGray4.withAlphaComponent(0.6)
-        //            .clear
+            colorScheme == .dark ? UIColor.systemGray4.withAlphaComponent(0.5) : UIColor.systemGray4.withAlphaComponent(0.5)
+//            UIColor.systemGray4.withAlphaComponent(0.6)
+//            .clear
     }
     
     func renderRotationItemsView(width: CGFloat, height: CGFloat) -> some View {
@@ -128,7 +132,7 @@ struct RotationView: View {
             return RotationItemsView(rotations: [], width: width, height: height)         // nil
         }
         
-        switch(self.env.selectedMode) {
+        switch(self.selectedModeEnv.selectedMode) {
             
         case 1:     // ranked
             if let rotationArray = catalog.ranked {

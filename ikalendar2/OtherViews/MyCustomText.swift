@@ -60,7 +60,7 @@ struct MyCustomText_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(Env(isForTest: true))
-//            .environment(\.colorScheme, .dark)
+            .environment(\.colorScheme, .dark)
 //            .environment(\.sizeCategory, .extraSmall)
     }
 }

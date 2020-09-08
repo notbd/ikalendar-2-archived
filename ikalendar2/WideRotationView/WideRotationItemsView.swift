@@ -11,7 +11,8 @@ import SwiftUI
 struct WideRotationItemsView: View {
     
     var rotations: [Rotation]
-    var singlePaddingConstant: CGFloat = 0.08
+    
+    private let singlePaddingConstant: CGFloat = 0.08
     
     var body: some View {
         GeometryReader { geometry in
@@ -43,7 +44,6 @@ struct WideRotationItemsView: View {
 struct WideRotationItemsView_Previews: PreviewProvider {
     static var previews: some View {
         WideRotationView()
-//            .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .environmentObject(Env(isForTest: true))
             .preferredColorScheme(.light)

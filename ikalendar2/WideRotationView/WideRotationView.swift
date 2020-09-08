@@ -10,11 +10,12 @@ import SwiftUI
 
 struct WideRotationView: View {
     
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     
-    @EnvironmentObject var env: Env
+    @EnvironmentObject private var env: Env
+    @EnvironmentObject private var selectedModeEnv: SelectedModeEnv
     
-    @State var isSettingsPresented = false
+    @State private var isSettingsPresented = false
     
     var body: some View {
         
@@ -28,7 +29,7 @@ struct WideRotationView: View {
                     
                     HStack {
                         Button(action: {
-                            self.env.selectedMode = idx
+                            self.selectedModeEnv.selectedMode = idx
                         }) {
                             HStack(spacing: 16) {
                                 Image(Constants.MODE_IMG_FILN[idx])
@@ -39,7 +40,6 @@ struct WideRotationView: View {
                                     .frame(width: Constants.MODE_ICON_SIDE)
                                 
                                 Text(Constants.MODE_TITLE[idx])
-                                    //                                    .font(.system(.title, design: .rounded))
                                     .font(.system(size: 24, weight: .semibold, design: .rounded))
                                     .fontWeight(.semibold)
                                 Spacer()
@@ -47,7 +47,7 @@ struct WideRotationView: View {
                             .padding()
                             .offset(x: -10)
                             .foregroundColor(.primary)
-                            .background(self.env.selectedMode == idx ? Color(UIColor.systemGray4) : .clear)
+                            .background(self.selectedModeEnv.selectedMode == idx ? Color(UIColor.systemGray4) : .clear)
                             .cornerRadius(10)
                         }
                         .animation(.spring())
@@ -100,7 +100,9 @@ struct WideRotationView: View {
                             .cornerRadius(5)
                     )
                 }
-                .sheet(isPresented: self.$env.isSettingsPresented) {
+                .sheet(isPresented:
+                    self.$env.isSettingsPresented
+                ) {
                     SettingsView()
                         .environmentObject(self.env)
                 }
@@ -120,8 +122,8 @@ struct WideRotationView: View {
                     .navigationBarTitle(Text("Error"))
                 
             } else {
-                WideRotationItemsView(rotations: getRotationArray(for: self.env.selectedMode))
-                    .navigationBarTitle(Text(Constants.MODE_TITLE[self.env.selectedMode]))
+                WideRotationItemsView(rotations: getRotationArray(for: self.selectedModeEnv.selectedMode))
+                    .navigationBarTitle(Text(Constants.MODE_TITLE[self.selectedModeEnv.selectedMode]))
                     .navigationBarItems(
                         
                         // MARK: Mode Icon Refresh Button
@@ -130,13 +132,12 @@ struct WideRotationView: View {
                             self.env.getRotations()
                         }) {
                             HStack {
-                                Image(Constants.MODE_IMG_FILN[self.env.selectedMode])
+                                Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
                                     .renderingMode(.original)
                                     .resizable()
                                     .scaledToFit()
                                     .shadow(radius: 5)
                                     .frame(width: Constants.MODE_ICON_SIDE)
-                                //                        .border(Color.red)
                             }
                             .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                             .background(
@@ -144,13 +145,12 @@ struct WideRotationView: View {
                                     .opacity(self.colorScheme == .dark ? 0.3 : 0.15)
                                     .cornerRadius(5)
                             )
-                            //                    .border(Color.blue)
                         }
                         
                 )
             }
         }
-//        .navigationViewStyle(StackNavigationViewStyle())
+        //        .navigationViewStyle(StackNavigationViewStyle())
         
     }
     

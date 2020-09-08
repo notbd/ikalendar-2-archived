@@ -13,7 +13,6 @@ struct OtherOptionsView: View {
     @EnvironmentObject var env: Env
     
     @State var isTempOnboardingPresented = false
-    @State var isAutoRefreshEnabled = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
     
 //    @State private var isColorSchemeAutomatic = true
 //    @State private var darkModeToggleModel = DarkModeToggleModel()
@@ -63,9 +62,6 @@ struct OtherOptionsView: View {
                         Text("Auto Refresh")
                     }
                 }
-//                .onReceive([isAutoRefreshEnabled].publisher.first()) { value in
-//                    self.saveIsAutoRefreshEnabled()
-//                }
             }
             
             Section(
@@ -109,21 +105,15 @@ struct OtherOptionsView: View {
         }
         .navigationBarTitle("Other Options", displayMode: .inline)
     }
-    
-//    func saveIsAutoRefreshEnabled() {
-//        DispatchQueue.main.async {
-//            UserDefaults.standard.set(self.isAutoRefreshEnabled, forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
-//        }
-//    }
 }
 
-struct DarkModeToggleModel {
-    var isDark: Bool = true {
-        didSet {
-            SceneDelegate.shared?.window!.overrideUserInterfaceStyle = isDark ? .dark : .light
-        }
-    }
-}
+//struct DarkModeToggleModel {
+//    var isDark: Bool = true {
+//        didSet {
+//            SceneDelegate.shared?.window!.overrideUserInterfaceStyle = isDark ? .dark : .light
+//        }
+//    }
+//}
 
 struct OtherOptionsView_Previews: PreviewProvider {
     static var previews: some View {

@@ -75,7 +75,7 @@ extension Rotation: Decodable {
         case name
         case key
     }
-    
+
     init (from decoder: Decoder) throws {
         
         // Main container

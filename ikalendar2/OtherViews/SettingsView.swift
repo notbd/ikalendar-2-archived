@@ -15,11 +15,11 @@ struct SettingsView: View {
     
     @EnvironmentObject var env: Env
     
-//    @State private var settingsDefaultMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
+//    @Binding var isSettingsPresented: Bool
     
     var body: some View {
         NavigationView {
-            Form {
+            List {
                 
                 Section(
                     header:
@@ -36,9 +36,6 @@ struct SettingsView: View {
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
-//                    .onReceive([self.settingsDefaultMode].publisher.first()) { value in
-//                        self.saveDefaultMode()
-//                    }
                 }
                 
                 Section() {
@@ -138,40 +135,49 @@ struct SettingsView: View {
                     }
                 }
             }
-//            .listStyle(GroupedListStyle())
+            .listStyle(GroupedListStyle())
             .navigationBarTitle(Text("Settings"))
-//            .navigationBarItems(
-//                
-//                // MARK: NavBar XMark Button
-//                trailing:
-//                Button(action:{
-//                    self.presentationMode.wrappedValue.dismiss()
-////                    self.env.isSettingsPresented.toggle()
-//                }) {
-//                    HStack {
-//                        Image(systemName: "xmark.circle.fill")
-//                            .foregroundColor(.primary)
-//                            .font(.system(size: Constants.NAVBAR_XMARK_SIZE, weight: .medium))
-//                            .shadow(radius: 5)
-//                    }
-//                    
-//                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
-//                    .background(
-//                        Color(UIColor.systemGray4)
-//                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
-//                            .cornerRadius(5)
-//                    )
-//                }
-//            )
+            .navigationBarItems(
+                
+                // MARK: NavBar XMark Button
+                trailing:
+                Button(action:{
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.primary)
+                            .font(.system(size: Constants.NAVBAR_XMARK_SIZE, weight: .medium))
+                            .shadow(radius: 5)
+                    }
+                    
+                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                    .background(
+                        Color(UIColor.systemGray4)
+                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                            .cornerRadius(5)
+                    )
+                }
+            )
         }
         .accentColor(.secondary)
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
-//    func saveDefaultMode() {
-//        UserDefaults.standard.set(self.settingsDefaultMode, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
-//    }
 }
+
+//struct StatefulPreviewWrapper<Value, Content: View>: View {
+//    @State var value: Value
+//    var content: (Binding<Value>) -> Content
+//
+//    var body: some View {
+//        content($value)
+//    }
+//
+//    init(_ value: Value, content: @escaping (Binding<Value>) -> Content) {
+//        self._value = State(wrappedValue: value)
+//        self.content = content
+//    }
+//}
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {

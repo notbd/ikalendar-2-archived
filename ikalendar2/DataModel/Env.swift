@@ -8,22 +8,21 @@
 
 import Foundation
 
-class Env: ObservableObject {
+final class Env: ObservableObject {
     
     @Published var catalog: RotationCatalog?
     @Published var loadingStatus: loadingStatusType
     
-    @Published var selectedMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
     @Published var isSettingsPresented = false
     
-    @Published var defaultLaunchMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
+    var defaultLaunchMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
     {
         willSet {
             UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
         }
     }
     
-    @Published var isAutoRefreshEnabled: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
+    var isAutoRefreshEnabled: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
     {
         willSet {
             UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)

@@ -10,9 +10,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     
-    @EnvironmentObject var env: Env
+    @EnvironmentObject private var env: Env
+    @EnvironmentObject private var selectedModeEnv: SelectedModeEnv
     
     @State private var isOnboardingPresented    = false
     @State private var isWhatsNewPresented      = false
@@ -28,13 +29,11 @@ struct ContentView: View {
             // Compact Size Class
             if horizontalSizeClass == .compact {
                 RotationView()
-                    .environmentObject(self.env)
             }
                 
             // Regular Size Class
             else {
                 WideRotationView()
-                    .environmentObject(self.env)
             }
         }
         .onReceive(refreshTimer) { _ in
@@ -60,16 +59,13 @@ struct ContentView: View {
         .sheet(isPresented: $isOnboardingPresented) {
             OnboardingView()
         }
-        
-        //        .listStyle(GroupedListStyle())
-        //        .environment(\.horizontalSizeClass, .regular)
     }
     
     func greetingsModalsSetup() {
         if !isGreetingsModalsSetup {
             isGreetingsModalsSetup = true
             
-            // Setup onboarding presenting and userdefaults->isFirstLaunch
+            // Setup onboarding presenting and UserDefaults->isFirstLaunch
             let isFirstLaunch    = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL)
             isOnboardingPresented = isFirstLaunch
             if isFirstLaunch {
