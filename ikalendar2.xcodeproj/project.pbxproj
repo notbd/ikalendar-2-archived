@@ -13,6 +13,9 @@
 		7960440E24F6E949008328E4 /* InfoScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960440D24F6E949008328E4 /* InfoScreenView.swift */; };
 		7970E3EC25006FA7008312C5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7970E3EB25006FA7008312C5 /* OnboardingView.swift */; };
 		7981C28A25070DD80043EF89 /* SelectedModeEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981C28925070DD80043EF89 /* SelectedModeEnv.swift */; };
+		7981C28D250759700043EF89 /* MyHaptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981C28C250759700043EF89 /* MyHaptics.swift */; };
+		7981C28F250767FB0043EF89 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981C28E250767FB0043EF89 /* Extensions.swift */; };
+		7981C2912507953F0043EF89 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7981C2902507953F0043EF89 /* LoadingAnimation.swift */; };
 		79A2620C25059ABC00396B6A /* OtherOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A2620B25059ABC00396B6A /* OtherOptionsView.swift */; };
 		79A2620E2505BA1500396B6A /* MyCustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A2620D2505BA1500396B6A /* MyCustomText.swift */; };
 		79B06B1E24FD7F7200957C30 /* WideRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B1D24FD7F7200957C30 /* WideRotationView.swift */; };
@@ -39,6 +42,9 @@
 		7960440D24F6E949008328E4 /* InfoScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoScreenView.swift; sourceTree = "<group>"; };
 		7970E3EB25006FA7008312C5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7981C28925070DD80043EF89 /* SelectedModeEnv.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedModeEnv.swift; sourceTree = "<group>"; };
+		7981C28C250759700043EF89 /* MyHaptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHaptics.swift; sourceTree = "<group>"; };
+		7981C28E250767FB0043EF89 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7981C2902507953F0043EF89 /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		79A2620B25059ABC00396B6A /* OtherOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherOptionsView.swift; sourceTree = "<group>"; };
 		79A2620D2505BA1500396B6A /* MyCustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomText.swift; sourceTree = "<group>"; };
 		79B06B1D24FD7F7200957C30 /* WideRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationView.swift; sourceTree = "<group>"; };
@@ -80,6 +86,17 @@
 			path = WideRotationView;
 			sourceTree = "<group>";
 		};
+		7981C28B2507591F0043EF89 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				79A2620D2505BA1500396B6A /* MyCustomText.swift */,
+				7981C28C250759700043EF89 /* MyHaptics.swift */,
+				7981C28E250767FB0043EF89 /* Extensions.swift */,
+				7981C2902507953F0043EF89 /* LoadingAnimation.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
 		79B06B1624FD7C5100957C30 /* RotationView */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +125,6 @@
 				79F84621246781EB0086AD95 /* SettingsView.swift */,
 				79A2620B25059ABC00396B6A /* OtherOptionsView.swift */,
 				7970E3EB25006FA7008312C5 /* OnboardingView.swift */,
-				79A2620D2505BA1500396B6A /* MyCustomText.swift */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";
@@ -160,6 +176,7 @@
 				7925B171250205500018399C /* WideRotationView */,
 				79B06B1824FD7C7100957C30 /* OtherViews */,
 				79B06B1724FD7C5B00957C30 /* DataModel */,
+				7981C28B2507591F0043EF89 /* General */,
 				79B06B1A24FD7CD500957C30 /* Constants */,
 			);
 			path = ikalendar2;
@@ -244,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7981C28D250759700043EF89 /* MyHaptics.swift in Sources */,
 				79F84622246781EB0086AD95 /* SettingsView.swift in Sources */,
 				79A2620E2505BA1500396B6A /* MyCustomText.swift in Sources */,
 				79F846242468DAB50086AD95 /* Env.swift in Sources */,
@@ -256,9 +274,11 @@
 				79F8460B246767E90086AD95 /* SceneDelegate.swift in Sources */,
 				79B06B2224FD91F700957C30 /* WideRotationItem.swift in Sources */,
 				79F846262468DAF50086AD95 /* RotationModel.swift in Sources */,
+				7981C28F250767FB0043EF89 /* Extensions.swift in Sources */,
 				79B06B2024FD7F8800957C30 /* WideRotationItemsView.swift in Sources */,
 				794D8DD42491B2610096768B /* RotationCatalog.swift in Sources */,
 				79F8460D246767E90086AD95 /* ContentView.swift in Sources */,
+				7981C2912507953F0043EF89 /* LoadingAnimation.swift in Sources */,
 				79B06B1E24FD7F7200957C30 /* WideRotationView.swift in Sources */,
 				794D8DD224900F5E0096768B /* Constants.swift in Sources */,
 				79459A8724F1847100C90BA4 /* RotationItemsView.swift in Sources */,

@@ -21,7 +21,7 @@ struct WideRotationView: View {
         
         NavigationView {
             
-            // MARK: First Navigation View
+            // MARK: - First Navigation View
             
             VStack {
                 
@@ -65,7 +65,8 @@ struct WideRotationView: View {
                 // MARK: SFSymbol Refresh Button
                 leading:
                 Button(action: {
-                    self.env.getRotations()
+                    simpleHapticLight()
+                    self.env.loadRotations()
                 }) {
                     HStack {
                         Image(systemName: "arrow.2.circlepath.circle.fill")
@@ -85,6 +86,7 @@ struct WideRotationView: View {
                 // MARK: Settings Button
                 trailing:
                 Button(action: {
+                    simpleHapticLight()
                     self.env.isSettingsPresented = true
                 }) {
                     HStack {
@@ -111,7 +113,7 @@ struct WideRotationView: View {
                 
             )
             
-            // MARK: Second Content View
+            // MARK: - Second Content View
             
             if env.loadingStatus == .loading {
                 InfoScreenView()
@@ -129,7 +131,8 @@ struct WideRotationView: View {
                         // MARK: Mode Icon Refresh Button
                         trailing:
                         Button(action: {
-                            self.env.getRotations()
+                            simpleHapticLight()
+                            self.env.loadRotations()
                         }) {
                             HStack {
                                 Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
@@ -150,8 +153,6 @@ struct WideRotationView: View {
                 )
             }
         }
-        //        .navigationViewStyle(StackNavigationViewStyle())
-        
     }
     
     func getRotationArray(for modeIndex: Int) -> [Rotation] {

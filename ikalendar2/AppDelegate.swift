@@ -18,9 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MARK: - Register UserDefaults
         
         UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT:   1])
+        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL: true])
+        
         UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL: true])
         UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_LASTVERSION_STRING: "2.1.0"])
-        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL: true])
+        
         
         // MARK: - Set NavBar Font to SF Pro Rounded
         

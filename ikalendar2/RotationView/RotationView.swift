@@ -29,7 +29,7 @@ struct RotationView: View {
                 
                 Group {
                     
-                    if self.env.loadingStatus != .loaded {
+                    if self.env.loadingStatus == .loading || self.env.loadingStatus == .failure {
                         InfoScreenView()
                     }
                         
@@ -38,7 +38,7 @@ struct RotationView: View {
                         List {
                             
                             // Mode Picker
-                            Picker("Mode", selection: self.$selectedModeEnv.selectedMode) {
+                            Picker("Mode", selection: self.$selectedModeEnv.selectedMode.myAddActionOnChange(simpleHapticLight)) {
                                 ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
                                     Text(Constants.MODE_SHORT_NAME[index])
                                         .tag(index)
@@ -57,37 +57,46 @@ struct RotationView: View {
                     
                     // MARK: Refresh Button
                     leading:
-                    Button(action: {
-                        self.env.getRotations()
-                    }) {
-                        HStack {
-                            Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
-                                .renderingMode(.original)
-                                .resizable()
-                                .scaledToFit()
-                                .shadow(radius: 5)
-                                .frame(width: Constants.MODE_ICON_SIDE)
+                    HStack {
+                        Button(action: {
+                            simpleHapticLight()
+                            self.env.loadRotations()
+                        }) {
+                            HStack {
+                                Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .shadow(radius: 5)
+                                    .frame(width: Constants.MODE_ICON_SIDE)
+                            }
+                            .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                            .background(
+                                Color(UIColor.systemGray4)
+                                    .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                                    .cornerRadius(5)
+                            )
                         }
-                        .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
-                        .background(
-                            Color(UIColor.systemGray4)
-                                .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
-                                .cornerRadius(5)
-                        )
-                    }
-                    // force go to top when env data change, to deal with the SwiftUI NavView bug
-                    .onReceive(self.env.objectWillChange) { _ in
-                        self.navigationViewID = UUID()
-                        self.changeSectionHeaderBackgroundColor()
-                    }
-                    .onAppear {
-                        self.changeSectionHeaderBackgroundColor()
+                        // force go to top when env data change, to deal with the SwiftUI NavView bug
+                        .onReceive(self.env.objectWillChange) { _ in
+                            self.navigationViewID = UUID()
+                            self.changeSectionHeaderBackgroundColor()
+                        }
+                        .onAppear {
+                            self.changeSectionHeaderBackgroundColor()
+                        }
+                        
+                        // MARK: Auto Refresh Indicator
+                        if self.env.loadingStatus == .duringAutoRefresh {
+                            Image(systemName: "ellipsis")
+                        }
                     }
                     ,
                     
                     // MARK: Settings Button
                     trailing:
                     Button(action: {
+                        simpleHapticLight()
                         self.isSettingsPresented = true
                     }) {
                         HStack {

@@ -20,7 +20,7 @@ struct ContentView: View {
     
     @State private var isGreetingsModalsSetup   = false
     
-    private let refreshTimer = Timer.publish(every: 6, tolerance: 0.5, on: .main, in: .common).autoconnect()
+    private let refreshTimer = Timer.publish(every: 10, tolerance: 0.5, on: .main, in: .common).autoconnect()
     
     var body: some View {
         
@@ -37,21 +37,27 @@ struct ContentView: View {
             }
         }
         .onReceive(refreshTimer) { _ in
+
+            // if auto-refresh disabled or at during-autoRefresh/failure state
+            if !self.env.isAutoRefreshEnabled || self.env.loadingStatus == .duringAutoRefresh ||  self.env.loadingStatus == .failure { return }
+
+//            // TEST
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "mmss"
+//            let currTimeStr = dateFormatter.string(from: Date())
+//
+//            if currTimeStr > "0000" {
+//                self.env.startAutoRefresh()
+//            }
             
-            if !self.env.isAutoRefreshEnabled {
-                return
-            }
-            
-            // refresh if env.nextRefreshTime not nil and currTime past nextRefreshTime
-            guard let nextRefreshTime = self.env.nextRefreshTime else {
-                return
-            }
+            // RUN: refresh if env.nextRefreshTime not nil and currTime past nextRefreshTime
+            guard let currRotationEndTime = self.env.currRotationEndTime else { return }
+            print("check 10s timer")
             let currTime = Date()
-            if currTime >= nextRefreshTime {
-                DispatchQueue.main.async {
-                    self.env.getRotations()
-                }
+            if currTime >= currRotationEndTime {
+                self.env.startAutoRefresh()
             }
+            
         }
         .onAppear {
             self.greetingsModalsSetup()

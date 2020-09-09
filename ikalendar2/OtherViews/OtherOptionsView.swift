@@ -12,7 +12,9 @@ struct OtherOptionsView: View {
     
     @EnvironmentObject var env: Env
     
-    @State var isTempOnboardingPresented = false
+    @State private var isTempOnboardingPresented = false
+    
+    @State private var autoRefreshNoteStatus: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
     
 //    @State private var isColorSchemeAutomatic = true
 //    @State private var darkModeToggleModel = DarkModeToggleModel()
@@ -48,18 +50,20 @@ struct OtherOptionsView: View {
                 .padding(.top, 32)
                 ,
                 footer:
-                SettingsFooterSizedText {
-                    Text(   """
-                            • When auto-refresh is on, data will keep being updated to the latest rotation schedule
-                            • There might be a slight delay due to the data api restriction
-                            • You can always manually refresh by tapping the mode icon
-                            """)
+                VStack(alignment: .leading) {
+                    SettingsFooterSizedText {
+                        Text(self.autoRefreshNoteStatus ? Constants.DATA_REFRESH_INFO_PART1_ON : Constants.DATA_REFRESH_INFO_PART1_OFF)
+                    }
+                    .padding(.bottom, 5)
+                    SettingsTinySizedText {
+                        Text(self.autoRefreshNoteStatus ? Constants.DATA_REFRESH_INFO_PART2_ON : Constants.DATA_REFRESH_INFO_PART2_OFF)
+                    }
                 }
                 )
             {
-                Toggle(isOn: self.$env.isAutoRefreshEnabled) {
+                Toggle(isOn: self.$env.isAutoRefreshEnabled.myAddActionOnChange(toggleAutoRefreshNoteStatus)) {
                     SettingsBodySizedText {
-                        Text("Auto Refresh")
+                        Text("Smart Refresh")
                     }
                 }
             }
@@ -72,7 +76,8 @@ struct OtherOptionsView: View {
                 )
             {
                 Button(action: {
-                    self.isTempOnboardingPresented.toggle()
+                    simpleHapticLight()
+                    self.isTempOnboardingPresented = true
                 }) {
                     SettingsBodySizedText {
                         Text("Onboarding Intro")
@@ -104,6 +109,11 @@ struct OtherOptionsView: View {
             }
         }
         .navigationBarTitle("Other Options", displayMode: .inline)
+    }
+    
+    func toggleAutoRefreshNoteStatus() {
+        autoRefreshNoteStatus.toggle()
+        print(autoRefreshNoteStatus)
     }
 }
 

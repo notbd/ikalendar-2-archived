@@ -82,8 +82,8 @@ struct Constants {
      
     static let COPYRIGHT_INFO =
     """
-    • Splatoon™ 2 is a trademark of Nintendo®.
-    • ikalendar2 is an unofficial companion app for Splatoon 2, and is not affiliated or associated with Nintendo. All item names, logos and trademarks are property of their respective owners.
+    ※  Splatoon™ 2 is a trademark of Nintendo®.
+    ※  ikalendar2 is an unofficial companion app for Splatoon 2, and is not affiliated or associated with Nintendo. All item names, logos and trademarks are property of their respective owners.
 
     """
     
@@ -91,6 +91,28 @@ struct Constants {
     """
     ikalendar2  v\(appVersion ?? "?")
     Copyright © 2020 Peter Zhang
+    """
+    
+    
+    static let DATA_REFRESH_INFO_PART1_ON =
+    """
+    Always try to keep the data updated to the latest schedule.
+    """
+    
+    static let DATA_REFRESH_INFO_PART2_ON =
+    """
+    ※ There might be a slight delay due to the data api restriction
+    ※ You can manually refresh by tapping the mode icon
+    """
+    
+    static let DATA_REFRESH_INFO_PART1_OFF =
+    """
+    Only update data by manually refresh.
+    """
+    
+    static let DATA_REFRESH_INFO_PART2_OFF =
+    """
+    ※ You can manually refresh by tapping the mode icon
     """
     
 }

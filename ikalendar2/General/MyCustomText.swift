@@ -56,6 +56,22 @@ struct SettingsFooterSizedText<Content: View>: View {
     }
 }
 
+struct SettingsTinySizedText<Content: View>: View {
+    
+    let content: Content
+    
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        Group {
+            content
+        }
+        .font(.system(size: 10, weight: .regular, design: .rounded))
+    }
+}
+
 struct MyCustomText_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()

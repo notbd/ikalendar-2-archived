@@ -15,8 +15,6 @@ struct SettingsView: View {
     
     @EnvironmentObject var env: Env
     
-//    @Binding var isSettingsPresented: Bool
-    
     var body: some View {
         NavigationView {
             List {
@@ -29,7 +27,8 @@ struct SettingsView: View {
                         .padding(.top)
                     )
                 {
-                    Picker("Default Mode: ", selection: self.$env.defaultLaunchMode) {
+                    // MARK: Default Mode Picker
+                    Picker("Default Mode: ", selection: self.$env.defaultLaunchMode.myAddActionOnChange(simpleHapticLight)) {
                         ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
                             Text(Constants.MODE_SHORT_NAME[index])
                                 .tag(index)
@@ -38,15 +37,16 @@ struct SettingsView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 
-                Section() {
-                    NavigationLink(destination:
-                    OtherOptionsView()
-//                        .environmentObject(self.env)
+                Section {
+                    NavigationLink(
+                        destination:
+                        OtherOptionsView()
                     ) {
                         SettingsBodySizedText {
                             Text("Other Options")
                         }
                     }
+                    
                 }
                 
                 Section(
@@ -55,13 +55,19 @@ struct SettingsView: View {
                         Text("Acknowledgement")
                     }
                     ,footer:
-                    SettingsFooterSizedText {
+                    SettingsTinySizedText {
                         Text(Constants.COPYRIGHT_INFO)
                     }
                     )
                 {
                     Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.SPLATOON_WEBSITE_URL)!)
+                        simpleHapticLight()
+                        
+                        if let url = URL(string: Constants.SPLATOON_WEBSITE_URL) {
+                            UIApplication.shared.open(url)
+                        } else {
+                            simpleHapticError()
+                        }
                     }) {
                         SettingsBodySizedText {
                             HStack {
@@ -74,7 +80,13 @@ struct SettingsView: View {
                     }
                     
                     Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.SPL_INK_REPO_URL)!)
+                        simpleHapticLight()
+                        
+                        if let url = URL(string: Constants.SPL_INK_REPO_URL) {
+                            UIApplication.shared.open(url)
+                        } else {
+                            simpleHapticError()
+                        }
                     }) {
                         SettingsBodySizedText {
                             HStack {
@@ -99,7 +111,13 @@ struct SettingsView: View {
                     )
                 {
                     Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.AUTHOR_GITHUB_URL)!)
+                        simpleHapticLight()
+                        
+                        if let url = URL(string: Constants.AUTHOR_GITHUB_URL) {
+                            UIApplication.shared.open(url)
+                        } else {
+                            simpleHapticError()
+                        }
                     }) {
                         SettingsBodySizedText {
                             HStack {
@@ -111,7 +129,13 @@ struct SettingsView: View {
                     }
                     
                     Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.AUTHOR_TWITTER_URL)!)
+                        simpleHapticLight()
+                        
+                        if let url = URL(string: Constants.AUTHOR_TWITTER_URL) {
+                            UIApplication.shared.open(url)
+                        } else {
+                            simpleHapticError()
+                        }
                     }) {
                         SettingsBodySizedText {
                             HStack {
@@ -123,7 +147,13 @@ struct SettingsView: View {
                     }
                     
                     Button(action: {
-                        UIApplication.shared.open(URL(string: Constants.AUTHOR_EMAIL_URL)!)
+                        simpleHapticLight()
+                        
+                        if let url = URL(string: Constants.AUTHOR_EMAIL_URL) {
+                            UIApplication.shared.open(url)
+                        } else {
+                            simpleHapticError()
+                        }
                     }) {
                         SettingsBodySizedText {
                             HStack {
@@ -142,6 +172,7 @@ struct SettingsView: View {
                 // MARK: NavBar XMark Button
                 trailing:
                 Button(action:{
+                    simpleHapticWarning()
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     HStack {
