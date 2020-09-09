@@ -52,7 +52,6 @@ struct ContentView: View {
             
             // RUN: refresh if env.nextRefreshTime not nil and currTime past nextRefreshTime
             guard let currRotationEndTime = self.env.currRotationEndTime else { return }
-            print("check 10s timer")
             let currTime = Date()
             if currTime >= currRotationEndTime {
                 self.env.startAutoRefresh()

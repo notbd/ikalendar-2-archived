@@ -172,7 +172,7 @@ struct SettingsView: View {
                 // MARK: NavBar XMark Button
                 trailing:
                 Button(action:{
-                    simpleHapticWarning()
+                    simpleHapticLight()
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     HStack {
