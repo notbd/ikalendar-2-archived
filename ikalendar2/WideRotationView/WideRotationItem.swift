@@ -138,7 +138,6 @@ struct StageNameLabel: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(width: 125, height: 25)
                 .cornerRadius(6)
                 .foregroundColor(.black)
                 .opacity(0.75)
@@ -147,7 +146,10 @@ struct StageNameLabel: View {
                 .shadow(radius: 10)
                 .font(.custom("Splatoon2", size: self.StageNameFontSize))
                 .foregroundColor(.white)
+                .padding(.leading, 8)
+                .padding(.trailing, 8)
         }
+        .fixedSize()
     }
 }
 

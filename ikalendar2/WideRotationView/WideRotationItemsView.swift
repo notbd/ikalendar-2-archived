@@ -15,8 +15,8 @@ struct WideRotationItemsView: View {
     private let singlePaddingConstant: CGFloat = 0.08
     
     var body: some View {
+        
         GeometryReader { geometry in
-            
             ScrollView {
                 VStack(spacing: 30) {
                     ForEach (0 ..< self.rotations.count, id: \.self) { idx in

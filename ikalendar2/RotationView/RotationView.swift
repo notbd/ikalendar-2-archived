@@ -19,91 +19,54 @@ struct RotationView: View {
     @State private var isSettingsPresented = false
     
     // Use to re-render NavigationView in order to force go to top
-    @State private var navigationViewID = UUID()
+//    @State private var navigationViewID = UUID()
     
     var body: some View {
-        
-        GeometryReader { geometry in
             
-            NavigationView {
+        GeometryReader { geometry in
                 
-                Group {
+            Group {
+                
+                if self.env.loadingStatus == .loading || self.env.loadingStatus == .failure {
+                    InfoScreenView()
+                }
                     
-                    if self.env.loadingStatus == .loading || self.env.loadingStatus == .failure {
-                        InfoScreenView()
-                    }
+                else {
+                    
+                    List {
                         
-                    else {
-                        
-                        List {
-                            
-                            // Mode Picker
-                            Picker("Mode", selection: self.$selectedModeEnv.selectedMode.myAddActionOnChange(simpleHapticLight)) {
-                                ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
-                                    Text(Constants.MODE_SHORT_NAME[index])
-                                        .tag(index)
-                                }
+                        // Mode Picker
+                        Picker("Mode", selection: self.$selectedModeEnv.selectedMode.myAddActionOnChange(simpleHapticLight)) {
+                            ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
+                                Text(Constants.MODE_SHORT_NAME[index])
+                                    .tag(index)
                             }
-                            .pickerStyle(SegmentedPickerStyle())
-                            
-                            // Rotations
-                            self.renderRotationItemsView(width: geometry.size.width, height: geometry.size.height)
-                            
                         }
+                        .pickerStyle(SegmentedPickerStyle())
+                        
+                        // Rotations
+                        self.renderRotationItemsView(width: geometry.size.width)
+                        
                     }
                 }
-                .navigationBarTitle(Text(Constants.MODE_TITLE[self.selectedModeEnv.selectedMode]))
-                .navigationBarItems(
-                    
-                    // MARK: Refresh Button
-                    leading:
-                    HStack {
-                        Button(action: {
-                            simpleHapticLight()
-                            self.env.loadRotations()
-                        }) {
-                            HStack {
-                                Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
-                                    .renderingMode(.original)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .shadow(radius: 5)
-                                    .frame(width: Constants.MODE_ICON_SIDE)
-                            }
-                            .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
-                            .background(
-                                Color(UIColor.systemGray4)
-                                    .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
-                                    .cornerRadius(5)
-                            )
-                        }
-                        // force go to top when env data change, to deal with the SwiftUI NavView bug
-                        .onReceive(self.env.objectWillChange) { _ in
-                            self.navigationViewID = UUID()
-                            self.changeSectionHeaderBackgroundColor()
-                        }
-                        .onAppear {
-                            self.changeSectionHeaderBackgroundColor()
-                        }
-                        
-                        // MARK: Auto Refresh Indicator
-                        if self.env.loadingStatus == .duringAutoRefresh {
-                            Image(systemName: "ellipsis")
-                        }
-                    }
-                    ,
-                    
-                    // MARK: Settings Button
-                    trailing:
+            }
+            .navigationBarTitle(Text(Constants.MODE_TITLE[self.selectedModeEnv.selectedMode]))
+            .navigationBarItems(
+                
+                // MARK: Refresh Button
+                leading:
+                HStack {
                     Button(action: {
                         simpleHapticLight()
-                        self.isSettingsPresented = true
+                        self.env.loadRotations()
                     }) {
                         HStack {
-                            Image(systemName: "gear")
-                                .foregroundColor(.primary)
-                                .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
+                            Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
+                                .renderingMode(.original)
+                                .resizable()
+                                .scaledToFit()
                                 .shadow(radius: 5)
+                                .frame(width: Constants.MODE_ICON_SIDE)
                         }
                         .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                         .background(
@@ -112,56 +75,84 @@ struct RotationView: View {
                                 .cornerRadius(5)
                         )
                     }
-                    .sheet(isPresented:
-                        self.$isSettingsPresented
-                    ) {
-                        SettingsView()
-                            .environmentObject(self.env)
+//                        .onAppear {
+//                            self.changeSectionHeaderBackgroundColor()
+//                        }
+                    
+                    // MARK: Auto Refresh Indicator
+                    if self.env.loadingStatus == .duringAutoRefresh {
+                        Image(systemName: "ellipsis")
                     }
-                )
-            }
-            .id(self.navigationViewID)
+                }
+                ,
+                
+                // MARK: Settings Button
+                trailing:
+                Button(action: {
+                    simpleHapticLight()
+                    self.isSettingsPresented = true
+                }) {
+                    HStack {
+                        Image(systemName: "gear")
+                            .foregroundColor(.primary)
+                            .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
+                            .shadow(radius: 5)
+                    }
+                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                    .background(
+                        Color(UIColor.systemGray4)
+                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                            .cornerRadius(5)
+                    )
+                }
+                .sheet(
+                    isPresented:
+                    self.$isSettingsPresented
+                ) {
+                    SettingsView()
+                        .environmentObject(self.env)
+                }
+            )
         }
-        
     }
     
-    func changeSectionHeaderBackgroundColor() {
-        UITableViewHeaderFooterView.appearance().tintColor =
-//            colorScheme == .dark ? UIColor.black : UIColor.white
-            colorScheme == .dark ? UIColor.systemGray4.withAlphaComponent(0.5) : UIColor.systemGray4.withAlphaComponent(0.5)
-//            UIColor.systemGray4.withAlphaComponent(0.6)
-//            .clear
-    }
+//    func changeSectionHeaderBackgroundColor() {
+//        UITableViewHeaderFooterView.appearance().tintColor =
+////            colorScheme == .dark ? UIColor.black : UIColor.white
+//            colorScheme == .dark ? UIColor.systemGray4.withAlphaComponent(0.5) : UIColor.systemGray4.withAlphaComponent(0.5)
+////            UIColor.systemGray4.withAlphaComponent(0.6)
+////            .clear
+//    }
     
-    func renderRotationItemsView(width: CGFloat, height: CGFloat) -> some View {
+    func renderRotationItemsView(width: CGFloat) -> some View {
         
         // All nil cases are trivial since already handled in earlier Views
         
         guard let catalog = self.env.catalog else {
-            return RotationItemsView(rotations: [], width: width, height: height)         // nil
+            return RotationItemsView(width: width)         // nil
         }
         
         switch(self.selectedModeEnv.selectedMode) {
             
         case 1:     // ranked
             if let rotationArray = catalog.ranked {
-                return RotationItemsView(rotations: rotationArray, width: width, height: height)
+                return RotationItemsView(rotations: rotationArray, width: width)
             } else {
-                return RotationItemsView(rotations: [], width: width, height: height)     // nil
+                return RotationItemsView(width: width)     // nil
             }
             
         case 2:     // league
             if let rotationArray = catalog.league {
-                return RotationItemsView(rotations: rotationArray, width: width, height: height)
+                return RotationItemsView(rotations: rotationArray, width: width)
             } else {
-                return RotationItemsView(rotations: [], width: width, height: height)     // nil
+                return RotationItemsView(width: width)     // nil
             }
             
         default:    // regular
             if let rotationArray = catalog.regular {
-                return RotationItemsView(rotations: rotationArray, width: width, height: height)
+                return RotationItemsView(rotations: rotationArray, width: width)
             } else {
-                return RotationItemsView(rotations: [], width: width, height: height)     // nil
+                return RotationItemsView(width: width)     // nil
             }
         }
     }

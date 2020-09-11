@@ -13,7 +13,6 @@ struct RotationItem: View {
     var rotation: Rotation
     var index: Int
     var parentWidth: CGFloat
-    var parentHeight: CGFloat
     
     // Determine if View Width tighter than iPhone 8 Width
     var shortModeNameThreshold: CGFloat         { 375 }

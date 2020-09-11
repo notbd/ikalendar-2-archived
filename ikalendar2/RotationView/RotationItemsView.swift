@@ -10,14 +10,22 @@ import SwiftUI
 
 struct RotationItemsView: View {
     
-    var rotations: [Rotation]
+    var rotations: [Rotation] = []
     var width: CGFloat
-    var height: CGFloat
+    
+    init(width: CGFloat) {
+        self.width = width
+    }
+    
+    init(rotations: [Rotation], width: CGFloat) {
+        self.rotations = rotations
+        self.width = width
+    }
     
     var body: some View {
         
         ForEach (0 ..< self.rotations.count, id: \.self) { idx in
-            RotationItem(rotation: self.rotations[idx], index: idx, parentWidth: self.width, parentHeight: self.height)
+            RotationItem(rotation: self.rotations[idx], index: idx, parentWidth: self.width)
         }
         
     }
