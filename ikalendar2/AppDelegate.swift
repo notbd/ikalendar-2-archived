@@ -82,6 +82,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: pickerSelectedFont],   for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: pickerNormalFont],     for: .normal)
         
+        // MARK: - Configu List Header Background Color
+        UITableViewHeaderFooterView.appearance().tintColor = UIColor.systemGray4.withAlphaComponent(0.5)
+        
         return true
     }
     

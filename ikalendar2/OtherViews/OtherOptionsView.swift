@@ -113,7 +113,6 @@ struct OtherOptionsView: View {
     
     func toggleAutoRefreshNoteStatus() {
         autoRefreshNoteStatus.toggle()
-        print(autoRefreshNoteStatus)
     }
 }
 

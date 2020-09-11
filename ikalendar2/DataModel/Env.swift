@@ -14,8 +14,6 @@ final class Env: ObservableObject {
     @Published var catalog: RotationCatalog?
     @Published var loadingStatus: loadingStatusType
     
-    @Published var isSettingsPresented = false
-    
     var defaultLaunchMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT) {
         willSet {
             UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)

@@ -86,7 +86,7 @@ struct WideRotationView: View {
             trailing:
             Button(action: {
                 simpleHapticLight()
-                self.env.isSettingsPresented = true
+                self.isSettingsPresented = true
             }) {
                 HStack {
                     Image(systemName: "gear")
@@ -103,7 +103,7 @@ struct WideRotationView: View {
             }
             .sheet(
                 isPresented:
-                self.$env.isSettingsPresented
+                self.$isSettingsPresented
             ) {
                 SettingsView()
                     .environmentObject(self.env)
@@ -127,24 +127,31 @@ struct WideRotationView: View {
                     
                     // MARK: Mode Icon Refresh Button
                     trailing:
-                    Button(action: {
-                        simpleHapticLight()
-                        self.env.loadRotations()
-                    }) {
-                        HStack {
-                            Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
-                                .renderingMode(.original)
-                                .resizable()
-                                .scaledToFit()
-                                .shadow(radius: 5)
-                                .frame(width: Constants.MODE_ICON_SIDE)
+                    HStack {
+                        // MARK: Auto Refresh Indicator
+                        if self.env.loadingStatus == .duringAutoRefresh {
+                            Image(systemName: "ellipsis")
                         }
-                        .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
-                        .background(
-                            Color(UIColor.systemGray4)
-                                .opacity(self.colorScheme == .dark ? 0.3 : 0.15)
-                                .cornerRadius(5)
-                        )
+                        
+                        Button(action: {
+                            simpleHapticLight()
+                            self.env.loadRotations()
+                        }) {
+                            HStack {
+                                Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .shadow(radius: 5)
+                                    .frame(width: Constants.MODE_ICON_SIDE)
+                            }
+                            .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                            .background(
+                                Color(UIColor.systemGray4)
+                                    .opacity(self.colorScheme == .dark ? 0.3 : 0.15)
+                                    .cornerRadius(5)
+                            )
+                        }
                     }
             )
         }
