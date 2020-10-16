@@ -14,21 +14,23 @@ final class Env: ObservableObject {
     @Published var catalog: RotationCatalog?
     @Published var loadingStatus: loadingStatusType
     
-    var defaultLaunchMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT) {
-        willSet {
-            UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
-        }
-    }
+//    @Published var defaultLaunchMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
+//    {
+//        willSet {
+//            UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
+//        }
+//    }
     
     // Auto Refresh
-    var isAutoRefreshEnabled: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL) {
+    @Published var isAutoRefreshEnabled: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
+    {
         willSet {
             UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
         }
     }
+    
     var currRotationEndTime: Date?
 //    var isDuringAutoRefresh = false
-    
     
     // Loading Status
     enum loadingStatusType {

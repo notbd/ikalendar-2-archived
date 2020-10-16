@@ -26,37 +26,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // MARK: - Set NavBar Font to SF Pro Rounded
         
-        let largeTitleFontSize: CGFloat = 34
+        let largeTitleFontSize: CGFloat = 31
         let titleTextFontSize: CGFloat = 17
-        
+
         // Here we get San Francisco with the desired weight
         let systemLargeTitleFont    = UIFont.systemFont(ofSize: largeTitleFontSize, weight: .bold)
-        let systemTitleTextFont     = UIFont.systemFont(ofSize: titleTextFontSize,  weight: .bold)
-        
+        let systemTitleTextFont     = UIFont.systemFont(ofSize: titleTextFontSize,  weight: .semibold)
+
         // Will be SF Pro in case of failure.
         let largeTitleFont, titleTextFont: UIFont
-        
+
         if let descriptor = systemLargeTitleFont.fontDescriptor.withDesign(.rounded) {
             largeTitleFont = UIFont(descriptor: descriptor, size: largeTitleFontSize)
         } else {
             largeTitleFont = systemLargeTitleFont
         }
-        
+
         if let descriptor = systemTitleTextFont.fontDescriptor.withDesign(.rounded) {
             titleTextFont = UIFont(descriptor: descriptor, size: titleTextFontSize)
         } else {
             titleTextFont = systemTitleTextFont
         }
-        
+
         UINavigationBar.appearance().largeTitleTextAttributes   = [.font : largeTitleFont]
         UINavigationBar.appearance().titleTextAttributes        = [.font : titleTextFont]
         
         
-        // MARK: - Config List Line Separator to none
-        
-        UITableView.appearance().separatorStyle = .none
-        //        UITableView.appearance().backgroundColor = .clear
-        //        UITableViewCell.appearance().backgroundColor = .clear
+//        // MARK: - Config List Line Separator to none
+//
+//        UITableView.appearance().separatorStyle = .none
+//        //        UITableView.appearance().backgroundColor = .clear
+//        //        UITableViewCell.appearance().backgroundColor = .clear
         
         // MARK: - Config Segment Picker Text Style
         

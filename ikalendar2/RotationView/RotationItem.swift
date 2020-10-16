@@ -50,7 +50,7 @@ struct RotationItem: View {
         
         Section(header:
             // Header
-            VStack(alignment: .leading) {
+            HStack() {
                 if index < Constants.EXTRA_HEADERS.count {
                     Text(Constants.EXTRA_HEADERS[index])
                         .font(.custom("Splatoon2", size: ExtraHeaderFontSize))
@@ -105,20 +105,17 @@ struct RotationItem: View {
                 // Stage Section
                 HStack {
                     Spacer()
-                    //                        GeometryReader { geo in
+                    
                     StageCell(imgFiln: self.rotation.stage_1_filn, stageName: self.rotation.stage_1_name, StageImgOffset: self.StageImgOffset, StageNameFontSize: self.StageNameFontSize, minCellWidth: self.minStageCellWidth, maxCellWidth: self.maxStageCellWidth, isViewOverCompact: self.isViewOverCompact)
-                    //                            .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).midY - self.parentHeight / 2) / 20), axis: (x: -1, y: 0, z: 0))
-                    //                        }
+                    
                     Spacer()
                     
-                    //                        GeometryReader { geo in
                     StageCell(imgFiln: self.rotation.stage_2_filn, stageName: self.rotation.stage_2_name, StageImgOffset: self.StageImgOffset, StageNameFontSize: self.StageNameFontSize, minCellWidth: self.minStageCellWidth, maxCellWidth: self.maxStageCellWidth, isViewOverCompact: self.isViewOverCompact)
-                    //                        .rotation3DEffect(.degrees(-Double(geo.frame(in: .global).midY - self.parentHeight / 2) / 20), axis: (x: -1, y: 0, z: 0))
-                    //                        }
+                    
                     Spacer()
                 }
                 .frame(maxWidth: self.maxStageSectionWidth)
-                .rotation3DEffect(.degrees(7), axis: (x: 0, y: -1, z: 0))
+//                .rotation3DEffect(.degrees(7), axis: (x: 0, y: -1, z: 0))
             }
         }
     }

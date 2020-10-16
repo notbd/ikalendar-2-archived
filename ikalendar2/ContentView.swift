@@ -19,7 +19,6 @@ struct ContentView: View {
     @State private var isWhatsNewPresented      = false
     
     @State private var isGreetingsModalsSetup   = false
-    @State private var navigationViewID = UUID()
     
     private let refreshTimer = Timer.publish(every: 10, tolerance: 0.5, on: .main, in: .common).autoconnect()
     
@@ -27,21 +26,16 @@ struct ContentView: View {
         
         NavigationView {
             
-            // Compact Size Class
-            if horizontalSizeClass == .compact {
-                RotationView()
-            }
-                
-            // Regular Size Class
-            else {
-                WideRotationView()
-            }
-        }
-        .id(self.navigationViewID)
+            switch horizontalSizeClass {
             
-        // force go to top when env data change, to deal with the SwiftUI NavView bug
-        .onReceive(self.env.objectWillChange) { _ in
-            self.navigationViewID = UUID()
+            case .compact:
+                RotationView()
+                
+            default:
+                WideRotationView()
+                
+            }
+            
         }
         .onReceive(refreshTimer) { _ in
 

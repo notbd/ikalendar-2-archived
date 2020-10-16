@@ -36,23 +36,27 @@ struct RotationView: View {
                     List {
                         
                         // Mode Picker
-                        Picker("Mode", selection: self.$selectedModeEnv.selectedMode.myAddActionOnChange(simpleHapticLight)) {
+                        Picker("Mode", selection: self.$selectedModeEnv.selectedMode) {
                             ForEach(0 ..< Constants.MODE_SHORT_NAME.count) { index in
                                 Text(Constants.MODE_SHORT_NAME[index])
                                     .tag(index)
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
+                        .onChange(of: selectedModeEnv.selectedMode) { newValue in
+                            simpleHapticLight()
+                        }
                         
                         // Rotations
                         self.renderRotationItemsView(width: geometry.size.width)
                         
                     }
+//                    .listSeparatorStyle(.none)
+                    .listStyle(InsetGroupedListStyle())
                 }
             }
             .navigationBarTitle(Text(Constants.MODE_TITLE[self.selectedModeEnv.selectedMode]))
             .navigationBarItems(
-                
                 // MARK: Refresh Button
                 leading:
                 HStack {
@@ -75,17 +79,14 @@ struct RotationView: View {
                                 .cornerRadius(5)
                         )
                     }
-//                        .onAppear {
-//                            self.changeSectionHeaderBackgroundColor()
-//                        }
-                    
+
                     // MARK: Auto Refresh Indicator
                     if self.env.loadingStatus == .duringAutoRefresh {
                         Image(systemName: "ellipsis")
                     }
                 }
                 ,
-                
+
                 // MARK: Settings Button
                 trailing:
                 Button(action: {
@@ -105,7 +106,7 @@ struct RotationView: View {
                             .cornerRadius(5)
                     )
                 }
-                .sheet(
+                .fullScreenCover(
                     isPresented:
                     self.$isSettingsPresented
                 ) {
@@ -115,14 +116,6 @@ struct RotationView: View {
             )
         }
     }
-    
-//    func changeSectionHeaderBackgroundColor() {
-//        UITableViewHeaderFooterView.appearance().tintColor =
-////            colorScheme == .dark ? UIColor.black : UIColor.white
-//            colorScheme == .dark ? UIColor.systemGray4.withAlphaComponent(0.5) : UIColor.systemGray4.withAlphaComponent(0.5)
-////            UIColor.systemGray4.withAlphaComponent(0.6)
-////            .clear
-//    }
     
     func renderRotationItemsView(width: CGFloat) -> some View {
         

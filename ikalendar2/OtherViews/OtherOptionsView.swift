@@ -14,7 +14,7 @@ struct OtherOptionsView: View {
     
     @State private var isTempOnboardingPresented = false
     
-    @State private var autoRefreshNoteStatus: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
+//    @State private var autoRefreshNoteStatus: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
     
 //    @State private var isColorSchemeAutomatic = true
 //    @State private var darkModeToggleModel = DarkModeToggleModel()
@@ -52,20 +52,24 @@ struct OtherOptionsView: View {
                 footer:
                 VStack(alignment: .leading) {
                     SettingsFooterSizedText {
-                        Text(self.autoRefreshNoteStatus ? Constants.DATA_REFRESH_INFO_PART1_ON : Constants.DATA_REFRESH_INFO_PART1_OFF)
+                        Text(self.env.isAutoRefreshEnabled ? Constants.DATA_REFRESH_INFO_PART1_ON : Constants.DATA_REFRESH_INFO_PART1_OFF)
                     }
-                    .padding(.bottom, 5)
                     SettingsTinySizedText {
-                        Text(self.autoRefreshNoteStatus ? Constants.DATA_REFRESH_INFO_PART2_ON : Constants.DATA_REFRESH_INFO_PART2_OFF)
+                        Text(self.env.isAutoRefreshEnabled ? Constants.DATA_REFRESH_INFO_PART2_ON : Constants.DATA_REFRESH_INFO_PART2_OFF)
                     }
+                    .padding(.top, 1)
+                    .padding(.bottom, 3)
                 }
                 )
             {
-                Toggle(isOn: self.$env.isAutoRefreshEnabled.myAddActionOnChange(toggleAutoRefreshNoteStatus)) {
+                Toggle(isOn: self.$env.isAutoRefreshEnabled) {
                     SettingsBodySizedText {
                         Text("Smart Refresh")
                     }
                 }
+//                .onChange(of: env.isAutoRefreshEnabled) { newValue in
+//                    toggleAutoRefreshNoteStatus()
+//                }
             }
             
             Section(
@@ -111,9 +115,9 @@ struct OtherOptionsView: View {
         .navigationBarTitle("Other Options", displayMode: .inline)
     }
     
-    func toggleAutoRefreshNoteStatus() {
-        autoRefreshNoteStatus.toggle()
-    }
+//    func toggleAutoRefreshNoteStatus() {
+//        autoRefreshNoteStatus.toggle()
+//    }
 }
 
 //struct DarkModeToggleModel {

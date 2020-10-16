@@ -36,7 +36,7 @@ struct SettingsHeaderSizedText<Content: View>: View {
         Group {
             content
         }
-        .font(.system(size: 12, weight: .regular, design: .rounded))
+        .font(.system(size: 11, weight: .medium, design: .rounded))
     }
 }
 
