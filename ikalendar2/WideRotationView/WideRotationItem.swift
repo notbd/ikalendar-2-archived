@@ -93,7 +93,7 @@ struct WideRotationItem: View {
                 }
             }
             
-            Divider()
+//            Divider()
         }
     }
 }

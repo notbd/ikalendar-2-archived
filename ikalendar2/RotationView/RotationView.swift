@@ -65,12 +65,56 @@ struct RotationView: View {
                         self.env.loadRotations()
                     }) {
                         HStack {
-                            Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
-                                .renderingMode(.original)
-                                .resizable()
-                                .scaledToFit()
+                            // MARK: Manual Refresh Indicator
+                            if self.env.loadingStatus == .loading {
+                                ProgressView()
+                            }
+                            
+                            // MARK: Auto Refresh Indicator
+                            else if self.env.loadingStatus == .duringAutoRefresh {
+                                Image(systemName: "ellipsis")
+                            }
+                            
+                            // MARK: Mode Image
+                            else {
+                                Image(Constants.MODE_IMG_FILN[self.selectedModeEnv.selectedMode])
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .shadow(radius: 5)
+                                    .frame(width: Constants.MODE_ICON_SIDE)
+                            }
+                            
+                        }
+//                        .onChange(of: self.env.loadingStatus) { newStatus in
+//                            if newStatus == .loading {
+//                                isRefreshIndicatorLingering = true
+//                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+//                                    isRefreshIndicatorLingering = false
+//                                }
+//                            }
+//                        }
+                        .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
+                        .background(
+                            Color(UIColor.systemGray4)
+                                .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
+                                .cornerRadius(5)
+                        )
+                    }
+                }
+                ,
+                
+                // MARK: Settings Button
+                trailing:
+                    Button(action: {
+                        simpleHapticLight()
+                        self.isSettingsPresented = true
+                    }) {
+                        HStack {
+                            Image(systemName: "gear")
+                                .foregroundColor(.primary)
+                                .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
                                 .shadow(radius: 5)
-                                .frame(width: Constants.MODE_ICON_SIDE)
                         }
                         .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                         .background(
@@ -79,40 +123,13 @@ struct RotationView: View {
                                 .cornerRadius(5)
                         )
                     }
-
-                    // MARK: Auto Refresh Indicator
-                    if self.env.loadingStatus == .duringAutoRefresh {
-                        Image(systemName: "ellipsis")
+                    .fullScreenCover(
+                        isPresented:
+                            self.$isSettingsPresented
+                    ) {
+                        SettingsView()
+                            .environmentObject(self.env)
                     }
-                }
-                ,
-
-                // MARK: Settings Button
-                trailing:
-                Button(action: {
-                    simpleHapticLight()
-                    self.isSettingsPresented = true
-                }) {
-                    HStack {
-                        Image(systemName: "gear")
-                            .foregroundColor(.primary)
-                            .font(.system(size: Constants.NAVBAR_SFSYMBOLS_SIZE, weight: .medium))
-                            .shadow(radius: 5)
-                    }
-                    .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
-                    .background(
-                        Color(UIColor.systemGray4)
-                            .opacity(self.colorScheme == .dark ? 0.3 : 0.2)
-                            .cornerRadius(5)
-                    )
-                }
-                .fullScreenCover(
-                    isPresented:
-                    self.$isSettingsPresented
-                ) {
-                    SettingsView()
-                        .environmentObject(self.env)
-                }
             )
         }
     }
