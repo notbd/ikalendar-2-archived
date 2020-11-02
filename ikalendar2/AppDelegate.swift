@@ -16,12 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // MARK: - Register UserDefaults
-        
-        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT:   1])
-        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL: true])
-        
-        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL: true])
-        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_LASTVERSION_STRING: "2.1.0"])
+        /// Not needed anymore since AppStorage!
+//        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL: true])
+//        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT:   1])
+//        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL: true])
+//        UserDefaults.standard.register(defaults: [Constants.USERDEFAULTS_KEY_LASTVERSION_STRING: "2.1.0"])
         
         
         // MARK: - Set NavBar Font to SF Pro Rounded
@@ -51,8 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().largeTitleTextAttributes   = [.font : largeTitleFont]
         UINavigationBar.appearance().titleTextAttributes        = [.font : titleTextFont]
         
-        
-//        // MARK: - Config List Line Separator to none
+        // MARK: - Config List Line Separator to none
+        /// Not working since iOS14; Use extension instead
 //
 //        UITableView.appearance().separatorStyle = .none
 //        //        UITableView.appearance().backgroundColor = .clear
@@ -81,9 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: pickerSelectedFont],   for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: pickerNormalFont],     for: .normal)
-        
-        // MARK: - Configu List Header Background Color
-        UITableViewHeaderFooterView.appearance().tintColor = UIColor.systemGray4.withAlphaComponent(0.5)
         
         return true
     }

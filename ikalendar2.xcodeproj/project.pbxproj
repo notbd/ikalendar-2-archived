@@ -22,6 +22,7 @@
 		79B06B2024FD7F8800957C30 /* WideRotationItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B1F24FD7F8800957C30 /* WideRotationItemsView.swift */; };
 		79B06B2224FD91F700957C30 /* WideRotationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B06B2124FD91F700957C30 /* WideRotationItem.swift */; };
 		79DEB29D253A3211008370C2 /* ListSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DEB29C253A3211008370C2 /* ListSeparator.swift */; };
+		79DF16BB254F919B005A76F4 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DF16BA254F919B005A76F4 /* WhatsNewView.swift */; };
 		79F84609246767E90086AD95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F84608246767E90086AD95 /* AppDelegate.swift */; };
 		79F8460B246767E90086AD95 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F8460A246767E90086AD95 /* SceneDelegate.swift */; };
 		79F8460D246767E90086AD95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F8460C246767E90086AD95 /* ContentView.swift */; };
@@ -52,6 +53,7 @@
 		79B06B1F24FD7F8800957C30 /* WideRotationItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationItemsView.swift; sourceTree = "<group>"; };
 		79B06B2124FD91F700957C30 /* WideRotationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRotationItem.swift; sourceTree = "<group>"; };
 		79DEB29C253A3211008370C2 /* ListSeparator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSeparator.swift; sourceTree = "<group>"; };
+		79DF16BA254F919B005A76F4 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewView.swift; sourceTree = "<group>"; };
 		79F84605246767E90086AD95 /* ikalendar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ikalendar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F84608246767E90086AD95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79F8460A246767E90086AD95 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				79F84621246781EB0086AD95 /* SettingsView.swift */,
 				79A2620B25059ABC00396B6A /* OtherOptionsView.swift */,
 				7970E3EB25006FA7008312C5 /* OnboardingView.swift */,
+				79DF16BA254F919B005A76F4 /* WhatsNewView.swift */,
 			);
 			path = OtherViews;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				79B06B2024FD7F8800957C30 /* WideRotationItemsView.swift in Sources */,
 				794D8DD42491B2610096768B /* RotationCatalog.swift in Sources */,
 				79F8460D246767E90086AD95 /* ContentView.swift in Sources */,
+				79DF16BB254F919B005A76F4 /* WhatsNewView.swift in Sources */,
 				7981C2912507953F0043EF89 /* LoadingAnimation.swift in Sources */,
 				79B06B1E24FD7F7200957C30 /* WideRotationView.swift in Sources */,
 				79DEB29D253A3211008370C2 /* ListSeparator.swift in Sources */,
@@ -426,7 +430,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
@@ -436,10 +440,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -451,7 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = ikalendar2/ikalendar2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_ASSET_PATHS = "\"ikalendar2/Preview Content\"";
 				DEVELOPMENT_TEAM = 4BQ4DS4G2A;
 				ENABLE_PREVIEWS = YES;
@@ -461,10 +465,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.2;
+				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

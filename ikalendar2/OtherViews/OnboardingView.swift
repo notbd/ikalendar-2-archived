@@ -16,118 +16,126 @@ struct OnboardingView: View {
         
         GeometryReader { geometry in
             
-            VStack {
+            HStack {
                 
                 Spacer()
                 
-                // MARK: Title
-                Text("Welcome Aboard")
-                    .font(.system( geometry.size.width > 320 ? .largeTitle : .title, design: .rounded))
-                    .fontWeight(.bold)
-                
-                
-                VStack(spacing: 24) {
+                VStack {
                     
-                    // MARK: Content
-                    BulletBlockView(title: "Map Schedules",
-                                    description: "Check out the stage rotations for your favorite 🦑 game!",
-                                    header: {
-                                        Image(systemName: "calendar")
-                                            .font(.largeTitle)
-                                            .foregroundColor(Color(UIColor.systemTeal))
-                    })
+                    Spacer()
                     
-                    BulletBlockView(title: "Turf, Ranked and League",
-                                    description: "Salmon Run will be supported in future updates as well.",
-                                    header: {
-                                        Rotated3DOverlapView(top: {
-                                            Image(Constants.MODE_IMG_FILN_ONBOARD[2])
-                                                .resizable()
-                                                .scaledToFit()
-                                                .shadow(radius: 5)
-                                                .frame(width: 28)
-                                        }, mid: {
-                                            Image(Constants.MODE_IMG_FILN_ONBOARD[1])
-                                                .resizable()
-                                                .scaledToFit()
-                                                .shadow(radius: 5)
-                                                .frame(width: 28)
-                                        }, bottom: {
-                                            Image(Constants.MODE_IMG_FILN_ONBOARD[0])
-                                                .resizable()
-                                                .scaledToFit()
-                                                .shadow(radius: 10)
-                                                .frame(width: 28)
-                                        }, xOffset: 16,
-                                           yOffset: 10,
-                                           rotDegrees: 40,
-                                           xAxisConstant: 1.5,
-                                           yAxisConstant: 1)
-                    })
+                    // MARK: Title
+                    Text("Welcome Aboard")
+                        .font(.system( geometry.size.width > 320 ? .largeTitle : .title, design: .rounded))
+                        .fontWeight(.bold)
                     
-                    BulletBlockView(title: "iOS Universal",
-                                    description: "Works on your all your favorite devices with a tailored design for iPadOS.",
-                                    header: {
-                                        Image(systemName: "guitars")
-                                            .font(.largeTitle)
-                                            .foregroundColor(Color(UIColor.systemOrange))
-                    })
                     
-                    BulletBlockView(title: "Dark Mode Supported",
-                                    description: "Written in SwiftUI, ikalendar2 comes with native support for dark mode.",
-                                    header: {
-                                        Image(systemName: "moon.stars.fill")
-                                            .font(.largeTitle)
-                                            .foregroundColor(Color(UIColor.systemYellow))
-                    })
-                    
-                }
-                .padding(.top, geometry.size.width > 320 ? 30 : 10)
-                .padding(.top, geometry.size.width > 375 ? 20 : 0)
-                .padding(.bottom, 20)
-                
-                Spacer()
-                
-                
-                VStack(spacing: 12) {
-                    HStack {
-                        Image(systemName: "pencil.and.outline")
-                        Text("·")
-                        Text("Coded by 彼得張 / Peter Zhang")
-                            .foregroundColor(.primary)
+                    VStack(spacing: 24) {
+                        
+                        // MARK: Content
+                        BulletBlockView(title: "Map Schedules",
+                                        description: "Check out the stage rotations for your favorite 🦑 game!",
+                                        header: {
+                                            Image(systemName: "calendar")
+                                                .font(.largeTitle)
+                                                .foregroundColor(Color.accentColor)
+                        })
+                        
+                        BulletBlockView(title: "Turf, Ranked and League",
+                                        description: "Salmon Run will be supported in future updates as well.",
+                                        header: {
+                                            Rotated3DOverlapView(top: {
+                                                Image(Constants.MODE_IMG_FILN_ONBOARD[2])
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .shadow(radius: 5)
+                                                    .frame(width: 28)
+                                            }, mid: {
+                                                Image(Constants.MODE_IMG_FILN_ONBOARD[1])
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .shadow(radius: 5)
+                                                    .frame(width: 28)
+                                            }, bottom: {
+                                                Image(Constants.MODE_IMG_FILN_ONBOARD[0])
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .shadow(radius: 10)
+                                                    .frame(width: 28)
+                                            }, xOffset: 16,
+                                               yOffset: 10,
+                                               rotDegrees: 40,
+                                               xAxisConstant: 1.5,
+                                               yAxisConstant: 1)
+                        })
+                        
+                        BulletBlockView(title: "iOS Universal",
+                                        description: "Works on your all your favorite devices with a tailored design for iPadOS.",
+                                        header: {
+                                            Image(systemName: "guitars")
+                                                .font(.largeTitle)
+                                                .foregroundColor(Color.accentColor)
+                        })
+                        
+                        BulletBlockView(title: "Dark Mode Supported",
+                                        description: "Written in SwiftUI, ikalendar2 comes with native support for dark mode.",
+                                        header: {
+                                            Image(systemName: "moon.stars.fill")
+                                                .font(.largeTitle)
+                                                .foregroundColor(Color(UIColor.systemYellow))
+                        })
                         
                     }
-                    .font(.system(size: 10, design: .serif))
+                    .padding(.top, geometry.size.width > 320 ? 30 : 10)
+                    .padding(.top, geometry.size.width > 375 ? 20 : 0)
+                    .padding(.bottom, 20)
                     
-                    // MARK: Dismiss Button
+                    Spacer()
                     
-                    Button(action: {
-                        simpleHapticSuccess()
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("Continue")
-                            .foregroundColor(.white)
-                            .font(.system(.body, design: .rounded))
-                            .fontWeight(.semibold)
+                    
+                    VStack(spacing: 12) {
+                        HStack {
+                            Image(systemName: "pencil.and.outline")
+                            Text("·")
+                            Text("Coded by 彼得張 / Peter Zhang")
+                                .foregroundColor(.primary)
                             
-                            .frame(maxWidth:    geometry.size.width > 320 ? 360 : 240)
-                            .frame(height:      geometry.size.width > 320 ? 48  : 42)
+                        }
+                        .font(.system(size: 10, design: .serif))
                         
-                            .background(Color(UIColor.systemOrange))
-                            .cornerRadius(12)
-                            .shadow(radius: 6)
+                        // MARK: Dismiss Button
                         
+                        Button(action: {
+                            simpleHapticSuccess()
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Continue")
+                                .foregroundColor(.white)
+                                .font(.system(.body, design: .rounded))
+                                .fontWeight(.semibold)
+                                
+                                .frame(maxWidth:    geometry.size.width > 320 ? 360 : 240)
+                                .frame(height:      geometry.size.width > 320 ? 48  : 42)
+                            
+                                .background(Color.accentColor)
+                                .cornerRadius(12)
+                                .shadow(radius: 6)
+                            
+                        }
                     }
                 }
+                .padding(.bottom,   geometry.size.width > 414 ? 40 : 20)
+                .padding(.leading,  geometry.size.width > 320 ? 30 : 20)
+                .padding(.trailing, geometry.size.width > 320 ? 30 : 20)
+                    
+//                .padding(.leading,  geometry.size.width > 375 ? 5 : 0)
+//                .padding(.trailing, geometry.size.width > 375 ? 5 : 0)
+                .frame(maxWidth: 512)
+                
+                Spacer()
+                
             }
-                
-            .padding(.bottom,   geometry.size.width > 414 ? 40 : 20)
-            .padding(.leading,  geometry.size.width > 320 ? 30 : 20)
-            .padding(.trailing, geometry.size.width > 320 ? 30 : 20)
-                
-            .padding(.leading,  geometry.size.width > 375 ? 20 : 0)
-            .padding(.trailing, geometry.size.width > 375 ? 20 : 0)
-            .frame(maxWidth: 512)
+            .allowAutoDismiss { false }
         }
     }
 }
@@ -154,10 +162,12 @@ struct BulletBlockView<Content: View>: View {
                     .font(.system(.subheadline, design: .rounded))
                     .fontWeight(.semibold)
                     .lineLimit(1)
-                Text (description)
+                Text(description)
+                    .foregroundColor(.secondary)
                     .font(.system(.caption, design: .rounded))
                     .lineLimit(3)
             }
+            
             Spacer()
         }
     }

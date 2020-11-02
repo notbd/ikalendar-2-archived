@@ -18,9 +18,6 @@ struct RotationView: View {
     
     @State private var isSettingsPresented = false
     
-    // Use to re-render NavigationView in order to force go to top
-//    @State private var navigationViewID = UUID()
-    
     var body: some View {
             
         GeometryReader { geometry in
@@ -73,6 +70,7 @@ struct RotationView: View {
                             // MARK: Auto Refresh Indicator
                             else if self.env.loadingStatus == .duringAutoRefresh {
                                 Image(systemName: "ellipsis")
+                                    .foregroundColor(.primary)
                             }
                             
                             // MARK: Mode Image
@@ -86,14 +84,6 @@ struct RotationView: View {
                             }
                             
                         }
-//                        .onChange(of: self.env.loadingStatus) { newStatus in
-//                            if newStatus == .loading {
-//                                isRefreshIndicatorLingering = true
-//                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-//                                    isRefreshIndicatorLingering = false
-//                                }
-//                            }
-//                        }
                         .frame(width: Constants.TAPPABLE_AREA_MIN_SIDE, height: Constants.TAPPABLE_AREA_MIN_SIDE)
                         .background(
                             Color(UIColor.systemGray4)

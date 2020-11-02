@@ -15,12 +15,15 @@ struct ContentView: View {
     @EnvironmentObject private var env: Env
     @EnvironmentObject private var selectedModeEnv: SelectedModeEnv
     
-    @State private var isOnboardingPresented    = false
-    @State private var isWhatsNewPresented      = false
+    @State private var isModalPresented    = false
+    @State private var OnboardInsteadOfWhatsNew = true
     
-    @State private var isGreetingsModalsSetup   = false
+    @State private var isModalSetUpFinished   = false
     
-    private let refreshTimer = Timer.publish(every: 10, tolerance: 0.5, on: .main, in: .common).autoconnect()
+    @AppStorage(Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL) var isFirstLaunch: Bool = true
+    @AppStorage(Constants.USERDEFAULTS_KEY_LASTVERSION_STRING) var lastVersion: String = "2.0"
+    
+    let currentVersionOp  = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     
     var body: some View {
         
@@ -37,7 +40,8 @@ struct ContentView: View {
             }
             
         }
-        .onReceive(refreshTimer) { _ in
+        .accentColor(.primary)
+        .onReceive(env.refreshTimer) { _ in
 
             // if auto-refresh disabled or at during-autoRefresh/failure state
             if !self.env.isAutoRefreshEnabled || self.env.loadingStatus == .duringAutoRefresh ||  self.env.loadingStatus == .failure { return }
@@ -62,37 +66,41 @@ struct ContentView: View {
         .onAppear {
             self.greetingsModalsSetup()
         }
-        .sheet(isPresented: $isOnboardingPresented) {
-            OnboardingView()
+        .sheet(isPresented: $isModalPresented) {
+            if OnboardInsteadOfWhatsNew {
+                OnboardingView()
+            } else {
+                WhatsNewView()
+            }
         }
     }
     
     func greetingsModalsSetup() {
-        if !isGreetingsModalsSetup {
-            isGreetingsModalsSetup = true
-            
-            // Setup onboarding presenting and UserDefaults->isFirstLaunch
-            let isFirstLaunch    = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL)
-            isOnboardingPresented = isFirstLaunch
-            if isFirstLaunch {
-                UserDefaults.standard.set(false, forKey: Constants.USERDEFAULTS_KEY_ISFIRSTLAUNCH_BOOL)
-            }
-            
-            // Setup whatsnew presenting and userdefaults->lastVersion
-            let lastVersion     = UserDefaults.standard.string(forKey: Constants.USERDEFAULTS_KEY_LASTVERSION_STRING)
-            let currentVersion  = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-            var isNewVersion: Bool {
-                if lastVersion != nil && currentVersion != nil {
-                    return currentVersion! > lastVersion!
-                } else {
-                    return false
-                }
-            }
-            isWhatsNewPresented = isNewVersion
-            if isNewVersion {
-                UserDefaults.standard.set(currentVersion, forKey: Constants.USERDEFAULTS_KEY_LASTVERSION_STRING)
+        
+        // Only run once every app cycle
+        if isModalSetUpFinished {
+            return
+        }
+        isModalSetUpFinished = true
+        
+        // Setup whatsnew presenting and userdefaults->lastVersion
+        var isNewVersion: Bool {
+            if let currentVersion = currentVersionOp {
+                return currentVersion > lastVersion
+            } else {
+                return false
             }
         }
+        
+        // Onboarding higher priority than What's New
+        OnboardInsteadOfWhatsNew = isFirstLaunch
+        
+        // Activate modal
+        isModalPresented = isFirstLaunch || isNewVersion
+
+        // Write new AppStorage value
+        isFirstLaunch = false
+        lastVersion = currentVersionOp ?? "2.0"
     }
 }
 

@@ -10,24 +10,30 @@ import SwiftUI
 
 struct WideRotationItem: View {
     
+    @EnvironmentObject private var env: Env
+    
     var rotation: Rotation
     var index: Int
-    var width: CGFloat
+//    var width: CGFloat
     
-    var ExtraHeaderFontSize: CGFloat            { 20 }
-    var TimeStringFontSize: CGFloat             { 16 }
-    var RuleTitleFontSize: CGFloat              { 16 }
+    var ExtraHeaderFontSize: CGFloat            { 18 }
+    var TimeStringFontSize: CGFloat             { 14 }
+    var RuleTitleFontSize: CGFloat              { 22 }
     var StageNameFontSize: CGFloat              { 12 }
+    var RemainingTimeStringFontSize: CGFloat    { 16 }
     
-    var RuleImgWidth: CGFloat                   { 32 }
+    var RuleImgWidth: CGFloat                   { 40 }
     
     var ExtraHeaderYOffset: CGFloat             { 3 }
     
     // Spacings
     var RuleSectionSpacing: CGFloat             { 14 }
-    var TimeSectionSpacing: CGFloat             { 14 }
-    var StageSectionSpacing: CGFloat            { width * 0.05 }
+    var RuleAndStageSectionSpacing: CGFloat     { 2 }
+    var StageSectionSpacing: CGFloat            { 40 }
     
+    
+    
+    @State var remainTimeString: String = ""
     // StageCell Parameters
 //    var minStageCellWidth: CGFloat              { width / 2 - 100 }
 //    var maxStageCellWidth: CGFloat              { width / 2 - 100 }
@@ -36,66 +42,79 @@ struct WideRotationItem: View {
         
         Group {
             
-            // Content
-            VStack {
-                
-                // Header Section
-                HStack (alignment: .bottom, spacing: RuleSectionSpacing) {
+            Section(header:
+                        // Header
+                        HStack() {
+                            if index < Constants.EXTRA_HEADERS.count {
+                                Text(Constants.EXTRA_HEADERS[index])
+                                    .font(.custom("Splatoon2", size: ExtraHeaderFontSize))
+                                    .foregroundColor(.primary)
+                            }
+                            
+                            Text(rotation.time)
+                                .font(.custom("Splatoon2", size: TimeStringFontSize))
+                                .foregroundColor(.secondary)
+                        }
+            )
+            {
+                // Content
+                VStack(spacing: RuleAndStageSectionSpacing) {
                     
-                    // Rule Img & Title
-                    Image(rotation.rule_filn)
-                        .resizable()
-                        .antialiased(true)
-                        .scaledToFit()
-                        .shadow(radius: 5)
-                        .frame(width: RuleImgWidth)
+                    // Header Section
+                    HStack (alignment: .bottom, spacing: RuleSectionSpacing) {
+                        
+                        // Rule Img & Title
+                        Image(rotation.rule_filn)
+                            .resizable()
+                            .antialiased(true)
+                            .scaledToFit()
+                            .shadow(radius: 5)
+                            .frame(width: RuleImgWidth)
 
-                    Text(rotation.rule)
-                        .font(.custom("Splatoon2", size: RuleTitleFontSize))
+                        Text(rotation.rule)
+                            .font(.custom("Splatoon2", size: RuleTitleFontSize))
+                        
+                        Spacer()
+                        
+                        if index == 0 {
+                            Text(remainTimeString)
+                                .font(.custom("Splatoon2", size: RemainingTimeStringFontSize))
+                                .foregroundColor(.secondary)
+                                .onReceive(env.refreshTimer) { _ in
+                                    updateTimeString()
+                                }
+                                .onAppear {
+                                    updateTimeString()
+                                }
+                        }
+                    }
                     
                     Spacer()
                     
-                    // Time String
-                    HStack(alignment: .bottom, spacing: TimeSectionSpacing) {
+                    // Stage Section
+                    HStack(alignment: .center, spacing: StageSectionSpacing) {
+                        WideStageCell(imgFiln: rotation.stage_1_filn, stageName: rotation.stage_1_name, StageNameFontSize: StageNameFontSize)
                         
-                        if index < Constants.EXTRA_HEADERS.count {
-                            Text(Constants.EXTRA_HEADERS[index])
-                                .font(.custom("Splatoon2", size: ExtraHeaderFontSize))
-                                .foregroundColor(.secondary)
-                                .offset(y: ExtraHeaderYOffset)
-                        }
+                        Spacer()
                         
-                        Text(rotation.time)
-                            .font(.custom("Splatoon2", size: TimeStringFontSize))
-                            .foregroundColor(.primary)
-                        
+                        WideStageCell(imgFiln: rotation.stage_2_filn, stageName: rotation.stage_2_name, StageNameFontSize: StageNameFontSize)
                     }
                 }
-                
-                Spacer()
-                
-                // Stage Section
-                HStack(alignment: .center, spacing: StageSectionSpacing) {
-                    WideStageCell(imgFiln: rotation.stage_1_filn, stageName: rotation.stage_1_name, StageNameFontSize: StageNameFontSize
-//                        , minCellWidth: minStageCellWidth, maxCellWidth: maxStageCellWidth
-                    )
-                    
-                    
-//                    Rectangle()
-//                    .foregroundColor(.clear)
-//                    .frame(width: 50)
-                    
-                    Spacer()
-                    
-                    WideStageCell(imgFiln: rotation.stage_2_filn, stageName: rotation.stage_2_name, StageNameFontSize: StageNameFontSize
-//                        , minCellWidth: minStageCellWidth, maxCellWidth: maxStageCellWidth
-                    )
-                }
+                .padding(.top, 8)
+                .padding(.bottom)
+                .padding(.leading, 6)
+                .padding(.trailing, 6)
             }
-            
 //            Divider()
         }
     }
+    
+    func updateTimeString() {
+        guard let currRotationEndTime = self.env.currRotationEndTime else { return }
+        let currTime = Date()
+        self.remainTimeString = (currRotationEndTime - currTime).toRotationRemainingTimeString(alwaysIncludeSeconds: true) + " remaining"
+    }
+    
 }
 
 struct WideStageCell: View {
@@ -140,7 +159,7 @@ struct StageNameLabel: View {
             Rectangle()
                 .cornerRadius(6)
                 .foregroundColor(.black)
-                .opacity(0.75)
+                .opacity(0.7)
             
             Text(self.stageName)
                 .shadow(radius: 10)

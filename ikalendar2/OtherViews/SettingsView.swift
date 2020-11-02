@@ -16,7 +16,7 @@ struct SettingsView: View {
     
     @EnvironmentObject var env: Env
     
-    @AppStorage(Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT) var defaultLaunchMode: Int = 0
+    @AppStorage(Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT) var defaultLaunchMode: Int = 1
     
     var body: some View {
         NavigationView {
@@ -46,7 +46,7 @@ struct SettingsView: View {
                 Section {
                     NavigationLink(
                         destination:
-                        OtherOptionsView()
+                            OtherOptionsView()
                     ) {
                         SettingsBodySizedText {
                             Text("Other Options")

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct RotationItemsView: View {
     
+    @EnvironmentObject private var env: Env
+    
     var rotations: [Rotation] = []
     var width: CGFloat
     

@@ -13,6 +13,7 @@ struct OtherOptionsView: View {
     @EnvironmentObject var env: Env
     
     @State private var isTempOnboardingPresented = false
+    @State private var isTempWhatsNewPresented = false
     
 //    @State private var autoRefreshNoteStatus: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
     
@@ -20,7 +21,7 @@ struct OtherOptionsView: View {
 //    @State private var darkModeToggleModel = DarkModeToggleModel()
     
     var body: some View {
-        Form {
+        List {
             
 //            Section(
 //                header:
@@ -81,6 +82,19 @@ struct OtherOptionsView: View {
             {
                 Button(action: {
                     simpleHapticLight()
+                    self.isTempWhatsNewPresented = true
+                }) {
+                    SettingsBodySizedText {
+                        Text("What's New in Version \(Constants.appVersion ?? "?")")
+                            .foregroundColor(.primary)
+                    }
+                }
+                .sheet(isPresented: self.$isTempWhatsNewPresented) {
+                    WhatsNewView()
+                }
+                
+                Button(action: {
+                    simpleHapticLight()
                     self.isTempOnboardingPresented = true
                 }) {
                     SettingsBodySizedText {
@@ -113,6 +127,8 @@ struct OtherOptionsView: View {
             }
         }
         .navigationBarTitle("Other Options", displayMode: .inline)
+        .listSeparatorStyle(.none)
+        .listStyle(InsetGroupedListStyle())
     }
     
 //    func toggleAutoRefreshNoteStatus() {

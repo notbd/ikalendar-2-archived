@@ -10,35 +10,31 @@ import SwiftUI
 
 struct WideRotationItemsView: View {
     
+    @EnvironmentObject private var env: Env
+    
     var rotations: [Rotation]
     
     private let singlePaddingConstant: CGFloat = 0.08
     
     var body: some View {
         
-        GeometryReader { geometry in
-            ScrollView {
-                VStack(spacing: 30) {
-                    ForEach (0 ..< self.rotations.count, id: \.self) { idx in
-                        WideRotationItem(rotation: self.rotations[idx], index: idx, width: self.getWidthForRotationItem(width: geometry.size.width))
-                    }
-                    
+//        GeometryReader { geometry in
+            List {
+                ForEach (0 ..< self.rotations.count, id: \.self) { idx in
+                    WideRotationItem(rotation: self.rotations[idx], index: idx)
                 }
-                .padding(.top,      60)
-                .padding(.bottom,   60)
-                .padding(.leading,  self.getWidthForSinglePadding(width: geometry.size.width))
-                .padding(.trailing, self.getWidthForSinglePadding(width: geometry.size.width))
             }
-        }
+            .listStyle(InsetGroupedListStyle())
+//        }
     }
     
-    func getWidthForRotationItem(width: CGFloat) -> CGFloat {
-        return width * (1 - 2 * singlePaddingConstant)
-    }
-    
-    func getWidthForSinglePadding(width: CGFloat) -> CGFloat {
-        return width * singlePaddingConstant
-    }
+//    func getWidthForRotationItem(width: CGFloat) -> CGFloat {
+//        return width * (1 - 2 * singlePaddingConstant)
+//    }
+//    
+//    func getWidthForSinglePadding(width: CGFloat) -> CGFloat {
+//        return width * singlePaddingConstant
+//    }
 }
 
 struct WideRotationItemsView_Previews: PreviewProvider {

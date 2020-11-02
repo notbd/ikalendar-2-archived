@@ -10,6 +10,8 @@ import SwiftUI
 
 struct RotationItem: View {
     
+    @EnvironmentObject private var env: Env
+    
     var rotation: Rotation
     var index: Int
     var parentWidth: CGFloat
@@ -27,7 +29,7 @@ struct RotationItem: View {
     
     // min/max Widths
     var maxRuleImgWidth: CGFloat                { 40 }
-    var maxRuleImgWidth_compact: CGFloat        { 34 }
+    var maxRuleImgWidth_compact: CGFloat        { 32 }
     
     var maxStageSectionWidth: CGFloat           { parentWidth * 0.6 }
     
@@ -47,7 +49,9 @@ struct RotationItem: View {
     // MARK: - First Cell Parameters
     
     var FirstRuleTitleFontSize: CGFloat              { 18 }
-    var FirstRuleTitleFontSize_compact: CGFloat      { 13 }
+    var FirstRuleTitleFontSize_compact: CGFloat      { 16 }
+    var FirstRemainingTimeStringFontSize: CGFloat             { 14 }
+    var FirstRemainingTimeStringFontSize_compact: CGFloat     { 13 }
     
     // Spacings
     var FirstRuleSectionSpacing: CGFloat             { 14 }
@@ -58,8 +62,10 @@ struct RotationItem: View {
     
     var FirstExtraHeaderYOffset: CGFloat             { 3 }
     
+    @State var remainTimeString: String = ""
+//    private let remainTimer = Timer.publish(every: 1, tolerance: 0.2, on: .main, in: .common).autoconnect()
+    
     var body: some View {
-        
         
         Section(header:
             // Header
@@ -77,13 +83,13 @@ struct RotationItem: View {
         ) {
             
             // Content
+            
+            // Current rotation
             if index == 0 {
                 VStack {
                     
                     // Header Section
                     HStack (alignment: .center, spacing: FirstRuleSectionSpacing) {
-                        
-                        Spacer()
                         
                         // Rule Img & Title
                         Image(rotation.rule_filn)
@@ -94,9 +100,19 @@ struct RotationItem: View {
                             .frame(width: FirstRuleImgWidth)
 
                         Text(rotation.rule)
-                            .font(.custom("Splatoon2", size: FirstRuleTitleFontSize))
+                            .font(.custom("Splatoon2", size: isViewOverCompact ? FirstRuleTitleFontSize_compact : FirstRuleTitleFontSize))
                         
                         Spacer()
+                        
+                        Text(remainTimeString)
+                            .font(.custom("Splatoon2", size: isViewOverCompact ? FirstRemainingTimeStringFontSize_compact : FirstRemainingTimeStringFontSize))
+                            .foregroundColor(.secondary)
+                            .onReceive(env.refreshTimer) { _ in
+                                updateTimeString()
+                            }
+                            .onAppear {
+                                updateTimeString()
+                            }
                         
                     }
                     
@@ -104,60 +120,35 @@ struct RotationItem: View {
                     
                     // Stage Section
                     HStack(alignment: .center, spacing: FirstStageSectionSpacing) {
-                        FirstStageCell(imgFiln: rotation.stage_1_filn, stageName: rotation.stage_1_name, StageNameFontSize: StageNameFontSize
-    //                        , minCellWidth: minStageCellWidth, maxCellWidth: maxStageCellWidth
-                        )
-                        
-                        
-    //                    Rectangle()
-    //                    .foregroundColor(.clear)
-    //                    .frame(width: 50)
+                        FirstStageCell(imgFiln: rotation.stage_1_filn, stageName: rotation.stage_1_name, StageNameFontSize: StageNameFontSize)
                         
                         Spacer()
                         
-                        FirstStageCell(imgFiln: rotation.stage_2_filn, stageName: rotation.stage_2_name, StageNameFontSize: StageNameFontSize
-    //                        , minCellWidth: minStageCellWidth, maxCellWidth: maxStageCellWidth
-                        )
+                        FirstStageCell(imgFiln: rotation.stage_2_filn, stageName: rotation.stage_2_name, StageNameFontSize: StageNameFontSize)
                     }
                 }
+                .padding(.top, 8)
+                .padding(.bottom)
             }
             else
+            
+            // Later rotations
             {
                 HStack {
                     Spacer()
                     
-                    // Rule Section: when normal width
-                    if !isViewOverCompact {
-                        VStack {
-                            Image(rotation.rule_filn)
-                                .resizable()
-                                .antialiased(true)
-                                .scaledToFit()
-                                .shadow(radius: 5)
-                                .frame(maxWidth: maxRuleImgWidth)
-                                .offset(y: RuleImgOffset)
-                            Text(rotation.rule)
-                                .font(.custom("Splatoon2", size: RuleTitleFontSize))
-                            
-                        }
-                        .offset(x: RuleSectionOffset)
+                    VStack {
+                        Image(rotation.rule_filn)
+                            .resizable()
+                            .antialiased(true)
+                            .scaledToFit()
+                            .shadow(radius: 5)
+                            .frame(maxWidth: isViewOverCompact ? maxRuleImgWidth_compact : maxRuleImgWidth)
+                            .offset(y: isViewOverCompact ? RuleImgOffset_compact : RuleImgOffset)
+                        Text(isViewOverCompact ? getShortRuleName(for: rotation.rule) : rotation.rule)
+                            .font(.custom("Splatoon2", size: isViewOverCompact ? RuleTitleFontSize_compact : RuleTitleFontSize))
                     }
-                        
-                    // Rule Section: when width too small
-                    else {
-                        VStack {
-                            Image(rotation.rule_filn)
-                                .resizable()
-                                .antialiased(true)
-                                .scaledToFit()
-                                .shadow(radius: 5)
-                                .frame(maxWidth: maxRuleImgWidth_compact)
-                                .offset(y: RuleImgOffset_compact)
-                            Text(getShortRuleName(for: rotation.rule))
-                                .font(.custom("Splatoon2", size: RuleTitleFontSize_compact))
-                        }
-                        .offset(x: RuleSectionOffset_compact)
-                    }
+                    .offset(x: RuleSectionOffset_compact)
                     
                     Spacer()
                     
@@ -180,6 +171,12 @@ struct RotationItem: View {
         }
     }
     
+    func updateTimeString() {
+        guard let currRotationEndTime = self.env.currRotationEndTime else { return }
+        let currTime = Date()
+        self.remainTimeString = (currRotationEndTime - currTime).toRotationRemainingTimeString() + " remaining"
+    }
+    
     func getShortRuleName(for ruleName: String) -> String {
         switch ruleName {
             
@@ -190,7 +187,7 @@ struct RotationItem: View {
             return "Tower"
             
         case "Rainmaker":
-            return "Rainmaker"
+            return "Rain"
             
         case "Clam Blitz":
             return "Clams"
@@ -215,7 +212,6 @@ struct FirstStageCell: View {
 //    var maxCellWidth: CGFloat
     
     var body: some View {
-        
         ZStack(alignment: .bottomTrailing) {
             Image(imgFiln)
                 .resizable()
@@ -223,12 +219,9 @@ struct FirstStageCell: View {
                 .cornerRadius(4)
                 .shadow(radius: 5)
             
-            StageNameLabel(stageName: stageName, StageNameFontSize: StageNameFontSize)
-                .offset(x: -4, y: -4)
-            
+            StageNameLabelSmall(stageName: stageName, StageNameFontSize: StageNameFontSize)
+                .offset(x: -3, y: -3)
         }
-//        .frame(minWidth: minCellWidth, maxWidth: maxCellWidth)
-        
     }
 }
 
@@ -240,16 +233,16 @@ struct StageNameLabelSmall: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .cornerRadius(6)
+                .cornerRadius(4)
                 .foregroundColor(.black)
-                .opacity(0.75)
+                .opacity(0.7)
             
             Text(self.stageName)
                 .shadow(radius: 10)
                 .font(.custom("Splatoon2", size: self.StageNameFontSize))
                 .foregroundColor(.white)
-                .padding(.leading, 8)
-                .padding(.trailing, 8)
+                .padding(.leading, 6)
+                .padding(.trailing, 6)
         }
         .fixedSize()
     }
@@ -272,7 +265,7 @@ struct StageCell: View {
         Group {
             
             // Compact StageCell
-            if !isViewOverCompact {
+            if isViewOverCompact {
                 VStack(alignment: .trailing) {
                     Spacer()
                     
@@ -283,11 +276,11 @@ struct StageCell: View {
                         .shadow(radius: 5)
                         .offset(y: StageImgOffset)
                     Text(stageName)
-                        .font(.custom("Splatoon2", size: StageNameFontSize))
+                        .font(.custom("Splatoon2", size: StageNameFontSize - 1))
                     
                     Spacer()
                 }
-                .frame(maxWidth: maxCellWidth)
+                .frame(minWidth: minCellWidth)
             }
                 
             // Normal StageCell
@@ -306,7 +299,7 @@ struct StageCell: View {
                     
                     Spacer()
                 }
-                .frame(minWidth: minCellWidth)
+                .frame(maxWidth: maxCellWidth)
             }
         }
     }

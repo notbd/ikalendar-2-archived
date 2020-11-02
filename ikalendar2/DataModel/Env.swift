@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tianwei Zhang. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 final class Env: ObservableObject {
     
@@ -14,23 +14,16 @@ final class Env: ObservableObject {
     @Published var catalog: RotationCatalog?
     @Published var loadingStatus: loadingStatusType
     
-//    @Published var defaultLaunchMode = UserDefaults.standard.integer(forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
-//    {
-//        willSet {
-//            UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_DEFAULTMODE_INT)
-//        }
-//    }
+    let refreshTimer = Timer.publish(every: 1, tolerance: 0.2, on: .main, in: .common).autoconnect()
     
     // Auto Refresh
-    @Published var isAutoRefreshEnabled: Bool = UserDefaults.standard.bool(forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
-    {
+    @AppStorage(Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL) var isAutoRefreshEnabled: Bool = true {
         willSet {
-            UserDefaults.standard.set(newValue, forKey: Constants.USERDEFAULTS_KEY_AUTOREFRESH_BOOL)
+            objectWillChange.send()
         }
     }
     
     var currRotationEndTime: Date?
-//    var isDuringAutoRefresh = false
     
     // Loading Status
     enum loadingStatusType {

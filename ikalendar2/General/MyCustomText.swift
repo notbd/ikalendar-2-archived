@@ -20,7 +20,7 @@ struct SettingsBodySizedText<Content: View>: View {
         Group {
             content
         }
-        .font(.system(size: 14, weight: .regular, design: .default))
+        .font(.system(size: 14, weight: .regular, design: .rounded))
     }
 }
 
