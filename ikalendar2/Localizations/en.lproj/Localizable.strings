@@ -1,0 +1,219 @@
+/* 
+  Localizable.strings
+  ikalendar2
+
+  Created by Tianwei Zhang on 4/21/21.
+  
+*/
+
+// MARK: - Settings
+
+"Settings" = "Settings";
+"Done" = "Done";
+"DEFAULT MODE" = "DEFAULT MODE";
+"APPEARANCE" = "APPEARANCE";
+"Dark" = "Dark";
+"Light" = "Light";
+"LANGUAGE" = "LANGUAGE";
+"Preferred Language" = "Preferred Language";
+"ACKNOWLEDGEMENT" = "ACKNOWLEDGEMENT";
+"Splatoon™ 2" = "Splatoon™ 2";
+"Official Website" = "Official Website";
+"ABOUT" = "ABOUT";
+"ABOUT FOOTNOTE" =
+"
+ikalendar2
+by Tianwei Zhang - tianwei4@illinois.edu
+";
+"Source Code Repo" = "Source Code Repo";
+
+// MARK: - RowHeaderPrefix
+
+"Now:" = "Now:";
+"Next:" = "Next:";
+"Open!" = "Open!";
+"Soon:" = "Soon:";
+
+// MARK: - Time
+
+// TimeLength
+"days" = "d";
+"hours" = "h";
+"minutes" = "m";
+"seconds" = "s";
+"Finished" = "Finished";
+"remaining" = "remaining";
+"remaining %@" = "%@ remaining";
+// Date
+"Today" = "Today";
+"Yesterday" = "Yesterday";
+"Tomorrow" = "Tomorrow";
+
+// MARK: - GameMode
+
+"Match" = "Battle";
+"Salmon Run" = "Salmon Run";
+
+// MARK: - MatchMode
+
+"Regular Battle" = "Regular Battle";
+"Ranked Battle" = "Ranked Battle";
+"League Battle" = "League Battle";
+
+"Regular" = "Regular";
+"Ranked" = "Ranked";
+"League" = "League";
+
+// MARK: - MatchRule
+
+"Turf War" = "Turf War";
+"Splat Zones" = "Splat Zones";
+"Tower Control" = "Tower Control";
+"Rainmaker" = "Rainmaker";
+"Clam Blitz" = "Clam Blitz";
+
+// MARK: - MatchStage
+
+"Ancho-V Games" = "Ancho-V Games";
+"Arowana Mall" = "Arowana Mall";
+"Blackbelly Skatepark" = "Blackbelly Skatepark";
+"Camp Triggerfish" = "Camp Triggerfish";
+"Goby Arena" = "Goby Arena";
+"Humpback Pump Track" = "Humpback Pump Track";
+"Inkblot Art Academy" = "Inkblot Art Academy";
+"Kelp Dome" = "Kelp Dome";
+"MakoMart" = "MakoMart";
+"Manta Maria" = "Manta Maria";
+// #10
+"Moray Towers" = "Moray Towers";
+"Musselforge Fitness" = "Musselforge Fitness";
+"New Albacore Hotel" = "New Albacore Hotel";
+"Piranha Pit" = "Piranha Pit";
+"Port Mackerel" = "Port Mackerel";
+"Shellendorf Institute" = "Shellendorf Institute";
+"Shifty Station" = "Shifty Station";
+"Skipper Pavilion" = "Skipper Pavilion";
+"Snapper Canal" = "Snapper Canal";
+"Starfish Mainstage" = "Starfish Mainstage";
+// #20
+"Sturgeon Shipyard" = "Sturgeon Shipyard";
+"The Reef" = "The Reef";
+"Wahoo World" = "Wahoo World";
+"Walleye Warehouse" = "Walleye Warehouse";
+
+// MARK: - SalmonStage
+
+"Lost Outpost" = "Lost Outpost";
+"Marooner's Bay" = "Marooner's Bay";
+"Ruins of Ark Polaris" = "Ruins of Ark Polaris";
+"Salmonid Smokeyard" = "Salmonid Smokeyard";
+"Spawning Grounds" = "Spawning Grounds";
+
+// MARK: - IkaWeapon
+
+// Shooters
+"Sploosh-o-matic" = "Sploosh-o-matic";
+"Splattershot Jr." = "Splattershot Jr.";
+"Splash-o-matic" = "Splash-o-matic";
+"Aerospray MG" = "Aerospray MG";
+"Splattershot" = "Splattershot";
+".52 Gal" = ".52 Gal";
+"N-ZAP '85" = "N-ZAP '85";
+"Splattershot Pro" = "Splattershot Pro";
+".96 Gal" = ".96 Gal";
+"Jet Squelcher" = "Jet Squelcher";
+// Blasters
+"Luna Blaster" = "Luna Blaster";
+"Blaster" = "Blaster";
+"Range Blaster" = "Range Blaster";
+"Clash Blaster" = "Clash Blaster";
+"Rapid Blaster" = "Rapid Blaster";
+"Rapid Blaster Pro" = "Rapid Blaster Pro";
+// Nozzlenoses
+"L-3 Nozzlenose" = "L-3 Nozzlenose";
+"H-3 Nozzlenose" = "H-3 Nozzlenose";
+// Squeezer
+"Squeezer" = "Squeezer";
+// Rollers
+"Carbon Roller" = "Carbon Roller";
+"Splat Roller" = "Splat Roller";
+"Dynamo Roller" = "Dynamo Roller";
+"Flingza Roller" = "Flingza Roller";
+"Inkbrush" = "Inkbrush";
+"Octobrush" = "Octobrush";
+// Chargers
+"Classic Squiffer" = "Classic Squiffer";
+"Splat Charger" = "Splat Charger";
+"Splatterscope" = "Splatterscope";
+"E-liter 4K" = "E-liter 4K";
+"E-liter 4K Scope" = "E-liter 4K Scope";
+"Bamboozler 14 Mk I" = "Bamboozler 14 Mk I";
+"Goo Tuber" = "Goo Tuber";
+// Sloshers
+"Slosher" = "Slosher";
+"Tri-Slosher" = "Tri-Slosher";
+"Sloshing Machine" = "Sloshing Machine";
+"Bloblobber" = "Bloblobber";
+"Explosher" = "Explosher";
+// Splatlings
+"Mini Splatling" = "Mini Splatling";
+"Heavy Splatling" = "Heavy Splatling";
+"Hydra Splatling" = "Hydra Splatling";
+"Ballpoint Splatling" = "Ballpoint Splatling";
+"Nautilus 47" = "Nautilus 47";
+// Dualies
+"Dapple Dualies" = "Dapple Dualies";
+"Splat Dualies" = "Splat Dualies";
+"Glooga Dualies" = "Glooga Dualies";
+"Dualie Squelchers" = "Dualie Squelchers";
+"Dark Tetra Dualies" = "Dark Tetra Dualies";
+// Brellas
+"Splat Brella" = "Splat Brella";
+"Tenta Brella" = "Tenta Brella";
+"Undercover Brella" = "Undercover Brella";
+
+// MARK: - RandomWeapon
+
+"Random" = "Random";
+"Grizzco Random" = "Grizzco Random";
+
+// MARK: - GrizzcoWeapon
+
+"Grizzco Brella" = "Grizzco Brella";
+"Grizzco Slosher" = "Grizzco Slosher";
+"Grizzco Blaster" = "Grizzco Blaster";
+"Grizzco Charger" = "Grizzco Charger";
+
+// MARK: - ClothesGear
+
+"Squiddor Polo" = "Squiddor Polo";
+"Anchor Life Vest" = "Anchor Life Vest";
+"Juice Parka" = "Juice Parka";
+"Garden Gear" = "Garden Gear";
+"Crustwear XXL" = "Crustwear XXL";
+"North-Country Parka" = "North-Country Parka";
+"Record Shop Look EP" = "Record Shop Look EP";
+"Dev Uniform" = "Dev Uniform";
+"Office Attire" = "Office Attire";
+"SRL Coat" = "SRL Coat";
+
+// MARK: - ShoesGear
+
+"Angry Rain Boots" = "Angry Rain Boots";
+"Non-slip Senseis" = "Non-slip Senseis";
+"Friendship Bracelet" = "Friendship Bracelet";
+"Flipper Floppers" = "Flipper Floppers";
+"Wooden Sandals" = "Wooden Sandals";
+
+// MARK: - HeadGear
+
+"Headlamp Helmet" = "Headlamp Helmet";
+"Dust Blocker 2000" = "Dust Blocker 2000";
+"Welding Mask" = "Welding Mask";
+"Beekeeper Hat" = "Beekeeper Hat";
+"Octoleet Goggles" = "Octoleet Goggles";
+"Cap of Legend" = "Cap of Legend";
+"Oceanic Hard Hat" = "Oceanic Hard Hat";
+"Worker's Head Towel" = "Worker's Head Towel";
+"Worker's Cap" = "Worker's Cap";
+"Sailor Cap" = "Sailor Cap";

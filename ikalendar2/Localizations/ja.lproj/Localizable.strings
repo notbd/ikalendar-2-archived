@@ -1,0 +1,219 @@
+/*
+  Localizable.strings
+  ikalendar2
+
+  Created by Tianwei Zhang on 4/21/21.
+
+*/
+
+// MARK: - Settings
+
+"Settings" = "設定";
+"Done" = "完了";
+"DEFAULT MODE" = "デフォルトモード";
+"APPEARANCE" = "外観モード";
+"Dark" = "ダーク";
+"Light" = "ライト";
+"LANGUAGE" = "言語";
+"Preferred Language" = "優先する言語";
+"ACKNOWLEDGEMENT" = "了承";
+"Splatoon™ 2" = "スプラトゥーン™ 2";
+"Official Website" = "公式サイト";
+"ABOUT" = "ikalendar2について";
+"ABOUT FOOTNOTE" =
+"
+ikalendar2
+by Tianwei Zhang - tianwei4@illinois.edu
+";
+"Source Code Repo" = "ソースコードリポジトリ";
+
+// MARK: - RowHeaderPrefix
+
+"Now:" = "今:";
+"Next:" = "つぎ:";
+"Open!" = "オープン!";
+"Soon:" = "もうすぐ:";
+
+// MARK: - Time
+
+// TimeLength
+"days" = "日";
+"hours" = "時間";
+"minutes" = "分";
+"seconds" = "秒";
+"Finished" = "終わり";
+"remaining" = "残り";
+"remaining %@" = "残り %@";
+// Date
+"Today" = "きょう";
+"Yesterday" = "きのう";
+"Tomorrow" = "あした";
+
+// MARK: - GameMode
+
+"Match" = "バトル";
+"Salmon Run" = "サーモンラン";
+
+// MARK: - MatchMode
+
+"Regular Battle" = "レギュラーマッチ";
+"Ranked Battle" = "ガチマッチ";
+"League Battle" = "リーグマッチ";
+
+"Regular" = "ナワバリ";
+"Ranked" = "ガチマ";
+"League" = "リグマ";
+
+// MARK: - MatchRule
+
+"Turf War" = "ナワバリバトル";
+"Splat Zones" = "ガチエリア";
+"Tower Control" = "ガチヤグラ";
+"Rainmaker" = "ガチホコバトル";
+"Clam Blitz" = "ガチアサリ";
+
+// MARK: - MatchStage
+
+"Ancho-V Games" = "アンチョビットゲームズ";
+"Arowana Mall" = "アロワナモール";
+"Blackbelly Skatepark" = "Bバスパーク";
+"Camp Triggerfish" = "モンガラキャンプ場";
+"Goby Arena" = "アジフライスタジアム";
+"Humpback Pump Track" = "コンブトラック";
+"Inkblot Art Academy" = "海女美術大学";
+"Kelp Dome" = "モズク農園";
+"MakoMart" = "ザトウマーケット";
+"Manta Maria" = "マンタマリア号";
+// #10
+"Moray Towers" = "タチウオパーキング";
+"Musselforge Fitness" = "フジツボスポーツクラブ";
+"New Albacore Hotel" = "ホテルニューオートロ";
+"Piranha Pit" = "ショッツル鉱山";
+"Port Mackerel" = "ホッケふ頭";
+"Shellendorf Institute" = "デボン海洋博物館";
+"Shifty Station" = "ミステリーゾーン";
+"Skipper Pavilion" = "ムツゴ楼";
+"Snapper Canal" = "エンガワ河川敷";
+"Starfish Mainstage" = "ガンガゼ野外音楽堂";
+// #20
+"Sturgeon Shipyard" = "チョウザメ造船";
+"The Reef" = "バッテラストリート";
+"Wahoo World" = "スメーシーワールド";
+"Walleye Warehouse" = "ハコフグ倉庫";
+
+// MARK: - SalmonStage
+
+"Lost Outpost" = "海上集落シャケト場";
+"Marooner's Bay" = "難破船ドン・ブラコ";
+"Ruins of Ark Polaris" = "朽ちた箱舟 ポラリス";
+"Salmonid Smokeyard" = "トキシラズいぶし工房";
+"Spawning Grounds" = "シェケナダム";
+
+// MARK: - IkaWeapon
+
+// Shooters
+"Sploosh-o-matic" = "ボールドマーカー";
+"Splattershot Jr." = "わかばシューター";
+"Splash-o-matic" = "シャープマーカー";
+"Aerospray MG" = "プロモデラーMG";
+"Splattershot" = "スプラシューター";
+".52 Gal" = ".52ガロン";
+"N-ZAP '85" = "N-ZAP85";
+"Splattershot Pro" = "プライムシューター";
+".96 Gal" = ".96ガロン";
+"Jet Squelcher" = "ジェットスイーパー";
+// Blasters
+"Luna Blaster" = "ノヴァブラスター";
+"Blaster" = "ホットブラスター";
+"Range Blaster" = "ロングブラスター";
+"Clash Blaster" = "クラッシュブラスター";
+"Rapid Blaster" = "ラピッドブラスター";
+"Rapid Blaster Pro" = "Rブラスターエリート";
+// Nozzlenoses
+"L-3 Nozzlenose" = "L3リールガン";
+"H-3 Nozzlenose" = "H3リールガン";
+// Squeezer
+"Squeezer" = "ボトルガイザー";
+// Rollers
+"Carbon Roller" = "カーボンローラー";
+"Splat Roller" = "スプラローラー";
+"Dynamo Roller" = "ダイナモローラー";
+"Flingza Roller" = "ヴァリアブルローラー";
+"Inkbrush" = "パブロ";
+"Octobrush" = "ホクサイ";
+// Chargers
+"Classic Squiffer" = "スクイックリンα";
+"Splat Charger" = "スプラチャージャー";
+"Splatterscope" = "スプラスコープ";
+"E-liter 4K" = "リッター4K";
+"E-liter 4K Scope" = "4Kスコープ";
+"Bamboozler 14 Mk I" = "14式竹筒銃・甲";
+"Goo Tuber" = "ソイチューバー";
+// Sloshers
+"Slosher" = "バケットスロッシャー";
+"Tri-Slosher" = "ヒッセン";
+"Sloshing Machine" = "スクリュースロッシャー";
+"Bloblobber" = "オーバーフロッシャー  ";
+"Explosher" = "エクスプロッシャー";
+// Splatlings
+"Mini Splatling" = "スプラスピナー";
+"Heavy Splatling" = "バレルスピナー";
+"Hydra Splatling" = "ハイドラント";
+"Ballpoint Splatling" = "クーゲルシュライバー";
+"Nautilus 47" = "ノーチラス47";
+// Dualies
+"Dapple Dualies" = "スパッタリー";
+"Splat Dualies" = "スプラマニューバー";
+"Glooga Dualies" = "ケルビン525";
+"Dualie Squelchers" = "デュアルスイーパー";
+"Dark Tetra Dualies" = "クアッドホッパーブラック";
+// Brellas
+"Splat Brella" = "パラシェルター";
+"Tenta Brella" = "キャンピングシェルター";
+"Undercover Brella" = "スパイガジェット";
+
+// MARK: - RandomWeapon
+
+"Random" = "ランダム";
+"Grizzco Random" = "クマサン印のランダム";
+
+// MARK: - GrizzcoWeapon
+
+"Grizzco Brella" = "クマサン印のシェルター";
+"Grizzco Slosher" = "クマサン印のスロッシャー";
+"Grizzco Blaster" = "クマサン印のブラスター";
+"Grizzco Charger" = "クマサン印のチャージャー";
+
+// MARK: - ClothesGear
+
+"Squiddor Polo" = "イカテンくんポロ";
+"Anchor Life Vest" = "アンカーベスト";
+"Juice Parka" = "フューエルブルゾン";
+"Garden Gear" = "マクレGT";
+"Crustwear XXL" = "アゲアゲ・10・プラーXXL";
+"North-Country Parka" = "フロムキタグニ87";
+"Record Shop Look EP" = "レコヤルックEP";
+"Dev Uniform" = "デベロッパーズワークウエア";
+"Office Attire" = "ジムパーソンアーマー";
+"SRL Coat" = "アカシックコート";
+
+// MARK: - ShoesGear
+
+"Angry Rain Boots" = "マッドラバー";
+"Non-slip Senseis" = "ノンスリップタクミ";
+"Friendship Bracelet" = "チギリノヒモ";
+"Flipper Floppers" = "ゲソバタアシスト";
+"Wooden Sandals" = "バンカラコロン";
+
+// MARK: - HeadGear
+
+"Headlamp Helmet" = "ヘッドライトヘルム";
+"Dust Blocker 2000" = "ダストブロッカー 2.5";
+"Welding Mask" = "アイアンマスカレイド";
+"Beekeeper Hat" = "ガーディアンアーミーハット";
+"Octoleet Goggles" = "ゾネスティックスコープ";
+"Cap of Legend" = "レジェンドのぼうし";
+"Oceanic Hard Hat" = "オーシャンズヘルム";
+"Worker's Head Towel" = "アセストップソシナ";
+"Worker's Cap" = "スペボウ レプリカ";
+"Sailor Cap" = "マリリンハットウィズピンズ";

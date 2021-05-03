@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "S2_Gear_Headgear_Worker's_Cap.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

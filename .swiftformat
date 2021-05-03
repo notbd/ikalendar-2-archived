@@ -1,0 +1,76 @@
+# Custom SwiftFormat config file by Tianwei Zhang
+# Mainly following Airbnb Swift Style Guide (https://github.com/airbnb/swift) with some minor personal adjustments
+
+# file options
+--exclude Pods, Carthage, Imports
+
+# format options
+--swiftversion 5.3
+--allman false
+--assetliterals visual-width
+--beforemarks enum,let,typealias,var
+--binarygrouping 4,8
+--categorymark "MARK: %c"
+--classthreshold 0
+--closingparen same-line
+--commas always
+--conflictmarkers reject
+--decimalgrouping 3,6
+--elseposition same-line
+--enumthreshold 20
+--exponentcase uppercase
+--exponentgrouping disabled
+--extensionacl on-declarations
+--extensionlength 0
+--extensionmark "MARK: - %t + %c"
+--fractiongrouping disabled
+--fragment false
+--funcattributes prev-line
+--groupedextension "MARK: %c"
+--guardelse next-line
+--header ignore
+--hexgrouping 4,8
+--hexliteralcase uppercase
+--ifdef no-indent
+--importgrouping alpha
+--indent 2
+--lifecycle
+--linebreaks lf
+--markextensions always
+--marktypes always
+--maxwidth 100
+--modifierorder
+--nevertrailing
+--nospaceoperators
+--nowrapoperators
+--octalgrouping 4,8
+--operatorfunc spaced
+--organizetypes class,enum,extension,struct
+--patternlet hoist
+--ranges spaced
+--redundanttype inferred
+--self remove
+--selfrequired
+--semicolons inline
+--shortoptionals always
+--smarttabs enabled
+--stripunusedargs always
+--structthreshold 20
+--tabwidth unspecified
+--trailingclosures
+--trimwhitespace always
+--typeattributes prev-line
+--typemark "MARK: - %t"
+--varattributes preserve
+--voidtype void
+--wraparguments after-first
+--wrapcollections before-first
+--wrapconditions before-first
+--wrapparameters before-first
+--wrapreturntype if-multiline
+--xcodeindentation enabled
+--yodaswap always
+
+# rules
+--enable isEmpty,markTypes,organizeDeclarations,sortedSwitchCases,wrapEnumCases,wrapSwitchCases
+
