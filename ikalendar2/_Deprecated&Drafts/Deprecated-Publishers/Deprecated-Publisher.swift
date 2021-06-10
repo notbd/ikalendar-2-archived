@@ -23,13 +23,13 @@ final class DeprecatedIkaPublisher {
 
   // MARK: Internal
 
-  func asyncFetchMatchRotationDict(
+  func asyncFetchBattleRotationDict(
     errorHandler: @escaping (IkaError) -> Void,
-    valueHandler: @escaping (MatchRotationDict) -> Void)
+    valueHandler: @escaping (BattleRotationDict) -> Void)
   {
-    let url = URL(string: Constants.Keys.URL.MATCH_ROTATIONS)!
+    let url = URL(string: Constants.Keys.URL.BATTLE_ROTATIONS)!
     asyncFetchAndDecode(url: url,
-                        decodeUsing: IkaDecoder.parseMatchRotationDict,
+                        decodeUsing: IkaDecoder.parseBattleRotationDict,
                         errorHandler: errorHandler,
                         valueHandler: valueHandler)
   }

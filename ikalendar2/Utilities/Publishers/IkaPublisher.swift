@@ -19,15 +19,15 @@ final class IkaPublisher {
 
   // MARK: Internal
 
-  /// Get the publisher of the match rotations from the `splatoon2.ink` api.
+  /// Get the publisher of the battle rotations from the `splatoon2.ink` api.
   /// - Returns: The generated publisher.
-  func getMatchRotationDictPublisher() -> AnyPublisher<MatchRotationDict, IkaError> {
-    let url = URL(string: Constants.Keys.URL.MATCH_ROTATIONS)!
+  func getBattleRotationDictPublisher() -> AnyPublisher<BattleRotationDict, IkaError> {
+    let url = URL(string: Constants.Keys.URL.BATTLE_ROTATIONS)!
     return getPublisher(url: url,
-                        decodeUsing: IkaDecoder.parseMatchRotationDict)
+                        decodeUsing: IkaDecoder.parseBattleRotationDict)
   }
 
-  /// Get the publisher of the match rotation dict from the `splatoon2.ink` api.
+  /// Get the publisher of the battle rotation dict from the `splatoon2.ink` api.
   /// - Returns: The generated publisher.
   func getSalmonRotationArrayPublisher() -> AnyPublisher<[SalmonRotation], IkaError> {
     let url = URL(string: Constants.Keys.URL.SALMON_ROTATIONS)!

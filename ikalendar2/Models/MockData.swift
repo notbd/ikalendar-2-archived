@@ -94,37 +94,37 @@ struct MockData {
     return salmonRotations
   }
 
-  /// Generate a mock MatchRotation data.
+  /// Generate a mock BattleRotation data.
   /// - Parameters:
   ///   - rule: The rule of the rotation.
   ///   - rawStartTime: The raw start time (rotation will start at the next
   ///                       rounded hour of this time).
-  /// - Returns: The MatchRotation data.
-  static func getMatchRotation(
-    rule: MatchRule,
+  /// - Returns: The BattleRotation data.
+  static func getBattleRotation(
+    rule: BattleRule,
     rawStartTime: Date = Date())
-    -> MatchRotation
+    -> BattleRotation
   {
     let startTime = rawStartTime.removeMinutes()!
     let endTime = Calendar.current.date(byAdding: .hour,
                                         value: 2,
                                         to: startTime)!
 
-    func getRandomMatchStage() -> MatchStage {
-      MatchStage.allCases.randomElement()!
+    func getRandomBattleStage() -> BattleStage {
+      BattleStage.allCases.randomElement()!
     }
 
-    return MatchRotation(startTime: startTime,
-                         endTime: endTime,
-                         rule: rule,
-                         stageA: getRandomMatchStage(),
-                         stageB: getRandomMatchStage())
+    return BattleRotation(startTime: startTime,
+                          endTime: endTime,
+                          rule: rule,
+                          stageA: getRandomBattleStage(),
+                          stageB: getRandomBattleStage())
   }
 
-  /// Generate a mock MatchRotationDict data.
-  /// - Returns: The loaded MatchRotationDict.
-  static func getMatchRotations() -> MatchRotationDict {
-    var matchRotationDict = MatchRotationDict()
+  /// Generate a mock BattleRotationDict data.
+  /// - Returns: The loaded BattleRotationDict.
+  static func getBattleRotations() -> BattleRotationDict {
+    var battleRotationDict = BattleRotationDict()
     var startTimeArray: [Date] = []
     for index in 0 ..< 8 {
       startTimeArray.append(Calendar.current.date(byAdding: .hour,
@@ -132,40 +132,40 @@ struct MockData {
                                                   to: Date())!)
     }
 
-    matchRotationDict[.regular] = [
-      getMatchRotation(rule: .turfWar, rawStartTime: startTimeArray[0]),
-      getMatchRotation(rule: .turfWar, rawStartTime: startTimeArray[1]),
-      getMatchRotation(rule: .turfWar, rawStartTime: startTimeArray[2]),
-      getMatchRotation(rule: .turfWar, rawStartTime: startTimeArray[3]),
-      getMatchRotation(rule: .turfWar, rawStartTime: startTimeArray[4]),
-      getMatchRotation(rule: .turfWar, rawStartTime: startTimeArray[5]),
-      getMatchRotation(rule: .turfWar, rawStartTime: startTimeArray[6]),
-      getMatchRotation(rule: .turfWar, rawStartTime: startTimeArray[7]),
+    battleRotationDict[.regular] = [
+      getBattleRotation(rule: .turfWar, rawStartTime: startTimeArray[0]),
+      getBattleRotation(rule: .turfWar, rawStartTime: startTimeArray[1]),
+      getBattleRotation(rule: .turfWar, rawStartTime: startTimeArray[2]),
+      getBattleRotation(rule: .turfWar, rawStartTime: startTimeArray[3]),
+      getBattleRotation(rule: .turfWar, rawStartTime: startTimeArray[4]),
+      getBattleRotation(rule: .turfWar, rawStartTime: startTimeArray[5]),
+      getBattleRotation(rule: .turfWar, rawStartTime: startTimeArray[6]),
+      getBattleRotation(rule: .turfWar, rawStartTime: startTimeArray[7]),
     ]
 
-    matchRotationDict[.gachi] = [
-      getMatchRotation(rule: .towerControl, rawStartTime: startTimeArray[0]),
-      getMatchRotation(rule: .splatZones, rawStartTime: startTimeArray[1]),
-      getMatchRotation(rule: .clamBlitz, rawStartTime: startTimeArray[2]),
-      getMatchRotation(rule: .rainmaker, rawStartTime: startTimeArray[3]),
-      getMatchRotation(rule: .towerControl, rawStartTime: startTimeArray[4]),
-      getMatchRotation(rule: .splatZones, rawStartTime: startTimeArray[5]),
-      getMatchRotation(rule: .clamBlitz, rawStartTime: startTimeArray[6]),
-      getMatchRotation(rule: .rainmaker, rawStartTime: startTimeArray[7]),
+    battleRotationDict[.gachi] = [
+      getBattleRotation(rule: .towerControl, rawStartTime: startTimeArray[0]),
+      getBattleRotation(rule: .splatZones, rawStartTime: startTimeArray[1]),
+      getBattleRotation(rule: .clamBlitz, rawStartTime: startTimeArray[2]),
+      getBattleRotation(rule: .rainmaker, rawStartTime: startTimeArray[3]),
+      getBattleRotation(rule: .towerControl, rawStartTime: startTimeArray[4]),
+      getBattleRotation(rule: .splatZones, rawStartTime: startTimeArray[5]),
+      getBattleRotation(rule: .clamBlitz, rawStartTime: startTimeArray[6]),
+      getBattleRotation(rule: .rainmaker, rawStartTime: startTimeArray[7]),
     ]
 
-    matchRotationDict[.league] =
+    battleRotationDict[.league] =
       [
-        getMatchRotation(rule: .rainmaker, rawStartTime: startTimeArray[0]),
-        getMatchRotation(rule: .clamBlitz, rawStartTime: startTimeArray[1]),
-        getMatchRotation(rule: .towerControl, rawStartTime: startTimeArray[2]),
-        getMatchRotation(rule: .splatZones, rawStartTime: startTimeArray[3]),
-        getMatchRotation(rule: .clamBlitz, rawStartTime: startTimeArray[4]),
-        getMatchRotation(rule: .towerControl, rawStartTime: startTimeArray[5]),
-        getMatchRotation(rule: .rainmaker, rawStartTime: startTimeArray[6]),
-        getMatchRotation(rule: .splatZones, rawStartTime: startTimeArray[7]),
+        getBattleRotation(rule: .rainmaker, rawStartTime: startTimeArray[0]),
+        getBattleRotation(rule: .clamBlitz, rawStartTime: startTimeArray[1]),
+        getBattleRotation(rule: .towerControl, rawStartTime: startTimeArray[2]),
+        getBattleRotation(rule: .splatZones, rawStartTime: startTimeArray[3]),
+        getBattleRotation(rule: .clamBlitz, rawStartTime: startTimeArray[4]),
+        getBattleRotation(rule: .towerControl, rawStartTime: startTimeArray[5]),
+        getBattleRotation(rule: .rainmaker, rawStartTime: startTimeArray[6]),
+        getBattleRotation(rule: .splatZones, rawStartTime: startTimeArray[7]),
       ]
 
-    return matchRotationDict
+    return battleRotationDict
   }
 }

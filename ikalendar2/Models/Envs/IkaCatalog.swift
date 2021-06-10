@@ -11,7 +11,7 @@ import SwiftUI
 /// An EnvObj class that is shared among all the views.
 /// Contains the rotation data and its loading status.
 final class IkaCatalog: ObservableObject {
-  @Published var matchRotations = MatchRotationDict()
+  @Published var battleRotations = BattleRotationDict()
   @Published var salmonRotations = [SalmonRotation]()
 
   enum LoadingStatus: Equatable {
@@ -134,13 +134,13 @@ final class IkaCatalog: ObservableObject {
       .receive(on: DispatchQueue.main)
       .sink { currentTime in
         guard
-          !self.matchRotations.isEmpty,
+          !self.battleRotations.isEmpty,
           self.loadingStatus != .loading,
           self.autoLoadingStatus != .autoLoading
         else { return }
 
-        if self.matchRotations.doesNeedToRefresh(currentTime: currentTime) {
-          self.autoLoadMatchRotations()
+        if self.battleRotations.doesNeedToRefresh(currentTime: currentTime) {
+          self.autoLoadBattleRotations()
         }
       }
       .store(in: &protectedCancellables)
@@ -165,11 +165,11 @@ final class IkaCatalog: ObservableObject {
 
   /// Load the catalog and set corresponding current loading status.
   func loadCatalog() {
-    let matchRotationDictPublisher = IkaPublisher.shared.getMatchRotationDictPublisher()
+    let battleRotationDictPublisher = IkaPublisher.shared.getBattleRotationDictPublisher()
     let salmonRotationArrayPublisher = IkaPublisher.shared.getSalmonRotationArrayPublisher()
     let rewardGearPublisher = IkaPublisher.shared.getRewardGearPublisher()
 
-    let combinedPublisher = Publishers.Zip3(matchRotationDictPublisher,
+    let combinedPublisher = Publishers.Zip3(battleRotationDictPublisher,
                                             salmonRotationArrayPublisher,
                                             rewardGearPublisher)
     combinedPublisher
@@ -183,9 +183,9 @@ final class IkaCatalog: ObservableObject {
           self.cancelAutoLoadingStatus()
           self.dataTaskCancellables.removeAll()
         }
-      } receiveValue: { matchRotations, salmonRotations, rewardGear in
+      } receiveValue: { battleRotations, salmonRotations, rewardGear in
         DispatchQueue.main.async {
-          self.matchRotations = matchRotations
+          self.battleRotations = battleRotations
           self.salmonRotations = salmonRotations
           self.salmonRotations[0].rewardGear = rewardGear
         }
@@ -195,8 +195,8 @@ final class IkaCatalog: ObservableObject {
 
   // MARK: - Auto Refreshing
 
-  /// Start autoloading the match rotations.
-  func autoLoadMatchRotations() {
+  /// Start autoloading the battle rotations.
+  func autoLoadBattleRotations() {
     let maxAttempts = 8
     var currAttempts = 0
     let attemptPublisher = Timer.publish(every: 2,
@@ -217,8 +217,8 @@ final class IkaCatalog: ObservableObject {
         }
 
         currAttempts += 1
-        let matchRotationDictPublisher = IkaPublisher.shared.getMatchRotationDictPublisher()
-        matchRotationDictPublisher
+        let battleRotationDictPublisher = IkaPublisher.shared.getBattleRotationDictPublisher()
+        battleRotationDictPublisher
           .receive(on: DispatchQueue.main)
           .sink { completion in
             switch completion {
@@ -228,14 +228,14 @@ final class IkaCatalog: ObservableObject {
             case .finished:
               break
             }
-          } receiveValue: { matchRotations in
+          } receiveValue: { battleRotations in
             // duplicate: skip
-            guard matchRotations != self.matchRotations
+            guard battleRotations != self.battleRotations
             else { return }
 
             // new rotation data: set
             DispatchQueue.main.async {
-              self.matchRotations = matchRotations
+              self.battleRotations = battleRotations
             }
             self.markAsAutoLoaded(status: .success)
 

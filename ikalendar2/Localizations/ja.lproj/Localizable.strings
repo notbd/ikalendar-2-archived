@@ -10,22 +10,32 @@
 
 "Settings" = "設定";
 "Done" = "完了";
-"DEFAULT MODE" = "デフォルトモード";
-"APPEARANCE" = "外観モード";
+"Default Mode" = "デフォルトモード";
+"Appearance" = "外観";
+"Color Scheme" = "外観モード";
 "Dark" = "ダーク";
 "Light" = "ライト";
-"LANGUAGE" = "言語";
-"Preferred Language" = "優先する言語";
-"ACKNOWLEDGEMENT" = "了承";
+"Shuffle Cover Images" = "ステージ画像をシャッフル";
+"App Icon" = "アプリアイコン";
+"Language" = "言語";
+"App Language" = "アプリケーション言語";
+"About" = "ikalendar2について";
+"Acknowledgement" = "クレジット";
+"Share" = "共有";
+"Share ikalendar2" = "ikalendar2を共有";
+"Contact" = "連絡";
+"Developer's Twitter" = "開発者Twitter";
+"Send Feedback Email" = "フィードバックメールを送信";
+"Review" = "レビュー";
+"View ikalendar2 on the App Store" = "ikalendar2をApp Storeで表示";
+"Rate on the App Store" = "App Storeで評価";
+"Leave a Review" = "レビューを投稿";
+"Others" = "その他";
+"Source Code" = "ソースコード";
+"Privacy Policy" = "プライバシーポリシー";
+
 "Splatoon™ 2" = "スプラトゥーン™ 2";
 "Official Website" = "公式サイト";
-"ABOUT" = "ikalendar2について";
-"ABOUT FOOTNOTE" =
-"
-ikalendar2
-by Tianwei Zhang - tianwei4@illinois.edu
-";
-"Source Code Repo" = "ソースコードリポジトリ";
 
 // MARK: - RowHeaderPrefix
 
@@ -51,10 +61,10 @@ by Tianwei Zhang - tianwei4@illinois.edu
 
 // MARK: - GameMode
 
-"Match" = "バトル";
+"Battle" = "バトル";
 "Salmon Run" = "サーモンラン";
 
-// MARK: - MatchMode
+// MARK: - BattleMode
 
 "Regular Battle" = "レギュラーマッチ";
 "Ranked Battle" = "ガチマッチ";
@@ -64,7 +74,7 @@ by Tianwei Zhang - tianwei4@illinois.edu
 "Ranked" = "ガチマ";
 "League" = "リグマ";
 
-// MARK: - MatchRule
+// MARK: - BattleRule
 
 "Turf War" = "ナワバリバトル";
 "Splat Zones" = "ガチエリア";
@@ -72,7 +82,7 @@ by Tianwei Zhang - tianwei4@illinois.edu
 "Rainmaker" = "ガチホコバトル";
 "Clam Blitz" = "ガチアサリ";
 
-// MARK: - MatchStage
+// MARK: - BattleStage
 
 "Ancho-V Games" = "アンチョビットゲームズ";
 "Arowana Mall" = "アロワナモール";

@@ -10,22 +10,32 @@
 
 "Settings" = "Settings";
 "Done" = "Done";
-"DEFAULT MODE" = "DEFAULT MODE";
-"APPEARANCE" = "APPEARANCE";
+"Default Mode" = "Default Mode";
+"Appearance" = "Appearance";
+"Color Scheme" = "Color Scheme";
 "Dark" = "Dark";
 "Light" = "Light";
-"LANGUAGE" = "LANGUAGE";
-"Preferred Language" = "Preferred Language";
-"ACKNOWLEDGEMENT" = "ACKNOWLEDGEMENT";
+"Shuffle Cover Images" = "Shuffle Cover Images";
+"App Icon" = "App Icon";
+"Language" = "Language";
+"App Language" = "App Language";
+"About" = "About";
+"Acknowledgement" = "Acknowledgement";
+"Share" = "Share";
+"Share ikalendar2" = "Share ikalendar2";
+"Contact" = "Contact";
+"Developer's Twitter" = "Twitter";
+"Send Feedback Email" = "Send Feedback Email";
+"Review" = "Review";
+"View ikalendar2 on the App Store" = "View ikalendar2 on the App Store";
+"Rate on the App Store" = "Rate on the App Store";
+"Leave a Review" = "Leave a Review";
+"Others" = "Others";
+"Source Code" = "Source Code";
+"Privacy Policy" = "Privacy Policy";
+
 "Splatoon™ 2" = "Splatoon™ 2";
 "Official Website" = "Official Website";
-"ABOUT" = "ABOUT";
-"ABOUT FOOTNOTE" =
-"
-ikalendar2
-by Tianwei Zhang - tianwei4@illinois.edu
-";
-"Source Code Repo" = "Source Code Repo";
 
 // MARK: - RowHeaderPrefix
 
@@ -51,10 +61,10 @@ by Tianwei Zhang - tianwei4@illinois.edu
 
 // MARK: - GameMode
 
-"Match" = "Battle";
+"Battle" = "Battle";
 "Salmon Run" = "Salmon Run";
 
-// MARK: - MatchMode
+// MARK: - BattleMode
 
 "Regular Battle" = "Regular Battle";
 "Ranked Battle" = "Ranked Battle";
@@ -64,7 +74,7 @@ by Tianwei Zhang - tianwei4@illinois.edu
 "Ranked" = "Ranked";
 "League" = "League";
 
-// MARK: - MatchRule
+// MARK: - BattleRule
 
 "Turf War" = "Turf War";
 "Splat Zones" = "Splat Zones";
@@ -72,7 +82,7 @@ by Tianwei Zhang - tianwei4@illinois.edu
 "Rainmaker" = "Rainmaker";
 "Clam Blitz" = "Clam Blitz";
 
-// MARK: - MatchStage
+// MARK: - BattleStage
 
 "Ancho-V Games" = "Ancho-V Games";
 "Arowana Mall" = "Arowana Mall";

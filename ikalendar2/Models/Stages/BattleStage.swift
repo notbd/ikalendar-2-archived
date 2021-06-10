@@ -1,14 +1,14 @@
 //
-//  MatchStage.swift
+//  BattleStage.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 3/27/21.
 //
 
-// MARK: - MatchStage
+// MARK: - BattleStage
 
-/// Data model for the match stages.
-enum MatchStage: String, Identifiable, CaseIterable {
+/// Data model for the battle stages.
+enum BattleStage: String, Identifiable, CaseIterable {
   case anchoVGames = "Ancho-V Games"
   case arowanaMall = "Arowana Mall"
   case blackbellySkatepark = "Blackbelly Skatepark"
@@ -39,7 +39,7 @@ enum MatchStage: String, Identifiable, CaseIterable {
   var id: String { rawValue }
 }
 
-extension MatchStage {
+extension BattleStage {
   var name: String {
     switch self {
     case .anchoVGames: return "Ancho-V Games"
@@ -72,7 +72,7 @@ extension MatchStage {
   }
 }
 
-extension MatchStage {
+extension BattleStage {
   var releaseDate: String {
     switch self {
     case .anchoVGames: return "08/01/2018"
@@ -105,7 +105,7 @@ extension MatchStage {
   }
 }
 
-extension MatchStage {
+extension BattleStage {
   var inkableArea: Int {
     switch self {
     case .anchoVGames: return 2642
@@ -138,7 +138,7 @@ extension MatchStage {
   }
 }
 
-extension MatchStage {
+extension BattleStage {
   var imgFiln: String { rawValue.replacingOccurrences(of: " ", with: "_") }
   var imgFilnLarge: String { imgFiln + "_large" }
 }

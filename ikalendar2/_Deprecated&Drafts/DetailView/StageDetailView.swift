@@ -9,9 +9,9 @@ import SwiftUI
 
 // MARK: - StageDetailView
 
-/// The view that displays the detail information of a match stage.
+/// The view that displays the detail information of a battle stage.
 struct StageDetailView: View {
-  var stage: MatchStage
+  var stage: BattleStage
 
   var releaseDatePrefix: String { "Release Date" }
   var inkableAreaPrefix: String { "Inkable Area" }

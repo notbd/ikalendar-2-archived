@@ -45,8 +45,8 @@ struct ContentView: View {
         ErrorView(error: ikaError)
       case .loaded:
         switch ikaStatus.gameModeSelection {
-        case .match:
-          MatchRotationListView()
+        case .battle:
+          BattleRotationListView()
         case .salmon:
           SalmonRotationListView()
         }
@@ -58,8 +58,8 @@ struct ContentView: View {
 
   var title: LocalizedStringKey {
     switch ikaStatus.gameModeSelection {
-    case .match:
-      return ikaStatus.matchModeSelection.name.localizedStringKey()
+    case .battle:
+      return ikaStatus.battleModeSelection.name.localizedStringKey()
     case .salmon:
       return ikaStatus.gameModeSelection.name.localizedStringKey()
     }
@@ -90,10 +90,10 @@ struct ContentView: View {
 
           Spacer()
 
-          if ikaStatus.gameModeSelection == .match {
-            // MARK: match mode picker
+          if ikaStatus.gameModeSelection == .battle {
+            // MARK: battle mode picker
 
-            ToolbarMatchModePicker()
+            ToolbarBattleModePicker()
           }
         }
       }
@@ -122,21 +122,21 @@ struct ContentView: View {
   }
 }
 
-// MARK: - ToolbarMatchModePicker
+// MARK: - ToolbarBattleModePicker
 
-/// A picker component for the match mode
-struct ToolbarMatchModePicker: View {
+/// A picker component for the battle mode
+struct ToolbarBattleModePicker: View {
   @EnvironmentObject var ikaStatus: IkaStatus
 
   var body: some View {
-    Picker(selection: $ikaStatus.matchModeSelection.onSet { _ in
+    Picker(selection: $ikaStatus.battleModeSelection.onSet { _ in
       Haptics.generate(.soft)
     },
-    label: Text("Match Mode")) {
-        ForEach(MatchMode.allCases) { matchMode in
-          Text(matchMode.shortName.localizedStringKey())
-            .tag(matchMode)
-        }
+    label: Text("Battle Mode")) {
+      ForEach(BattleMode.allCases) { battleMode in
+        Text(battleMode.shortName.localizedStringKey())
+          .tag(battleMode)
+      }
     }
     .pickerStyle(SegmentedPickerStyle())
   }

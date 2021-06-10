@@ -10,23 +10,23 @@ import Foundation
 /// A decoder class to parse the data got from the api
 /// into our data model.
 final class IkaDecoder {
-  /// Parse the data into a match rotation dictionary.
+  /// Parse the data into a battle rotation dictionary.
   /// - Parameter data: The data to parse from.
   /// - Throws:
   ///   - `SwiftyJSONError`: if failed to parse data into a SwiftyJSON instance.
   ///   - `IkaError.invalidData`: if JSON is in of unsupported format.
   /// - Returns: The parsed dictionary (will NOT be empty).
-  static func parseMatchRotationDict(from data: Data) throws -> MatchRotationDict {
-    var matchRotationDict = MatchRotationDict()
+  static func parseBattleRotationDict(from data: Data) throws -> BattleRotationDict {
+    var battleRotationDict = BattleRotationDict()
 
     // Will throw SwiftyJSONError if parsing fails
     let rootJSON = try JSON(data: data)
 
-    for matchMode in MatchMode.allCases {
-      // for all MatchModes:
+    for battleMode in BattleMode.allCases {
+      // for all BattleModes:
 
-      let matchModeString = matchMode.rawValue
-      guard let rotationArrayJSON = rootJSON[matchModeString].array
+      let battleModeString = battleMode.rawValue
+      guard let rotationArrayJSON = rootJSON[battleModeString].array
       else {
         // ERROR: parse rotation array
         throw IkaError.invalidData
@@ -48,30 +48,30 @@ final class IkaDecoder {
         let endTime = Date(timeIntervalSince1970: endTimeDouble)
 
         guard
-          let rule = MatchRule(rawValue: ruleNameString),
-          let stageA = MatchStage(rawValue: stageANameString),
-          let stageB = MatchStage(rawValue: stageBNameString)
+          let rule = BattleRule(rawValue: ruleNameString),
+          let stageA = BattleStage(rawValue: stageANameString),
+          let stageB = BattleStage(rawValue: stageBNameString)
         else {
           // ERROR: invalid rule or stage key
           throw IkaError.invalidData
         }
 
         // SUCCESS: construct rotation using parsed data and append to array in dict
-        matchRotationDict[matchMode]!.append(.init(startTime: startTime,
-                                                   endTime: endTime,
-                                                   rule: rule,
-                                                   stageA: stageA,
-                                                   stageB: stageB))
+        battleRotationDict[battleMode]!.append(.init(startTime: startTime,
+                                                     endTime: endTime,
+                                                     rule: rule,
+                                                     stageA: stageA,
+                                                     stageB: stageB))
       }
 
-      if matchRotationDict[matchMode]!.isEmpty {
-        // ERROR: empty data for a match rule
+      if battleRotationDict[battleMode]!.isEmpty {
+        // ERROR: empty data for a battle rule
         throw IkaError.invalidData
       }
     }
 
     // return the parsed dict
-    return matchRotationDict
+    return battleRotationDict
   }
 
   /// Parse the data into a salmon rotation array.

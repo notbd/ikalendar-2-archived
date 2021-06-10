@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		797DEB61266EDAE60057FC77 /* SettingsAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797DEB60266EDAE60057FC77 /* SettingsAboutView.swift */; };
+		79B24031266F2E9E00FB530E /* SettingsAppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B24030266F2E9E00FB530E /* SettingsAppIconView.swift */; };
+		79B24033266F2EB400FB530E /* SettingsAcknowledgementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B24032266F2EB400FB530E /* SettingsAcknowledgementView.swift */; };
 		79C42D93263A4CE70047B0E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42C83263A4CE20047B0E0 /* Constants.swift */; };
 		79C42D94263A4CE70047B0E0 /* KeyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42C84263A4CE20047B0E0 /* KeyConstants.swift */; };
 		79C42D95263A4CE70047B0E0 /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42C85263A4CE20047B0E0 /* StyleConstants.swift */; };
@@ -35,7 +38,7 @@
 		79C42E08263A4CE70047B0E0 /* Splatfont2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 79C42D32263A4CE60047B0E0 /* Splatfont2.ttf */; };
 		79C42E09263A4CE70047B0E0 /* Inkling_v2.otf in Resources */ = {isa = PBXBuildFile; fileRef = 79C42D33263A4CE60047B0E0 /* Inkling_v2.otf */; };
 		79C42E0A263A4CE70047B0E0 /* SalmonRotationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D36263A4CE60047B0E0 /* SalmonRotationListView.swift */; };
-		79C42E0B263A4CE70047B0E0 /* MatchRotationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D37263A4CE60047B0E0 /* MatchRotationListView.swift */; };
+		79C42E0B263A4CE70047B0E0 /* BattleRotationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D37263A4CE60047B0E0 /* BattleRotationListView.swift */; };
 		79C42E0C263A4CE70047B0E0 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D38263A4CE60047B0E0 /* RootView.swift */; };
 		79C42E0D263A4CE70047B0E0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D3A263A4CE60047B0E0 /* OnboardingView.swift */; };
 		79C42E0E263A4CE70047B0E0 /* SettingsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D3C263A4CE60047B0E0 /* SettingsMainView.swift */; };
@@ -47,32 +50,32 @@
 		79C42E14263A4CE70047B0E0 /* ToolbarSFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D45263A4CE60047B0E0 /* ToolbarSFButton.swift */; };
 		79C42E15263A4CE70047B0E0 /* ToolbarGameModeSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D46263A4CE60047B0E0 /* ToolbarGameModeSwitchButton.swift */; };
 		79C42E16263A4CE70047B0E0 /* ToolbarButtonAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D47263A4CE60047B0E0 /* ToolbarButtonAlignment.swift */; };
-		79C42E17263A4CE70047B0E0 /* MatchRotationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D4A263A4CE60047B0E0 /* MatchRotationCell.swift */; };
+		79C42E17263A4CE70047B0E0 /* BattleRotationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D4A263A4CE60047B0E0 /* BattleRotationCell.swift */; };
 		79C42E18263A4CE70047B0E0 /* SalmonRotationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D4B263A4CE60047B0E0 /* SalmonRotationCell.swift */; };
-		79C42E19263A4CE70047B0E0 /* MatchRotationStageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D4D263A4CE60047B0E0 /* MatchRotationStageCard.swift */; };
+		79C42E19263A4CE70047B0E0 /* BattleRotationStageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D4D263A4CE60047B0E0 /* BattleRotationStageCard.swift */; };
 		79C42E1A263A4CE70047B0E0 /* SalmonRotationStageCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D4E263A4CE60047B0E0 /* SalmonRotationStageCard.swift */; };
 		79C42E1B263A4CE70047B0E0 /* SalmonRotationWeaponCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D4F263A4CE60047B0E0 /* SalmonRotationWeaponCard.swift */; };
 		79C42E1C263A4CE70047B0E0 /* StageTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D51263A4CE60047B0E0 /* StageTitleLabel.swift */; };
-		79C42E1D263A4CE70047B0E0 /* MatchRotationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D53263A4CE60047B0E0 /* MatchRotationRow.swift */; };
+		79C42E1D263A4CE70047B0E0 /* BattleRotationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D53263A4CE60047B0E0 /* BattleRotationRow.swift */; };
 		79C42E1E263A4CE70047B0E0 /* SalmonRotationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D54263A4CE60047B0E0 /* SalmonRotationRow.swift */; };
 		79C42E1F263A4CE70047B0E0 /* SwiftUIBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D56263A4CE60047B0E0 /* SwiftUIBlur.swift */; };
 		79C42E20263A4CE70047B0E0 /* ModeIconStamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D58263A4CE60047B0E0 /* ModeIconStamp.swift */; };
 		79C42E21263A4CE70047B0E0 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D59263A4CE60047B0E0 /* LoadingOverlay.swift */; };
 		79C42E22263A4CE70047B0E0 /* AutoLoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D5A263A4CE60047B0E0 /* AutoLoadingOverlay.swift */; };
 		79C42E33263A4CE70047B0E0 /* RotationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D76263A4CE70047B0E0 /* RotationProtocol.swift */; };
-		79C42E34263A4CE70047B0E0 /* MatchRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D77263A4CE70047B0E0 /* MatchRotation.swift */; };
+		79C42E34263A4CE70047B0E0 /* BattleRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D77263A4CE70047B0E0 /* BattleRotation.swift */; };
 		79C42E35263A4CE70047B0E0 /* SalmonRotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D78263A4CE70047B0E0 /* SalmonRotation.swift */; };
-		79C42E36263A4CE70047B0E0 /* MatchRotationDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D79263A4CE70047B0E0 /* MatchRotationDict.swift */; };
-		79C42E37263A4CE70047B0E0 /* MatchStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D7B263A4CE70047B0E0 /* MatchStage.swift */; };
+		79C42E36263A4CE70047B0E0 /* BattleRotationDict.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D79263A4CE70047B0E0 /* BattleRotationDict.swift */; };
+		79C42E37263A4CE70047B0E0 /* BattleStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D7B263A4CE70047B0E0 /* BattleStage.swift */; };
 		79C42E38263A4CE70047B0E0 /* SalmonStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D7C263A4CE70047B0E0 /* SalmonStage.swift */; };
 		79C42E39263A4CE70047B0E0 /* IkaWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D7E263A4CE70047B0E0 /* IkaWeapon.swift */; };
 		79C42E3A263A4CE70047B0E0 /* SalmonWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D7F263A4CE70047B0E0 /* SalmonWeapon.swift */; };
 		79C42E3B263A4CE70047B0E0 /* RandomWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D80263A4CE70047B0E0 /* RandomWeapon.swift */; };
 		79C42E3C263A4CE70047B0E0 /* GrizzcoWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D81263A4CE70047B0E0 /* GrizzcoWeapon.swift */; };
 		79C42E3D263A4CE70047B0E0 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D82263A4CE70047B0E0 /* MockData.swift */; };
-		79C42E3E263A4CE70047B0E0 /* MatchMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D84263A4CE70047B0E0 /* MatchMode.swift */; };
+		79C42E3E263A4CE70047B0E0 /* BattleMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D84263A4CE70047B0E0 /* BattleMode.swift */; };
 		79C42E3F263A4CE70047B0E0 /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D85263A4CE70047B0E0 /* GameMode.swift */; };
-		79C42E40263A4CE70047B0E0 /* MatchRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D86263A4CE70047B0E0 /* MatchRule.swift */; };
+		79C42E40263A4CE70047B0E0 /* BattleRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D86263A4CE70047B0E0 /* BattleRule.swift */; };
 		79C42E41263A4CE70047B0E0 /* IkaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D88263A4CE70047B0E0 /* IkaError.swift */; };
 		79C42E42263A4CE70047B0E0 /* ClothesGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D8A263A4CE70047B0E0 /* ClothesGear.swift */; };
 		79C42E43263A4CE70047B0E0 /* ShoesGear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D8B263A4CE70047B0E0 /* ShoesGear.swift */; };
@@ -85,6 +88,7 @@
 		79C42E4E263A4F5C0047B0E0 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42E4B263A4F5C0047B0E0 /* SwiftyJSON.swift */; };
 		79C42E4F263A4F5C0047B0E0 /* ListSeparator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42E4C263A4F5C0047B0E0 /* ListSeparator.swift */; };
 		79C42E50263A4F5C0047B0E0 /* SimpleHaptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42E4D263A4F5C0047B0E0 /* SimpleHaptics.swift */; };
+		79C6E3F42671AD8A0095ECD6 /* RoundedFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C6E3F32671AD8A0095ECD6 /* RoundedFont.swift */; };
 		79E7B65D263A54FE00866AC3 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 79E7B65B263A54FE00866AC3 /* .swiftlint.yml */; };
 		79E7B65E263A54FE00866AC3 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 79E7B65C263A54FE00866AC3 /* .swiftformat */; };
 		79F8460F246767EC0086AD95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F8460E246767EC0086AD95 /* Assets.xcassets */; };
@@ -92,6 +96,9 @@
 
 /* Begin PBXFileReference section */
 		79459A8824F1EFEC00C90BA4 /* ikalendar2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ikalendar2.entitlements; sourceTree = "<group>"; };
+		797DEB60266EDAE60057FC77 /* SettingsAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutView.swift; sourceTree = "<group>"; };
+		79B24030266F2E9E00FB530E /* SettingsAppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppIconView.swift; sourceTree = "<group>"; };
+		79B24032266F2EB400FB530E /* SettingsAcknowledgementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAcknowledgementView.swift; sourceTree = "<group>"; };
 		79C42C83263A4CE20047B0E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		79C42C84263A4CE20047B0E0 /* KeyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyConstants.swift; sourceTree = "<group>"; };
 		79C42C85263A4CE20047B0E0 /* StyleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
@@ -121,7 +128,7 @@
 		79C42D32263A4CE60047B0E0 /* Splatfont2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Splatfont2.ttf; sourceTree = "<group>"; };
 		79C42D33263A4CE60047B0E0 /* Inkling_v2.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inkling_v2.otf; sourceTree = "<group>"; };
 		79C42D36263A4CE60047B0E0 /* SalmonRotationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonRotationListView.swift; sourceTree = "<group>"; };
-		79C42D37263A4CE60047B0E0 /* MatchRotationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRotationListView.swift; sourceTree = "<group>"; };
+		79C42D37263A4CE60047B0E0 /* BattleRotationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleRotationListView.swift; sourceTree = "<group>"; };
 		79C42D38263A4CE60047B0E0 /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		79C42D3A263A4CE60047B0E0 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		79C42D3C263A4CE60047B0E0 /* SettingsMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMainView.swift; sourceTree = "<group>"; };
@@ -133,13 +140,13 @@
 		79C42D45263A4CE60047B0E0 /* ToolbarSFButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarSFButton.swift; sourceTree = "<group>"; };
 		79C42D46263A4CE60047B0E0 /* ToolbarGameModeSwitchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarGameModeSwitchButton.swift; sourceTree = "<group>"; };
 		79C42D47263A4CE60047B0E0 /* ToolbarButtonAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarButtonAlignment.swift; sourceTree = "<group>"; };
-		79C42D4A263A4CE60047B0E0 /* MatchRotationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRotationCell.swift; sourceTree = "<group>"; };
+		79C42D4A263A4CE60047B0E0 /* BattleRotationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleRotationCell.swift; sourceTree = "<group>"; };
 		79C42D4B263A4CE60047B0E0 /* SalmonRotationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonRotationCell.swift; sourceTree = "<group>"; };
-		79C42D4D263A4CE60047B0E0 /* MatchRotationStageCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRotationStageCard.swift; sourceTree = "<group>"; };
+		79C42D4D263A4CE60047B0E0 /* BattleRotationStageCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleRotationStageCard.swift; sourceTree = "<group>"; };
 		79C42D4E263A4CE60047B0E0 /* SalmonRotationStageCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonRotationStageCard.swift; sourceTree = "<group>"; };
 		79C42D4F263A4CE60047B0E0 /* SalmonRotationWeaponCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonRotationWeaponCard.swift; sourceTree = "<group>"; };
 		79C42D51263A4CE60047B0E0 /* StageTitleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StageTitleLabel.swift; sourceTree = "<group>"; };
-		79C42D53263A4CE60047B0E0 /* MatchRotationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRotationRow.swift; sourceTree = "<group>"; };
+		79C42D53263A4CE60047B0E0 /* BattleRotationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleRotationRow.swift; sourceTree = "<group>"; };
 		79C42D54263A4CE60047B0E0 /* SalmonRotationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonRotationRow.swift; sourceTree = "<group>"; };
 		79C42D56263A4CE60047B0E0 /* SwiftUIBlur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIBlur.swift; sourceTree = "<group>"; };
 		79C42D58263A4CE60047B0E0 /* ModeIconStamp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeIconStamp.swift; sourceTree = "<group>"; };
@@ -153,27 +160,21 @@
 		79C42D64263A4CE60047B0E0 /* Coordinate2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate2D.swift; sourceTree = "<group>"; };
 		79C42D66263A4CE60047B0E0 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		79C42D67263A4CE60047B0E0 /* SidebarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
-		79C42D6A263A4CE60047B0E0 /* SalmonWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonWidget.swift; sourceTree = "<group>"; };
-		79C42D6B263A4CE60047B0E0 /* SalmonWidgetEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonWidgetEntryView.swift; sourceTree = "<group>"; };
-		79C42D6D263A4CE70047B0E0 /* MatchWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchWidget.swift; sourceTree = "<group>"; };
-		79C42D6E263A4CE70047B0E0 /* MatchWidgetEntryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchWidgetEntryView.swift; sourceTree = "<group>"; };
-		79C42D6F263A4CE70047B0E0 /* IkaWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = IkaWidget.intentdefinition; sourceTree = "<group>"; };
-		79C42D70263A4CE70047B0E0 /* IkaWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IkaWidget.swift; sourceTree = "<group>"; };
 		79C42D71263A4CE70047B0E0 /* FlatMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatMode.swift; sourceTree = "<group>"; };
 		79C42D76263A4CE70047B0E0 /* RotationProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RotationProtocol.swift; sourceTree = "<group>"; };
-		79C42D77263A4CE70047B0E0 /* MatchRotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRotation.swift; sourceTree = "<group>"; };
+		79C42D77263A4CE70047B0E0 /* BattleRotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleRotation.swift; sourceTree = "<group>"; };
 		79C42D78263A4CE70047B0E0 /* SalmonRotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonRotation.swift; sourceTree = "<group>"; };
-		79C42D79263A4CE70047B0E0 /* MatchRotationDict.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRotationDict.swift; sourceTree = "<group>"; };
-		79C42D7B263A4CE70047B0E0 /* MatchStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchStage.swift; sourceTree = "<group>"; };
+		79C42D79263A4CE70047B0E0 /* BattleRotationDict.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleRotationDict.swift; sourceTree = "<group>"; };
+		79C42D7B263A4CE70047B0E0 /* BattleStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleStage.swift; sourceTree = "<group>"; };
 		79C42D7C263A4CE70047B0E0 /* SalmonStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonStage.swift; sourceTree = "<group>"; };
 		79C42D7E263A4CE70047B0E0 /* IkaWeapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IkaWeapon.swift; sourceTree = "<group>"; };
 		79C42D7F263A4CE70047B0E0 /* SalmonWeapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SalmonWeapon.swift; sourceTree = "<group>"; };
 		79C42D80263A4CE70047B0E0 /* RandomWeapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomWeapon.swift; sourceTree = "<group>"; };
 		79C42D81263A4CE70047B0E0 /* GrizzcoWeapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrizzcoWeapon.swift; sourceTree = "<group>"; };
 		79C42D82263A4CE70047B0E0 /* MockData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
-		79C42D84263A4CE70047B0E0 /* MatchMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchMode.swift; sourceTree = "<group>"; };
+		79C42D84263A4CE70047B0E0 /* BattleMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleMode.swift; sourceTree = "<group>"; };
 		79C42D85263A4CE70047B0E0 /* GameMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
-		79C42D86263A4CE70047B0E0 /* MatchRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchRule.swift; sourceTree = "<group>"; };
+		79C42D86263A4CE70047B0E0 /* BattleRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BattleRule.swift; sourceTree = "<group>"; };
 		79C42D88263A4CE70047B0E0 /* IkaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IkaError.swift; sourceTree = "<group>"; };
 		79C42D8A263A4CE70047B0E0 /* ClothesGear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClothesGear.swift; sourceTree = "<group>"; };
 		79C42D8B263A4CE70047B0E0 /* ShoesGear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoesGear.swift; sourceTree = "<group>"; };
@@ -186,6 +187,7 @@
 		79C42E4B263A4F5C0047B0E0 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		79C42E4C263A4F5C0047B0E0 /* ListSeparator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSeparator.swift; sourceTree = "<group>"; };
 		79C42E4D263A4F5C0047B0E0 /* SimpleHaptics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleHaptics.swift; sourceTree = "<group>"; };
+		79C6E3F32671AD8A0095ECD6 /* RoundedFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedFont.swift; sourceTree = "<group>"; };
 		79E7B65B263A54FE00866AC3 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		79E7B65C263A54FE00866AC3 /* .swiftformat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		79F84605246767E90086AD95 /* ikalendar2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ikalendar2.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -240,8 +242,9 @@
 			isa = PBXGroup;
 			children = (
 				79C42D17263A4CE60047B0E0 /* QuickBorder.swift */,
-				79C42D18263A4CE60047B0E0 /* FontIka.swift */,
 				79C42D19263A4CE60047B0E0 /* SilhouetteFrame.swift */,
+				79C42D18263A4CE60047B0E0 /* FontIka.swift */,
+				79C6E3F32671AD8A0095ECD6 /* RoundedFont.swift */,
 				79C42D1A263A4CE60047B0E0 /* ScaledSingleLine.swift */,
 				79C42D1B263A4CE60047B0E0 /* TappableAreaFrame.swift */,
 			);
@@ -263,9 +266,9 @@
 				79C42D20263A4CE60047B0E0 /* DateFormatter+Ext.swift */,
 				79C42D21263A4CE60047B0E0 /* Date+Ext.swift */,
 				79C42D22263A4CE60047B0E0 /* String+Ext.swift */,
-				79C42D23263A4CE60047B0E0 /* Color+Ext.swift */,
 				79C42D24263A4CE60047B0E0 /* View+Ext.swift */,
 				79C42D25263A4CE60047B0E0 /* LocalizedStringKey+Ext.swift */,
+				79C42D23263A4CE60047B0E0 /* Color+Ext.swift */,
 				79C42D26263A4CE60047B0E0 /* Binding+Ext.swift */,
 			);
 			path = Extensions;
@@ -331,8 +334,8 @@
 		79C42D35263A4CE60047B0E0 /* RotationListView */ = {
 			isa = PBXGroup;
 			children = (
+				79C42D37263A4CE60047B0E0 /* BattleRotationListView.swift */,
 				79C42D36263A4CE60047B0E0 /* SalmonRotationListView.swift */,
-				79C42D37263A4CE60047B0E0 /* MatchRotationListView.swift */,
 			);
 			path = RotationListView;
 			sourceTree = "<group>";
@@ -349,6 +352,9 @@
 			isa = PBXGroup;
 			children = (
 				79C42D3C263A4CE60047B0E0 /* SettingsMainView.swift */,
+				79B24030266F2E9E00FB530E /* SettingsAppIconView.swift */,
+				797DEB60266EDAE60057FC77 /* SettingsAboutView.swift */,
+				79B24032266F2EB400FB530E /* SettingsAcknowledgementView.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -398,7 +404,7 @@
 		79C42D49263A4CE60047B0E0 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				79C42D4A263A4CE60047B0E0 /* MatchRotationCell.swift */,
+				79C42D4A263A4CE60047B0E0 /* BattleRotationCell.swift */,
 				79C42D4B263A4CE60047B0E0 /* SalmonRotationCell.swift */,
 			);
 			path = Cells;
@@ -407,7 +413,7 @@
 		79C42D4C263A4CE60047B0E0 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
-				79C42D4D263A4CE60047B0E0 /* MatchRotationStageCard.swift */,
+				79C42D4D263A4CE60047B0E0 /* BattleRotationStageCard.swift */,
 				79C42D4E263A4CE60047B0E0 /* SalmonRotationStageCard.swift */,
 				79C42D4F263A4CE60047B0E0 /* SalmonRotationWeaponCard.swift */,
 			);
@@ -425,7 +431,7 @@
 		79C42D52263A4CE60047B0E0 /* Rows */ = {
 			isa = PBXGroup;
 			children = (
-				79C42D53263A4CE60047B0E0 /* MatchRotationRow.swift */,
+				79C42D53263A4CE60047B0E0 /* BattleRotationRow.swift */,
 				79C42D54263A4CE60047B0E0 /* SalmonRotationRow.swift */,
 			);
 			path = Rows;
@@ -456,7 +462,6 @@
 				79C42D5E263A4CE60047B0E0 /* DetailView */,
 				79C42D65263A4CE60047B0E0 /* NetworkManager */,
 				79C42D67263A4CE60047B0E0 /* SidebarView.swift */,
-				79C42D68263A4CE60047B0E0 /* Widgets */,
 				79C42D71263A4CE70047B0E0 /* FlatMode.swift */,
 			);
 			path = "_Deprecated&Drafts";
@@ -498,35 +503,6 @@
 			path = NetworkManager;
 			sourceTree = "<group>";
 		};
-		79C42D68263A4CE60047B0E0 /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-				79C42D69263A4CE60047B0E0 /* SalmonWidget */,
-				79C42D6C263A4CE70047B0E0 /* MatchWidget */,
-				79C42D6F263A4CE70047B0E0 /* IkaWidget.intentdefinition */,
-				79C42D70263A4CE70047B0E0 /* IkaWidget.swift */,
-			);
-			path = Widgets;
-			sourceTree = "<group>";
-		};
-		79C42D69263A4CE60047B0E0 /* SalmonWidget */ = {
-			isa = PBXGroup;
-			children = (
-				79C42D6A263A4CE60047B0E0 /* SalmonWidget.swift */,
-				79C42D6B263A4CE60047B0E0 /* SalmonWidgetEntryView.swift */,
-			);
-			path = SalmonWidget;
-			sourceTree = "<group>";
-		};
-		79C42D6C263A4CE70047B0E0 /* MatchWidget */ = {
-			isa = PBXGroup;
-			children = (
-				79C42D6D263A4CE70047B0E0 /* MatchWidget.swift */,
-				79C42D6E263A4CE70047B0E0 /* MatchWidgetEntryView.swift */,
-			);
-			path = MatchWidget;
-			sourceTree = "<group>";
-		};
 		79C42D74263A4CE70047B0E0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,8 +522,8 @@
 			isa = PBXGroup;
 			children = (
 				79C42D76263A4CE70047B0E0 /* RotationProtocol.swift */,
-				79C42D77263A4CE70047B0E0 /* MatchRotation.swift */,
-				79C42D79263A4CE70047B0E0 /* MatchRotationDict.swift */,
+				79C42D77263A4CE70047B0E0 /* BattleRotation.swift */,
+				79C42D79263A4CE70047B0E0 /* BattleRotationDict.swift */,
 				79C42D78263A4CE70047B0E0 /* SalmonRotation.swift */,
 			);
 			path = Rotations;
@@ -556,7 +532,7 @@
 		79C42D7A263A4CE70047B0E0 /* Stages */ = {
 			isa = PBXGroup;
 			children = (
-				79C42D7B263A4CE70047B0E0 /* MatchStage.swift */,
+				79C42D7B263A4CE70047B0E0 /* BattleStage.swift */,
 				79C42D7C263A4CE70047B0E0 /* SalmonStage.swift */,
 			);
 			path = Stages;
@@ -576,9 +552,9 @@
 		79C42D83263A4CE70047B0E0 /* Modes+Rules */ = {
 			isa = PBXGroup;
 			children = (
-				79C42D84263A4CE70047B0E0 /* MatchMode.swift */,
 				79C42D85263A4CE70047B0E0 /* GameMode.swift */,
-				79C42D86263A4CE70047B0E0 /* MatchRule.swift */,
+				79C42D84263A4CE70047B0E0 /* BattleMode.swift */,
+				79C42D86263A4CE70047B0E0 /* BattleRule.swift */,
 			);
 			path = "Modes+Rules";
 			sourceTree = "<group>";
@@ -688,7 +664,6 @@
 				79F84602246767E90086AD95 /* Frameworks */,
 				79F84603246767E90086AD95 /* Resources */,
 				79E7B660263A5FD600866AC3 /* Run Swiftlint */,
-				79E7B661263A600700866AC3 /* ShellScript */,
 				79E7B662263A601100866AC3 /* Increment Build Number */,
 			);
 			buildRules = (
@@ -768,24 +743,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-		79E7B661263A600700866AC3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		79E7B662263A601100866AC3 /* Increment Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -813,18 +771,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				79C42E18263A4CE70047B0E0 /* SalmonRotationCell.swift in Sources */,
-				79C42E36263A4CE70047B0E0 /* MatchRotationDict.swift in Sources */,
+				79C42E36263A4CE70047B0E0 /* BattleRotationDict.swift in Sources */,
 				79C42DFC263A4CE70047B0E0 /* Date+Ext.swift in Sources */,
 				79C42E50263A4F5C0047B0E0 /* SimpleHaptics.swift in Sources */,
 				79C42E1E263A4CE70047B0E0 /* SalmonRotationRow.swift in Sources */,
 				79C42E0D263A4CE70047B0E0 /* OnboardingView.swift in Sources */,
-				79C42E17263A4CE70047B0E0 /* MatchRotationCell.swift in Sources */,
+				79C42E17263A4CE70047B0E0 /* BattleRotationCell.swift in Sources */,
 				79C42DF6263A4CE70047B0E0 /* SilhouetteFrame.swift in Sources */,
+				79B24033266F2EB400FB530E /* SettingsAcknowledgementView.swift in Sources */,
 				79C42E44263A4CE70047B0E0 /* SalmonGear.swift in Sources */,
 				79C42E3F263A4CE70047B0E0 /* GameMode.swift in Sources */,
-				79C42E3E263A4CE70047B0E0 /* MatchMode.swift in Sources */,
+				79B24031266F2E9E00FB530E /* SettingsAppIconView.swift in Sources */,
+				79C42E3E263A4CE70047B0E0 /* BattleMode.swift in Sources */,
 				79C42DFB263A4CE70047B0E0 /* DateFormatter+Ext.swift in Sources */,
-				79C42E19263A4CE70047B0E0 /* MatchRotationStageCard.swift in Sources */,
+				79C42E19263A4CE70047B0E0 /* BattleRotationStageCard.swift in Sources */,
 				79C42DF8263A4CE70047B0E0 /* TappableAreaFrame.swift in Sources */,
 				79C42E22263A4CE70047B0E0 /* AutoLoadingOverlay.swift in Sources */,
 				79C42E43263A4CE70047B0E0 /* ShoesGear.swift in Sources */,
@@ -842,6 +802,7 @@
 				79C42E3D263A4CE70047B0E0 /* MockData.swift in Sources */,
 				79C42DF7263A4CE70047B0E0 /* ScaledSingleLine.swift in Sources */,
 				79C42E15263A4CE70047B0E0 /* ToolbarGameModeSwitchButton.swift in Sources */,
+				79C6E3F42671AD8A0095ECD6 /* RoundedFont.swift in Sources */,
 				79C42E00263A4CE70047B0E0 /* LocalizedStringKey+Ext.swift in Sources */,
 				79C42E12263A4CE70047B0E0 /* ToolbarSettingsButton.swift in Sources */,
 				79C42E41263A4CE70047B0E0 /* IkaError.swift in Sources */,
@@ -849,13 +810,13 @@
 				79C42E35263A4CE70047B0E0 /* SalmonRotation.swift in Sources */,
 				79C42DFD263A4CE70047B0E0 /* String+Ext.swift in Sources */,
 				79C42DFA263A4CE70047B0E0 /* ScrollView+Ext.swift in Sources */,
-				79C42E40263A4CE70047B0E0 /* MatchRule.swift in Sources */,
+				79C42E40263A4CE70047B0E0 /* BattleRule.swift in Sources */,
 				79C42E11263A4CE70047B0E0 /* ErrorView.swift in Sources */,
 				79C42E0E263A4CE70047B0E0 /* SettingsMainView.swift in Sources */,
 				79C42D93263A4CE70047B0E0 /* Constants.swift in Sources */,
 				79C42E49263A4CE70047B0E0 /* IkaStatus.swift in Sources */,
 				79C42E14263A4CE70047B0E0 /* ToolbarSFButton.swift in Sources */,
-				79C42E37263A4CE70047B0E0 /* MatchStage.swift in Sources */,
+				79C42E37263A4CE70047B0E0 /* BattleStage.swift in Sources */,
 				79C42DFF263A4CE70047B0E0 /* View+Ext.swift in Sources */,
 				79C42E01263A4CE70047B0E0 /* Binding+Ext.swift in Sources */,
 				79C42E46263A4CE70047B0E0 /* IkaPreference.swift in Sources */,
@@ -864,14 +825,14 @@
 				79C42E1C263A4CE70047B0E0 /* StageTitleLabel.swift in Sources */,
 				79C42E47263A4CE70047B0E0 /* IkaCatalog.swift in Sources */,
 				79C42E3A263A4CE70047B0E0 /* SalmonWeapon.swift in Sources */,
-				79C42E0B263A4CE70047B0E0 /* MatchRotationListView.swift in Sources */,
+				79C42E0B263A4CE70047B0E0 /* BattleRotationListView.swift in Sources */,
 				79C42E10263A4CE70047B0E0 /* ContentView.swift in Sources */,
 				79C42E02263A4CE70047B0E0 /* MotionManager.swift in Sources */,
 				79C42E42263A4CE70047B0E0 /* ClothesGear.swift in Sources */,
-				79C42E1D263A4CE70047B0E0 /* MatchRotationRow.swift in Sources */,
+				79C42E1D263A4CE70047B0E0 /* BattleRotationRow.swift in Sources */,
 				79C42E03263A4CE70047B0E0 /* IkaDecoder.swift in Sources */,
 				79C42E3B263A4CE70047B0E0 /* RandomWeapon.swift in Sources */,
-				79C42E34263A4CE70047B0E0 /* MatchRotation.swift in Sources */,
+				79C42E34263A4CE70047B0E0 /* BattleRotation.swift in Sources */,
 				79C42E39263A4CE70047B0E0 /* IkaWeapon.swift in Sources */,
 				79C42DFE263A4CE70047B0E0 /* Color+Ext.swift in Sources */,
 				79C42E45263A4CE70047B0E0 /* HeadGear.swift in Sources */,
@@ -881,6 +842,7 @@
 				79C42D95263A4CE70047B0E0 /* StyleConstants.swift in Sources */,
 				79C42E1A263A4CE70047B0E0 /* SalmonRotationStageCard.swift in Sources */,
 				79C42E0A263A4CE70047B0E0 /* SalmonRotationListView.swift in Sources */,
+				797DEB61266EDAE60057FC77 /* SettingsAboutView.swift in Sources */,
 				79C42E38263A4CE70047B0E0 /* SalmonStage.swift in Sources */,
 				79C42D94263A4CE70047B0E0 /* KeyConstants.swift in Sources */,
 				79C42E16263A4CE70047B0E0 /* ToolbarButtonAlignment.swift in Sources */,
@@ -1038,7 +1000,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
 				SUPPORTS_MACCATALYST = NO;
@@ -1063,7 +1025,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = edu.illinois.tianwei4.ikalendar2;
 				PRODUCT_NAME = ikalendar2;
 				SUPPORTS_MACCATALYST = NO;

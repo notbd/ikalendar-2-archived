@@ -32,6 +32,6 @@ struct CircleImage: View {
 
 struct CircleImage_Previews: PreviewProvider {
   static var previews: some View {
-    CircleImage(image: Image(MatchStage.theReef.imgFilnLarge))
+    CircleImage(image: Image(BattleStage.theReef.imgFilnLarge))
   }
 }

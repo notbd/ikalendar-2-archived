@@ -25,16 +25,15 @@ struct SalmonRotationListView: View {
 
   var body: some View {
     GeometryReader { geometry in
-      List {
+      Form {
         ForEach(Array(salmonRotations.enumerated()),
                 id: \.offset) { index, rotation in
-            SalmonRotationRow(rotation: rotation,
-                              index: index,
-                              width: geometry.size.width)
+          SalmonRotationRow(rotation: rotation,
+                            index: index,
+                            width: geometry.size.width)
         }
       }
       .disabled(ikaCatalog.loadingStatus != .loaded)
-      .listStyle(InsetGroupedListStyle())
     }
   }
 }

@@ -19,14 +19,14 @@ final class NetworkManager {
 
   // MARK: Internal
 
-  /// Asynchronously get the match rotation dict from the `splatoon2.ink` api
+  /// Asynchronously get the battle rotation dict from the `splatoon2.ink` api
   /// - Parameter completion: handler function for the result
-  func asyncGetMatchRotationDict(
-    completion: @escaping (Result<MatchRotationDict, IkaError>)
+  func asyncGetBattleRotationDict(
+    completion: @escaping (Result<BattleRotationDict, IkaError>)
       -> Void)
   {
-    asyncFetchAndDecode(url: URL(string: Constants.Keys.URL.MATCH_ROTATIONS)!,
-                        decodeUsing: IkaDecoder.parseMatchRotationDict,
+    asyncFetchAndDecode(url: URL(string: Constants.Keys.URL.BATTLE_ROTATIONS)!,
+                        decodeUsing: IkaDecoder.parseBattleRotationDict,
                         completion: completion)
   }
 

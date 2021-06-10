@@ -19,11 +19,11 @@ enum FlatMode: String, Equatable, Identifiable, CaseIterable {
   var name: String {
     switch self {
     case .regular:
-      return MatchMode.regular.name
+      return BattleMode.regular.name
     case .gachi:
-      return MatchMode.gachi.name
+      return BattleMode.gachi.name
     case .league:
-      return MatchMode.league.name
+      return BattleMode.league.name
     case .salmon:
       return GameMode.salmon.name
     }
@@ -32,11 +32,11 @@ enum FlatMode: String, Equatable, Identifiable, CaseIterable {
   var shortName: String {
     switch self {
     case .regular:
-      return MatchMode.regular.shortName
+      return BattleMode.regular.shortName
     case .gachi:
-      return MatchMode.gachi.shortName
+      return BattleMode.gachi.shortName
     case .league:
-      return MatchMode.league.shortName
+      return BattleMode.league.shortName
     case .salmon:
       return GameMode.salmon.shortName
     }
@@ -45,11 +45,11 @@ enum FlatMode: String, Equatable, Identifiable, CaseIterable {
   var imgFiln: String {
     switch self {
     case .regular:
-      return MatchMode.regular.imgFilnMid
+      return BattleMode.regular.imgFilnMid
     case .gachi:
-      return MatchMode.gachi.imgFilnMid
+      return BattleMode.gachi.imgFilnMid
     case .league:
-      return MatchMode.league.imgFilnMid
+      return BattleMode.league.imgFilnMid
     case .salmon:
       return "salmon"
     }
@@ -58,11 +58,11 @@ enum FlatMode: String, Equatable, Identifiable, CaseIterable {
   var imgFilnLarge: String {
     switch self {
     case .regular:
-      return MatchMode.regular.imgFilnLarge
+      return BattleMode.regular.imgFilnLarge
     case .gachi:
-      return MatchMode.gachi.imgFilnLarge
+      return BattleMode.gachi.imgFilnLarge
     case .league:
-      return MatchMode.league.imgFilnLarge
+      return BattleMode.league.imgFilnLarge
     case .salmon:
       return "grizz"
     }

@@ -1,5 +1,5 @@
 //
-//  MatchRotationDict.swift
+//  BattleRotationDict.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 4/14/21.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-typealias MatchRotationDict = [MatchMode: [MatchRotation]]
-extension MatchRotationDict {
+typealias BattleRotationDict = [BattleMode: [BattleRotation]]
+extension BattleRotationDict {
   var numOfRounds: Int {
     self[.gachi]!.count
   }
@@ -17,15 +17,15 @@ extension MatchRotationDict {
 
   init() {
     self = [
-      .regular: [] as [MatchRotation],
-      .gachi: [] as [MatchRotation],
-      .league: [] as [MatchRotation],
+      .regular: [] as [BattleRotation],
+      .gachi: [] as [BattleRotation],
+      .league: [] as [BattleRotation],
     ]
   }
 
   // MARK: Internal
 
-  /// Check if any match mode has an empty array.
+  /// Check if any battle mode has an empty array.
   /// - Returns: The boolean val.
   func isEmpty() -> Bool {
     self[.regular]!.isEmpty || self[.gachi]!.isEmpty || self[.league]!.isEmpty

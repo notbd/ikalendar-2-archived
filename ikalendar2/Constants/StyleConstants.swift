@@ -151,9 +151,9 @@ extension Constants.Styles {
       }
     }
 
-    // MARK: - MATCH
+    // MARK: - BATTLE
 
-    enum Match {
+    enum Battle {
       enum Header {
         static let CURRENT_PREFIX_STRING = "Now:"
         static let NEXT_PREFIX_STRING = "Next:"

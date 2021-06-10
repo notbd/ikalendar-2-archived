@@ -9,9 +9,9 @@ import SwiftUI
 
 // MARK: - RuleDetailView
 
-/// The view that displays the detail information of a match rule.
+/// The view that displays the detail information of a battle rule.
 struct RuleDetailView: View {
-  var rule: MatchRule
+  var rule: BattleRule
 
   var releaseDatePrefix: String { "Release Date" }
   var descriptionPrefix: String { "Description" }

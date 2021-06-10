@@ -45,7 +45,7 @@ struct StageTitleLabel: View {
 
 struct StageTitleLabel_Previews: PreviewProvider {
   static var previews: some View {
-    StageTitleLabel(title: MatchStage.humpbackPumpTrack.name,
+    StageTitleLabel(title: BattleStage.humpbackPumpTrack.name,
                     fontSize: 12)
   }
 }

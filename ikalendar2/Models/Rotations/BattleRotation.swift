@@ -1,5 +1,5 @@
 //
-//  MatchRotation.swift
+//  BattleRotation.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 3/27/21.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-/// Data model for the match rotation.
-struct MatchRotation: Rotation, Identifiable, Equatable {
+/// Data model for the battle rotation.
+struct BattleRotation: Rotation, Identifiable, Equatable {
   var id: String {
     "\(startTime.timeIntervalSince1970)-\(rule.name)"
   }
@@ -16,9 +16,9 @@ struct MatchRotation: Rotation, Identifiable, Equatable {
   let startTime: Date
   let endTime: Date
 
-  let rule: MatchRule
-  let stageA: MatchStage
-  let stageB: MatchStage
+  let rule: BattleRule
+  let stageA: BattleStage
+  let stageB: BattleStage
 
   // MARK: Internal
 
@@ -27,7 +27,7 @@ struct MatchRotation: Rotation, Identifiable, Equatable {
   ///   - lhs: The left hand side.
   ///   - rhs: The right hand side.
   /// - Returns: The comparison result.
-  static func == (lhs: MatchRotation, rhs: MatchRotation) -> Bool {
+  static func == (lhs: BattleRotation, rhs: BattleRotation) -> Bool {
     lhs.id == rhs.id
   }
 

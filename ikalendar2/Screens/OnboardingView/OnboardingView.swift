@@ -44,19 +44,19 @@ struct OnboardingView: View {
                             description: "Salmon Run will be supported in future updates as well.",
                             header: {
                               Rotated3DOverlapView(top: {
-                                Image(MatchMode.league.imgFilnSmall)
+                                Image(BattleMode.league.imgFilnSmall)
                                   .resizable()
                                   .scaledToFit()
                                   .shadow(radius: 5)
                                   .frame(width: 28)
                               }, mid: {
-                                Image(MatchMode.gachi.imgFilnSmall)
+                                Image(BattleMode.gachi.imgFilnSmall)
                                   .resizable()
                                   .scaledToFit()
                                   .shadow(radius: 5)
                                   .frame(width: 28)
                               }, bottom: {
-                                Image(MatchMode.regular.imgFilnSmall)
+                                Image(BattleMode.regular.imgFilnSmall)
                                   .resizable()
                                   .scaledToFit()
                                   .shadow(radius: 10)

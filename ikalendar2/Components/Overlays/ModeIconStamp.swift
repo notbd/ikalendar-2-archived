@@ -52,8 +52,8 @@ struct ModeIconStamp: View {
   var icon: some View {
     let imgFiln: String
     switch ikaStatus.gameModeSelection {
-    case .match:
-      imgFiln = ikaStatus.matchModeSelection.imgFilnLarge
+    case .battle:
+      imgFiln = ikaStatus.battleModeSelection.imgFilnLarge
     case .salmon:
       imgFiln = "grizz"
     }

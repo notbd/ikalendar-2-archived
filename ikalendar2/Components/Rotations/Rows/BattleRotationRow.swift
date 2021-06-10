@@ -1,5 +1,5 @@
 //
-//  MatchRotationRow.swift
+//  BattleRotationRow.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 3/28/21.
@@ -7,18 +7,18 @@
 
 import SwiftUI
 
-// MARK: - MatchRotationRow
+// MARK: - BattleRotationRow
 
-/// A row containing all the information of a match rotation.
-struct MatchRotationRow: View {
+/// A row containing all the information of a battle rotation.
+struct BattleRotationRow: View {
   @EnvironmentObject var ikaTimer: IkaTimer
 
-  var rotation: MatchRotation
+  var rotation: BattleRotation
   var index: Int
   var width: CGFloat
 
   var rowType: RowType {
-    typealias Scoped = Constants.Styles.Rotation.Match.Header
+    typealias Scoped = Constants.Styles.Rotation.Battle.Header
 
     if rotation.isCurrent(currentTime: ikaTimer.currentTime) {
       return .now
@@ -30,23 +30,23 @@ struct MatchRotationRow: View {
   }
 
   var body: some View {
-    Section(header: MatchRotationHeader(rotation: rotation,
-                                        rowType: rowType)) {
-        switch rowType {
-        case .now:
-          MatchRotationCellPrimary(rotation: rotation,
-                                   width: width)
-        default:
-          MatchRotationCellSecondary(rotation: rotation,
-                                     width: width)
-        }
+    Section(header: BattleRotationHeader(rotation: rotation,
+                                         rowType: rowType)) {
+      switch rowType {
+      case .now:
+        BattleRotationCellPrimary(rotation: rotation,
+                                  width: width)
+      default:
+        BattleRotationCellSecondary(rotation: rotation,
+                                    width: width)
+      }
     }
   }
 }
 
-extension MatchRotationRow {
+extension BattleRotationRow {
   enum RowType {
-    typealias Scoped = Constants.Styles.Rotation.Match.Header
+    typealias Scoped = Constants.Styles.Rotation.Battle.Header
 
     case now
     case next
@@ -65,26 +65,26 @@ extension MatchRotationRow {
   }
 }
 
-// MARK: - MatchRotationHeader
+// MARK: - BattleRotationHeader
 
-/// The header of the match rotation row.
-struct MatchRotationHeader: View {
-  typealias Scoped = Constants.Styles.Rotation.Match.Header
+/// The header of the battle rotation row.
+struct BattleRotationHeader: View {
+  typealias Scoped = Constants.Styles.Rotation.Battle.Header
 
   @EnvironmentObject var ikaTimer: IkaTimer
 
-  var rotation: MatchRotation
-  var rowType: MatchRotationRow.RowType
+  var rotation: BattleRotation
+  var rowType: BattleRotationRow.RowType
 
   var startTimeString: String {
     if
       Calendar.current.isDateInYesterday(rotation.startTime) ||
       Calendar.current.isDateInTomorrow(rotation.startTime)
     {
-      return rotation.startTime.toMatchTimeString(includingDate: true,
-                                                  currentTime: ikaTimer.currentTime)
+      return rotation.startTime.toBattleTimeString(includingDate: true,
+                                                   currentTime: ikaTimer.currentTime)
     } else {
-      return rotation.startTime.toMatchTimeString()
+      return rotation.startTime.toBattleTimeString()
     }
   }
 
@@ -95,10 +95,10 @@ struct MatchRotationHeader: View {
       (Calendar.current.isDateInToday(rotation.startTime) &&
         Calendar.current.isDateInTomorrow(rotation.endTime))
     {
-      return rotation.endTime.toMatchTimeString(includingDate: true,
-                                                currentTime: ikaTimer.currentTime)
+      return rotation.endTime.toBattleTimeString(includingDate: true,
+                                                 currentTime: ikaTimer.currentTime)
     } else {
-      return rotation.endTime.toMatchTimeString()
+      return rotation.endTime.toBattleTimeString()
     }
   }
 
@@ -123,10 +123,10 @@ struct MatchRotationHeader: View {
   }
 }
 
-// MARK: - MatchRotationRow_Previews
+// MARK: - BattleRotationRow_Previews
 
-struct MatchRotationRow_Previews: PreviewProvider {
-  @State static var modeSelection = MatchMode.gachi
+struct BattleRotationRow_Previews: PreviewProvider {
+  @State static var modeSelection = BattleMode.gachi
 
   static var previews: some View {
     NavigationView {
@@ -134,18 +134,18 @@ struct MatchRotationRow_Previews: PreviewProvider {
         List {
           Section {
             Picker("Mode", selection: $modeSelection) {
-              ForEach(MatchMode.allCases) { matchMode in
-                Text(matchMode.shortName)
-                  .tag(matchMode)
+              ForEach(BattleMode.allCases) { battleMode in
+                Text(battleMode.shortName)
+                  .tag(battleMode)
               }
             }
             .pickerStyle(SegmentedPickerStyle())
           }
 
-          ForEach(0 ..< MockData.getMatchRotations()[modeSelection]!.count) { index in
-            MatchRotationRow(rotation: MockData.getMatchRotations()[modeSelection]![index],
-                             index: index,
-                             width: geometry.size.width)
+          ForEach(0 ..< MockData.getBattleRotations()[modeSelection]!.count) { index in
+            BattleRotationRow(rotation: MockData.getBattleRotations()[modeSelection]![index],
+                              index: index,
+                              width: geometry.size.width)
           }
         }
         .listStyle(InsetGroupedListStyle())

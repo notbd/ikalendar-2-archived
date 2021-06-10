@@ -36,13 +36,13 @@ extension Date {
 
   // MARK: Internal
 
-  /// Convert the Date to a match time string.
+  /// Convert the Date to a battle time string.
   /// - Parameters:
   ///   - includingDate: If including the date in the time string (default to false).
   ///   - currentTime: Placeholder to let SwiftUI recalculate the string every time this
   ///   parameter has changed.
-  /// - Returns: The match time string.
-  func toMatchTimeString(
+  /// - Returns: The battle time string.
+  func toBattleTimeString(
     includingDate: Bool = false,
     currentTime _: Date = Date())
   -> String {

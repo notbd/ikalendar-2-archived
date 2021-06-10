@@ -15,10 +15,10 @@ final class IkaPreference: ObservableObject {
    Default Modes: Init value already set by UserDefaults, so init value here does not matter.
    */
   @AppStorage(Constants.Keys.AppStorage.DEFAULT_GAME_MODE)
-  var defaultGameMode: GameMode = .match { willSet { objectWillChange.send() }}
+  var defaultGameMode: GameMode = .battle { willSet { objectWillChange.send() }}
 
-  @AppStorage(Constants.Keys.AppStorage.DEFAULT_MATCH_MODE)
-  var defaultMatchMode: MatchMode = .regular { willSet { objectWillChange.send() }}
+  @AppStorage(Constants.Keys.AppStorage.DEFAULT_BATTLE_MODE)
+  var defaultBattleMode: BattleMode = .regular { willSet { objectWillChange.send() }}
 
   /*
    Color Scheme

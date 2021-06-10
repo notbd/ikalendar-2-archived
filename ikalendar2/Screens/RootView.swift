@@ -21,7 +21,7 @@ struct RootView: View {
         SettingsMainView()
           .environmentObject(ikaStatus)
           .environmentObject(ikaPreference)
-          .accentColor(.secondary)
+          .accentColor(.orange)
           .preferredColorScheme(ikaPreference.appColorScheme.systemValue)
       }
   }

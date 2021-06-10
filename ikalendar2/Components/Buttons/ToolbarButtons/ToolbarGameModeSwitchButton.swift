@@ -21,13 +21,13 @@ struct ToolbarGameModeSwitchButton: View {
         Haptics.generate(.warning)
       },
       label: Text("Game Mode")) {
-          ForEach(GameMode.allCases) { gameMode in
-            Label(gameMode.name.localizedStringKey(),
-                  systemImage: ikaStatus.gameModeSelection == gameMode ?
-                    gameMode.sfSymbolSelected :
-                    gameMode.sfSymbolIdle)
-              .tag(gameMode)
-          }
+        ForEach(GameMode.allCases) { gameMode in
+          Label(gameMode.name.localizedStringKey(),
+                systemImage: ikaStatus.gameModeSelection == gameMode ?
+                  gameMode.sfSymbolSelected :
+                  gameMode.sfSymbolIdle)
+            .tag(gameMode)
+        }
       }
     } label: {
       Label("Game Mode Switch",

@@ -1,5 +1,5 @@
 //
-//  MatchRotationStageCard.swift
+//  BattleRotationStageCard.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 3/28/21.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-// MARK: - MatchRotationStageCardPrimary
+// MARK: - BattleRotationStageCardPrimary
 
 /// The primary version of a card component that displays
-/// the stage information of a match rotation.
-struct MatchRotationStageCardPrimary: View {
-  typealias Scoped = Constants.Styles.Rotation.Match.Card.Primary
+/// the stage information of a battle rotation.
+struct BattleRotationStageCardPrimary: View {
+  typealias Scoped = Constants.Styles.Rotation.Battle.Card.Primary
 
-  var stage: MatchStage
+  var stage: BattleStage
 
   var body: some View {
     Image(stage.imgFilnLarge)
@@ -32,14 +32,14 @@ struct MatchRotationStageCardPrimary: View {
   }
 }
 
-// MARK: - MatchRotationStageCardSecondary
+// MARK: - BattleRotationStageCardSecondary
 
 /// The secondary version of a card component that displays
-/// the stage information of a match rotation.
-struct MatchRotationStageCardSecondary: View {
-  typealias Scoped = Constants.Styles.Rotation.Match.Card.Secondary
+/// the stage information of a battle rotation.
+struct BattleRotationStageCardSecondary: View {
+  typealias Scoped = Constants.Styles.Rotation.Battle.Card.Secondary
 
-  var stage: MatchStage
+  var stage: BattleStage
 
   var body: some View {
     VStack(alignment: .trailing) {
@@ -57,13 +57,13 @@ struct MatchRotationStageCardSecondary: View {
   }
 }
 
-// MARK: - MatchRotationStageCard_Previews
+// MARK: - BattleRotationStageCard_Previews
 
-struct MatchRotationStageCard_Previews: PreviewProvider {
+struct BattleRotationStageCard_Previews: PreviewProvider {
   static var previews: some View {
-    MatchRotationStageCardPrimary(stage: .theReef)
+    BattleRotationStageCardPrimary(stage: .theReef)
       .previewLayout(.fixed(width: 320, height: 200))
-    MatchRotationStageCardSecondary(stage: .humpbackPumpTrack)
+    BattleRotationStageCardSecondary(stage: .humpbackPumpTrack)
       .previewLayout(.fixed(width: 300, height: 240))
   }
 }

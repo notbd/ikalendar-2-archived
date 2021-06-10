@@ -1,14 +1,14 @@
 //
-//  MatchMode.swift
+//  BattleMode.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 3/26/21.
 //
 
-// MARK: - MatchMode
+// MARK: - BattleMode
 
-/// Data model for the match modes.
-enum MatchMode: String, Identifiable, CaseIterable, Equatable {
+/// Data model for the battle modes.
+enum BattleMode: String, Identifiable, CaseIterable, Equatable {
   case regular
   case gachi
   case league
@@ -16,7 +16,7 @@ enum MatchMode: String, Identifiable, CaseIterable, Equatable {
   var id: String { rawValue }
 }
 
-extension MatchMode {
+extension BattleMode {
   var name: String {
     switch self {
     case .regular: return "Regular Battle"
@@ -26,7 +26,7 @@ extension MatchMode {
   }
 }
 
-extension MatchMode {
+extension BattleMode {
   var shortName: String {
     switch self {
     case .regular: return "Regular"
@@ -36,7 +36,7 @@ extension MatchMode {
   }
 }
 
-extension MatchMode {
+extension BattleMode {
   var imgFilnSmall: String { rawValue + "_small" }
   var imgFilnMid: String { rawValue + "_mid" }
   var imgFilnLarge: String { rawValue + "_large" }

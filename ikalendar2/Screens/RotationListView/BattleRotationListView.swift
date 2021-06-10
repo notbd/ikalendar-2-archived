@@ -1,5 +1,5 @@
 //
-//  MatchRotationListView.swift
+//  BattleRotationListView.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 3/26/21.
@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-// MARK: - MatchRotationListView
+// MARK: - BattleRotationListView
 
-/// The view that displays a list of match rotations.
-struct MatchRotationListView: View {
+/// The view that displays a list of battle rotations.
+struct BattleRotationListView: View {
   @EnvironmentObject var ikaCatalog: IkaCatalog
   @EnvironmentObject var ikaStatus: IkaStatus
   @EnvironmentObject var ikaTimer: IkaTimer
 
-  var matchRotations: [MatchRotation] {
-    let rawRotations = ikaCatalog.matchRotations[ikaStatus.matchModeSelection]!
+  var battleRotations: [BattleRotation] {
+    let rawRotations = ikaCatalog.battleRotations[ikaStatus.battleModeSelection]!
     func filterCurrent<T: Rotation>(rotation: T) -> Bool {
       !rotation.isExpired(currentTime: ikaTimer.currentTime)
     }
@@ -26,25 +26,24 @@ struct MatchRotationListView: View {
 
   var body: some View {
     GeometryReader { geometry in
-      List {
-        ForEach(Array(matchRotations.enumerated()),
+      Form {
+        ForEach(Array(battleRotations.enumerated()),
                 id: \.offset) { index, rotation in
-            MatchRotationRow(rotation: rotation,
-                             index: index,
-                             width: geometry.size.width)
+          BattleRotationRow(rotation: rotation,
+                            index: index,
+                            width: geometry.size.width)
         }
       }
       .disabled(ikaCatalog.loadingStatus != .loaded)
-      .listStyle(InsetGroupedListStyle())
     }
   }
 }
 
-// MARK: - MatchRotationListView_Previews
+// MARK: - BattleRotationListView_Previews
 
-struct MatchRotationListView_Previews: PreviewProvider {
+struct BattleRotationListView_Previews: PreviewProvider {
   static var previews: some View {
-    MatchRotationListView()
+    BattleRotationListView()
       .environmentObject(IkaCatalog())
   }
 }

@@ -1,14 +1,14 @@
 //
-//  MatchRule.swift
+//  BattleRule.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 3/26/21.
 //
 
-// MARK: - MatchRule
+// MARK: - BattleRule
 
-/// Data model for the match rules.
-enum MatchRule: String, Identifiable, CaseIterable, Equatable {
+/// Data model for the battle rules.
+enum BattleRule: String, Identifiable, CaseIterable, Equatable {
   case turfWar = "Turf War"
   case splatZones = "Splat Zones"
   case towerControl = "Tower Control"
@@ -18,7 +18,7 @@ enum MatchRule: String, Identifiable, CaseIterable, Equatable {
   var id: String { rawValue }
 }
 
-extension MatchRule {
+extension BattleRule {
   var key: String {
     switch self {
     case .turfWar: return "turf_war"
@@ -30,7 +30,7 @@ extension MatchRule {
   }
 }
 
-extension MatchRule {
+extension BattleRule {
   var name: String {
     switch self {
     case .turfWar: return "Turf War"
@@ -42,7 +42,7 @@ extension MatchRule {
   }
 }
 
-extension MatchRule {
+extension BattleRule {
   var description: String {
     switch self {
     case .turfWar: return "In a Turf War, teams have three minutes to cover the ground with ink. " +
@@ -62,7 +62,7 @@ extension MatchRule {
   }
 }
 
-extension MatchRule {
+extension BattleRule {
   var releaseDate: String {
     switch self {
     case .turfWar: return "06/02/2015"
@@ -74,7 +74,7 @@ extension MatchRule {
   }
 }
 
-extension MatchRule {
+extension BattleRule {
   var imgFilnMid: String { key + "_mid" }
   var imgFilnLarge: String { key + "_large" }
 }

@@ -1,5 +1,5 @@
 //
-//  MatchRotationCell.swift
+//  BattleRotationCell.swift
 //  ikalendar2
 //
 //  Created by Tianwei Zhang on 3/28/21.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-// MARK: - MatchRotationCellPrimary
+// MARK: - BattleRotationCellPrimary
 
-/// The primary version of a cell component for the match rotation that takes
+/// The primary version of a cell component for the battle rotation that takes
 /// all the space in the list content.
-struct MatchRotationCellPrimary: View {
-  typealias Scoped = Constants.Styles.Rotation.Match.Cell.Primary
+struct BattleRotationCellPrimary: View {
+  typealias Scoped = Constants.Styles.Rotation.Battle.Cell.Primary
 
   @Environment(\.horizontalSizeClass) private var horizontalSizeClass
   var isHorizontalCompact: Bool { horizontalSizeClass == .compact }
@@ -20,7 +20,7 @@ struct MatchRotationCellPrimary: View {
   @EnvironmentObject var ikaTimer: IkaTimer
   @EnvironmentObject var ikaPreference: IkaPreference
 
-  var rotation: MatchRotation
+  var rotation: BattleRotation
   var width: CGFloat
 
   var body: some View {
@@ -40,8 +40,8 @@ struct MatchRotationCellPrimary: View {
 
       HStack(alignment: .center,
              spacing: width * Scoped.STAGE_SECTION_SPACING_RATIO) {
-          MatchRotationStageCardPrimary(stage: rotation.stageA)
-          MatchRotationStageCardPrimary(stage: rotation.stageB)
+        BattleRotationStageCardPrimary(stage: rotation.stageA)
+        BattleRotationStageCardPrimary(stage: rotation.stageB)
       }
     }
     .padding(.top, Scoped.CELL_PADDING_TOP)
@@ -53,21 +53,21 @@ struct MatchRotationCellPrimary: View {
   var ruleSection: some View {
     HStack(alignment: .center,
            spacing: Scoped.RULE_SECTION_SPACING) {
-        // Rule icon
-        Image(rotation.rule.imgFilnMid)
-          .resizable()
-          .antialiased(true)
-          .scaledToFit()
-          .shadow(radius: Constants.Styles.Global.SHADOW_RADIUS)
-          .frame(maxWidth: width * Scoped.RULE_IMG_MAX_WIDTH_RATIO)
+      // Rule icon
+      Image(rotation.rule.imgFilnMid)
+        .resizable()
+        .antialiased(true)
+        .scaledToFit()
+        .shadow(radius: Constants.Styles.Global.SHADOW_RADIUS)
+        .frame(maxWidth: width * Scoped.RULE_IMG_MAX_WIDTH_RATIO)
 
-        // Rule title
-        Text(rotation.rule.name.localizedStringKey())
-          .scaledLimitedLine()
-          .fontIka(.ika2,
-                   size: isHorizontalCompact ?
-                     Scoped.RULE_FONT_SIZE_COMPACT :
-                     Scoped.RULE_FONT_SIZE_REGULAR)
+      // Rule title
+      Text(rotation.rule.name.localizedStringKey())
+        .scaledLimitedLine()
+        .fontIka(.ika2,
+                 size: isHorizontalCompact ?
+                   Scoped.RULE_FONT_SIZE_COMPACT :
+                   Scoped.RULE_FONT_SIZE_REGULAR)
     }
     .frame(height: width * Scoped.RULE_SECTION_HEIGHT_RATIO)
   }
@@ -91,16 +91,16 @@ struct MatchRotationCellPrimary: View {
   }
 }
 
-// MARK: - MatchRotationCellSecondary
+// MARK: - BattleRotationCellSecondary
 
-/// The secondary version of a cell component for the match rotation
+/// The secondary version of a cell component for the battle rotation
 /// that takes all the space in a list unit.
-struct MatchRotationCellSecondary: View {
-  typealias Scoped = Constants.Styles.Rotation.Match.Cell.Secondary
+struct BattleRotationCellSecondary: View {
+  typealias Scoped = Constants.Styles.Rotation.Battle.Cell.Secondary
 
   @EnvironmentObject var ikaPreference: IkaPreference
 
-  var rotation: MatchRotation
+  var rotation: BattleRotation
   var width: CGFloat
 
   var body: some View {
@@ -132,28 +132,28 @@ struct MatchRotationCellSecondary: View {
       HStack(alignment: .center,
              spacing: width * Scoped.STAGE_SECTION_SPACING_RATIO +
                Scoped.STAGE_SECTION_SPACING_ADJUSTMENT_CONSTANT) {
-          MatchRotationStageCardSecondary(stage: rotation.stageA)
-          MatchRotationStageCardSecondary(stage: rotation.stageB)
+        BattleRotationStageCardSecondary(stage: rotation.stageA)
+        BattleRotationStageCardSecondary(stage: rotation.stageB)
       }
     }
   }
 }
 
-// MARK: - MatchRotationCell_Previews
+// MARK: - BattleRotationCell_Previews
 
-struct MatchRotationCell_Previews: PreviewProvider {
+struct BattleRotationCell_Previews: PreviewProvider {
   static var previews: some View {
     GeometryReader { geometry in
       List {
         Section {
-          MatchRotationCellPrimary(rotation: MockData.getMatchRotation(rule: .towerControl,
-                                                                       rawStartTime: Date()),
-                                   width: geometry.size.width)
+          BattleRotationCellPrimary(rotation: MockData.getBattleRotation(rule: .towerControl,
+                                                                         rawStartTime: Date()),
+                                    width: geometry.size.width)
         }
         Section {
-          MatchRotationCellSecondary(rotation: MockData.getMatchRotation(rule: .clamBlitz,
-                                                                         rawStartTime: Date()),
-                                     width: geometry.size.width)
+          BattleRotationCellSecondary(rotation: MockData.getBattleRotation(rule: .clamBlitz,
+                                                                           rawStartTime: Date()),
+                                      width: geometry.size.width)
         }
       }
       .listStyle(InsetGroupedListStyle())
