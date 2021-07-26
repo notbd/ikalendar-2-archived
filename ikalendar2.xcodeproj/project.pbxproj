@@ -13,7 +13,7 @@
 		79C42D93263A4CE70047B0E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42C83263A4CE20047B0E0 /* Constants.swift */; };
 		79C42D94263A4CE70047B0E0 /* KeyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42C84263A4CE20047B0E0 /* KeyConstants.swift */; };
 		79C42D95263A4CE70047B0E0 /* StyleConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42C85263A4CE20047B0E0 /* StyleConstants.swift */; };
-		79C42DCD263A4CE70047B0E0 /* ikalendar2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42CD9263A4CE50047B0E0 /* ikalendar2App.swift */; };
+		79C42DCD263A4CE70047B0E0 /* Ikalendar2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42CD9263A4CE50047B0E0 /* Ikalendar2App.swift */; };
 		79C42DF3263A4CE70047B0E0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 79C42D12263A4CE50047B0E0 /* Localizable.strings */; };
 		79C42DF4263A4CE70047B0E0 /* QuickBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D17263A4CE60047B0E0 /* QuickBorder.swift */; };
 		79C42DF5263A4CE70047B0E0 /* FontIka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C42D18263A4CE60047B0E0 /* FontIka.swift */; };
@@ -102,7 +102,7 @@
 		79C42C83263A4CE20047B0E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		79C42C84263A4CE20047B0E0 /* KeyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyConstants.swift; sourceTree = "<group>"; };
 		79C42C85263A4CE20047B0E0 /* StyleConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleConstants.swift; sourceTree = "<group>"; };
-		79C42CD9263A4CE50047B0E0 /* ikalendar2App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ikalendar2App.swift; sourceTree = "<group>"; };
+		79C42CD9263A4CE50047B0E0 /* Ikalendar2App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ikalendar2App.swift; sourceTree = "<group>"; };
 		79C42D13263A4CE50047B0E0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		79C42D14263A4CE50047B0E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		79C42D17263A4CE60047B0E0 /* QuickBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickBorder.swift; sourceTree = "<group>"; };
@@ -640,7 +640,7 @@
 				79459A8824F1EFEC00C90BA4 /* ikalendar2.entitlements */,
 				79F8460E246767EC0086AD95 /* Assets.xcassets */,
 				79F84616246767EC0086AD95 /* Info.plist */,
-				79C42CD9263A4CE50047B0E0 /* ikalendar2App.swift */,
+				79C42CD9263A4CE50047B0E0 /* Ikalendar2App.swift */,
 				79C42D34263A4CE60047B0E0 /* Screens */,
 				79C42D40263A4CE60047B0E0 /* Components */,
 				79C42D15263A4CE60047B0E0 /* Utilities */,
@@ -789,7 +789,7 @@
 				79C42E22263A4CE70047B0E0 /* AutoLoadingOverlay.swift in Sources */,
 				79C42E43263A4CE70047B0E0 /* ShoesGear.swift in Sources */,
 				79C42E1B263A4CE70047B0E0 /* SalmonRotationWeaponCard.swift in Sources */,
-				79C42DCD263A4CE70047B0E0 /* ikalendar2App.swift in Sources */,
+				79C42DCD263A4CE70047B0E0 /* Ikalendar2App.swift in Sources */,
 				79C42E04263A4CE70047B0E0 /* IkaPublisher.swift in Sources */,
 				79C42DF5263A4CE70047B0E0 /* FontIka.swift in Sources */,
 				79C42DF9263A4CE70047B0E0 /* TimeLength.swift in Sources */,

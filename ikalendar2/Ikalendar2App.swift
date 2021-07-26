@@ -24,7 +24,7 @@ struct Ikalendar2App: App {
         .environmentObject(ikaTimer)
         .environmentObject(ikaPreference)
         .environmentObject(motionManager)
-        .accentColor(.secondary)
+        .accentColor(.orange)
     }
   }
 
@@ -33,9 +33,10 @@ struct Ikalendar2App: App {
   init() {
     UIKitIntegration.customizeNavigationTitleText()
     UIKitIntegration.customizePickerText()
-    UserDefaults.standard.register(defaults: [Constants.Keys.AppStorage.DEFAULT_GAME_MODE: "match"])
     UserDefaults.standard
-      .register(defaults: [Constants.Keys.AppStorage.DEFAULT_MATCH_MODE: "gachi"])
+      .register(defaults: [Constants.Keys.AppStorage.DEFAULT_GAME_MODE: "battle"])
+    UserDefaults.standard
+      .register(defaults: [Constants.Keys.AppStorage.DEFAULT_BATTLE_MODE: "gachi"])
     ikaPreference = IkaPreference()
     ikaStatus = IkaStatus()
   }

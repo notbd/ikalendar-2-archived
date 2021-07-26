@@ -34,8 +34,7 @@ extension BattleRotationDict {
   /// Check if the dict needs to refresh.
   /// - Parameter currentTime: The current time.
   /// - Returns: The boolean val.
-  func doesNeedToRefresh(currentTime _: Date) -> Bool {
-//    currentTime > self[.gachi]![0].endTime
-    false
+  func doesNeedToRefresh(currentTime: Date) -> Bool {
+    currentTime > self[.gachi]![0].endTime
   }
 }
