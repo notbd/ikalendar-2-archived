@@ -10,22 +10,22 @@ import Foundation
 // MARK: - GrizzcoWeapon
 
 /// Data model for the grizzco weapons.
-enum GrizzcoWeapon: String, Identifiable, CaseIterable {
-  case brella = "Grizzco Brella"
-  case slosher = "Grizzco Slosher"
-  case blaster = "Grizzco Blaster"
-  case charger = "Grizzco Charger"
+enum GrizzcoWeapon: Int, Identifiable, CaseIterable {
+  case blaster = 20000
+  case brella = 20010
+  case charger = 20020
+  case slosher = 20030
 
-  var id: String { rawValue }
+  var id: Int { rawValue }
 }
 
 extension GrizzcoWeapon {
   var name: String {
     switch self {
-    case .brella: return "Grizzco Brella"
-    case .slosher: return "Grizzco Slosher"
     case .blaster: return "Grizzco Blaster"
+    case .brella: return "Grizzco Brella"
     case .charger: return "Grizzco Charger"
+    case .slosher: return "Grizzco Slosher"
     }
   }
 }
@@ -33,10 +33,10 @@ extension GrizzcoWeapon {
 extension GrizzcoWeapon {
   var key: String {
     switch self {
-    case .brella: return "Wst_Umbrella_CoopAutoAssault"
-    case .slosher: return "Wst_Slosher_CoopVase"
     case .blaster: return "Wst_Shooter_BlasterCoopBurst"
+    case .brella: return "Wst_Umbrella_CoopAutoAssault"
     case .charger: return "Wst_Charger_CoopSpark"
+    case .slosher: return "Wst_Slosher_CoopVase"
     }
   }
 }

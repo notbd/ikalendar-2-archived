@@ -166,7 +166,7 @@ final class IkaCatalog: ObservableObject {
   /// Load the catalog and set corresponding current loading status.
   func loadCatalog() {
     let battleRotationDictPublisher = IkaPublisher.shared.getBattleRotationDictPublisher()
-    let salmonRotationArrayPublisher = IkaPublisher.shared.getSalmonRotationArrayPublisher()
+    let salmonRotationArrayPublisher = IkaPublisher.shared.getOatmealdomePublisher()
     let rewardGearPublisher = IkaPublisher.shared.getRewardGearPublisher()
 
     let combinedPublisher = Publishers.Zip3(battleRotationDictPublisher,
@@ -183,11 +183,11 @@ final class IkaCatalog: ObservableObject {
           self.cancelAutoLoadingStatus()
           self.dataTaskCancellables.removeAll()
         }
-      } receiveValue: { battleRotations, salmonRotations, rewardGear in
+      } receiveValue: { battleRotations, salmonRotations, _ in
         DispatchQueue.main.async {
           self.battleRotations = battleRotations
           self.salmonRotations = salmonRotations
-          self.salmonRotations[0].rewardGear = rewardGear
+//          self.salmonRotations[0].rewardGear = rewardGear
         }
       }
       .store(in: &dataTaskCancellables)

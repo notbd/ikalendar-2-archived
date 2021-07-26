@@ -51,10 +51,10 @@ struct SalmonRotationRow: View {
             case .regular:
               SalmonRotationCellPrimary(rotation: rotation, width: width)
             default:
-              SalmonRotationCellSecondary(rotation: rotation, width: width)
+              SalmonRotationCellPrimary(rotation: rotation, width: width)
             }
           default:
-            SalmonRotationCellSecondary(rotation: rotation, width: width)
+            SalmonRotationCellPrimary(rotation: rotation, width: width)
           }
         }
       }

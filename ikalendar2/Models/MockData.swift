@@ -14,7 +14,7 @@ struct MockData {
   ///   - rawStartTime: The raw start time (rotation will start at the next
   ///                       rounded hour of this time).
   ///   - hasStageAndWeapons: If the rotation has stage and weapon information.
-  ///   - randomWeaponType: The type of random weapon for the rotation.
+  ///   - randomWeaponType: The type of random weapon for the rotation. (nil, green, gold)
   /// - Returns: The SalmonRotation data.
   static func getSalmonRotation(
     rawStartTime: Date = Date(),

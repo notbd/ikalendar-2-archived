@@ -23,6 +23,7 @@ extension Constants.Keys {
 
   enum URL {
     static let BATTLE_ROTATIONS = "https://splatoon2.ink/data/schedules.json"
+    static let OATMEALDOME = "https://files.oatmealdome.me/bcat/coop.json"
     static let SALMON_ROTATIONS = "https://splatoon2.ink/data/coop-schedules.json"
     static let TIMELINE = "https://splatoon2.ink/data/timeline.json"
 

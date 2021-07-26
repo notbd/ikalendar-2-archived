@@ -27,7 +27,15 @@ final class IkaPublisher {
                         decodeUsing: IkaDecoder.parseBattleRotationDict)
   }
 
-  /// Get the publisher of the battle rotation dict from the `splatoon2.ink` api.
+  /// Get the publisher of the salmon rotation dict from the `files.oatmealdome.me` api.
+  /// - Returns: The generated publisher.
+  func getOatmealdomePublisher() -> AnyPublisher<[SalmonRotation], IkaError> {
+    let url = URL(string: Constants.Keys.URL.OATMEALDOME)!
+    return getPublisher(url: url,
+                        decodeUsing: IkaDecoder.parseOatmealdome)
+  }
+
+  /// Get the publisher of the salmon rotation dict from the `splatoon2.ink` api.
   /// - Returns: The generated publisher.
   func getSalmonRotationArrayPublisher() -> AnyPublisher<[SalmonRotation], IkaError> {
     let url = URL(string: Constants.Keys.URL.SALMON_ROTATIONS)!
@@ -35,7 +43,7 @@ final class IkaPublisher {
                         decodeUsing: IkaDecoder.parseSalmonRotationArray)
   }
 
-  /// Get the publisher of the reward gear from the `splatoon2.ink` api.
+  /// Get the publisher of the salmon reward gear from the `splatoon2.ink` api.
   /// - Returns: The generated publisher.
   func getRewardGearPublisher() -> AnyPublisher<SalmonGear, IkaError> {
     let url = URL(string: Constants.Keys.URL.TIMELINE)!

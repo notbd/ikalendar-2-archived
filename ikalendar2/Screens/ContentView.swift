@@ -133,10 +133,10 @@ struct ToolbarBattleModePicker: View {
       Haptics.generate(.soft)
     },
     label: Text("Battle Mode")) {
-      ForEach(BattleMode.allCases) { battleMode in
-        Text(battleMode.shortName.localizedStringKey())
-          .tag(battleMode)
-      }
+        ForEach(BattleMode.allCases) { battleMode in
+          Text(battleMode.shortName.localizedStringKey())
+            .tag(battleMode)
+        }
     }
     .pickerStyle(SegmentedPickerStyle())
   }

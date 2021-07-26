@@ -16,6 +16,7 @@ enum SalmonWeapon: Equatable {
   case random(RandomWeapon)
 }
 
+/// Failable SalmonWeapon initializer using id.
 extension SalmonWeapon {
   init?(_ id: Int) {
     if id >= 0 {

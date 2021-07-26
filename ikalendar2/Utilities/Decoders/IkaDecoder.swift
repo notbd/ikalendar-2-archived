@@ -109,7 +109,7 @@ final class IkaDecoder {
 
       if let stageNameString = rotationDetailsJSON["stage"]["name"].string {
         // Has proper stage value
-        stage = SalmonStage(rawValue: stageNameString)
+        stage = SalmonStage(name: stageNameString)
       }
 
       if let weaponsArrayJSON = rotationDetailsJSON["weapons"].array {
@@ -230,5 +230,105 @@ final class IkaDecoder {
 
     // SUCCESS: return the gear
     return rewardGear
+  }
+
+  // TODO: Parse Oatmealdome data
+  static func parseOatmealdome(from data: Data) throws -> [SalmonRotation] {
+    var salmonRotations: [SalmonRotation] = []
+
+    // Will throw SwiftyJSONError if parsing fails
+    let rootJSON = try JSON(data: data)
+
+    // Get stage and weapon info from phases array
+    guard let phasesJSON = rootJSON["Phases"].array
+    else {
+      // ERROR: parse details array
+      throw IkaError.invalidData
+    }
+
+    for phaseJSON in phasesJSON {
+      // get date strings
+      guard
+        let startTimeString = phaseJSON["StartDateTime"].string,
+        let endTimeString = phaseJSON["EndDateTime"].string
+      else {
+        // ERROR: rotation time of wrong type or structure
+        throw IkaError.invalidData
+      }
+
+      // Set up date formatter to format the date string
+      let dateFormatterGMT0000 = ISO8601DateFormatter()
+
+      // convert to date
+      guard
+        let startTime = dateFormatterGMT0000.date(from: startTimeString + "+0000"),
+        let endTime = dateFormatterGMT0000.date(from: endTimeString + "+0000")
+      else {
+        // ERROR: rotation time of wrong type or structure
+        throw IkaError.invalidData
+      }
+
+      var stage: SalmonStage?
+      var weapons: [SalmonWeapon]? = []
+      var grizzcoWeapon: GrizzcoWeapon?
+
+      // get stage
+      guard
+        let stageId = phaseJSON["StageID"].int
+      else {
+        // ERROR: rotation time of wrong type or structure
+        throw IkaError.invalidData
+      }
+      stage = SalmonStage(rawValue: stageId)
+
+      // get weapons
+      if let weaponIdArray = phaseJSON["WeaponSets"].array {
+        // Has weapons array
+        for weaponId in weaponIdArray {
+          if
+            let weaponIdInt = weaponId.int,
+            let weapon = SalmonWeapon(weaponIdInt)
+          {
+            weapons?.append(weapon)
+          } else {
+            // ERROR: bad weapon id
+            dump(salmonRotations)
+            throw IkaError.unableToComplete
+          }
+        }
+      }
+
+      // if empty weapons: set back to nil
+      if weapons?.isEmpty == true {
+        weapons = nil
+      }
+
+      // get grizzco weapon id
+      guard
+        let grizzcoWeaponId = phaseJSON["RareWeaponID"].int
+      else {
+        // ERROR: rotation time of wrong type or structure
+        throw IkaError.invalidData
+      }
+      grizzcoWeapon = GrizzcoWeapon(rawValue: grizzcoWeaponId)
+
+      // SUCCESS: construct rotation using parsed data and append to array
+      salmonRotations.append(.init(startTime: startTime,
+                                   endTime: endTime,
+                                   stage: stage,
+                                   weapons: weapons,
+                                   grizzcoWeapon: grizzcoWeapon))
+    }
+
+    // Enforce detailed rotation else throw an error
+    guard !salmonRotations.isEmpty
+    else {
+      // ERROR: empty detailed rotations
+      throw IkaError.invalidData
+    }
+
+    // TODO: Add reward gear
+
+    return salmonRotations
   }
 }

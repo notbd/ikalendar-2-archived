@@ -68,10 +68,10 @@ struct SettingsMainView: View {
         Haptics.generate(.selection)
       },
       label: Text("Default Game Mode")) {
-        ForEach(GameMode.allCases) { gameMode in
-          Text(gameMode.name.localizedStringKey())
-            .tag(gameMode)
-        }
+          ForEach(GameMode.allCases) { gameMode in
+            Text(gameMode.name.localizedStringKey())
+              .tag(gameMode)
+          }
       }
       .pickerStyle(SegmentedPickerStyle())
     }
@@ -88,10 +88,10 @@ struct SettingsMainView: View {
         Haptics.generate(.selection)
       },
       label: Text("Default Battle Mode")) {
-        ForEach(BattleMode.allCases) { battleMode in
-          Text(battleMode.shortName.localizedStringKey())
-            .tag(battleMode)
-        }
+          ForEach(BattleMode.allCases) { battleMode in
+            Text(battleMode.shortName.localizedStringKey())
+              .tag(battleMode)
+          }
       }
       .pickerStyle(SegmentedPickerStyle())
       .disabled(ikaPreference.defaultGameMode != .battle)
@@ -111,10 +111,10 @@ struct SettingsMainView: View {
         Haptics.generate(.selection)
       },
       label: Text("App Color Scheme")) {
-        ForEach(IkaPreference.AppColorScheme.allCases) { appColorScheme in
-          Text(appColorScheme.name.localizedStringKey())
-            .tag(appColorScheme)
-        }
+          ForEach(IkaPreference.AppColorScheme.allCases) { appColorScheme in
+            Text(appColorScheme.name.localizedStringKey())
+              .tag(appColorScheme)
+          }
       }
       .pickerStyle(SegmentedPickerStyle())
     }

@@ -213,7 +213,7 @@ struct SettingsAboutView: View {
             },
 
             icon: {
-              Image(systemName: "square.and.pencil")
+              Image(systemName: "highlighter")
                 .foregroundColor(.accentColor)
             })
     }
